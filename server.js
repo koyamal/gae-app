@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 
 app.get('/firestore/get', async (req, res) => {
   const ref = await firestore.collection("test").get();
-  console.log(ref);
   const output = [];
   for (const doc of ref.docs) {
     const data = doc.data();
