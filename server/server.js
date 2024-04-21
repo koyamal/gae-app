@@ -12,6 +12,13 @@ const app = express();
 // This middleware is available in Express v4.16.0 onwards
 app.use(express.urlencoded({extended: true}));
 
+// app.engine('html', ejs.renderFile);
+// app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '../public'));
+
 dotenv.config();
 const projectId = process.env.GCP_PROJECT;
 const gcpOptions = {
