@@ -10,9 +10,10 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api");
+        const res = await fetch("/firestore/get");
         const json: React.SetStateAction<User[] | null> = await res.json();
         setUserInfo(json);
+        console.log(json);
       } catch (e) {
         console.log(e);
       }
@@ -24,6 +25,13 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <h1>User Info</h1>
+      {userInfo?.map((user) => (
+          <div key={user.name}>
+            <h3>{user.name}</h3>
+            <p>{user.age}</p>
+          </div>
+        )
+      )}
     </div>
   );
 };
