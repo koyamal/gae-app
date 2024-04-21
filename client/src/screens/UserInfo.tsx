@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createUseStyles } from "react-jss";
 
 type User = {
   age: number;
@@ -6,6 +7,7 @@ type User = {
 };
 
 const UserInfo: React.FC = () => {
+  const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +26,7 @@ const UserInfo: React.FC = () => {
     <h1>User Info.</h1>
     {userInfo?.map((user) => (
         <div key={user.name}>
-          <h3>{user.name}</h3>
+          <h3 className={classes.name}>{user.name}</h3>
           <p>{user.age}</p>
         </div>
       )
@@ -32,5 +34,15 @@ const UserInfo: React.FC = () => {
   </div>
   )
 };
+
+const styles = {
+  name: {
+        padding: "10px 20px",
+        background: "#f7df1e",
+        textAlign: "center",
+        border:"none"
+  }
+};
+const useStyles = createUseStyles(styles);
 
 export default UserInfo;
