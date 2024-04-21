@@ -39,7 +39,12 @@ app.get('/submit', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/form.html'));
 });
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
+  const ref = await firestore.collection("test").doc();
+  await ref.set({
+    name: req.body.name,
+    age: Number(req.body.age),
+  });
   console.log({
     name: req.body.name,
     age: req.body.age,
