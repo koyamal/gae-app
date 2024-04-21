@@ -1,6 +1,12 @@
 import express from 'express';
 import { Firestore } from '@google-cloud/firestore';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -25,6 +31,10 @@ app.get('/firestore/get', async (req, res) => {
     output.push(data);
   }
   res.send(output);
+});
+
+app.get('/submit', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/form.html'));
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
