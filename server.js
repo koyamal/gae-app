@@ -5,10 +5,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+// This middleware is available in Express v4.16.0 onwards
+app.use(express.urlencoded({extended: true}));
 
 dotenv.config();
 const projectId = process.env.GCP_PROJECT;
@@ -35,6 +37,14 @@ app.get('/firestore/get', async (req, res) => {
 
 app.get('/submit', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/form.html'));
+});
+
+app.post('/submit', (req, res) => {
+  console.log({
+    name: req.body.name,
+    age: req.body.age,
+  });
+  res.send('Thanks for your message!');
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
