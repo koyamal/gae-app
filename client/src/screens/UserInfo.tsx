@@ -27,7 +27,7 @@ const UserInfo: React.FC = () => {
     {userInfo?.map((user) => (
         <div key={user.name}>
           <h3 className={classes.name}>{user.name}</h3>
-          <p>{user.age}</p>
+          <p className={classes.age}>{user.age}</p>
         </div>
       )
     )}
@@ -37,10 +37,13 @@ const UserInfo: React.FC = () => {
 
 const styles = {
   name: {
-        padding: "10px 20px",
-        background: "#f7df1e",
-        textAlign: "center",
-        border:"none"
+    padding: "10px 20px",
+    background: "#f7df1e",
+    textAlign: "center",
+    border:"none"
+  },
+  age: {
+    background: "#ffffe0",
   }
 };
 const useStyles = createUseStyles(styles);
