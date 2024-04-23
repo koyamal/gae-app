@@ -25,7 +25,7 @@ const UserInfo: React.FC = () => {
     <div className="container">
     <h1>User Info.</h1>
     {userInfo?.map((user) => (
-        <div key={user.name}>
+        <div className={classes.container} key={user.name}>
           <h3 className={classes.name}>{user.name}</h3>
           <p className={classes.age}>{user.age}</p>
         </div>
@@ -36,6 +36,9 @@ const UserInfo: React.FC = () => {
 };
 
 const styles = {
+  container: {
+    display: "flex",
+  },
   name: {
     padding: "10px 20px",
     background: "#f7df1e",
