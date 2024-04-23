@@ -44,6 +44,7 @@ const styles = {
   },
   age: {
     background: "#ffffe0",
+    border:"solid #f5deb3"
   }
 };
 const useStyles = createUseStyles(styles);
