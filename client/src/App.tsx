@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React from "react";
 import UserInfo from "./screens/UserInfo";
 
 const App: React.FC = () => {
