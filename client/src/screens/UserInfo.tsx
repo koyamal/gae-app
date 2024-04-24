@@ -26,8 +26,8 @@ const UserInfo: React.FC = () => {
     <h1>User Info.</h1>
     {userInfo?.map((user) => (
         <div className={classes.container} key={user.name}>
-          <h3 className={classes.name}>{user.name}</h3>
-          <p className={classes.age}>{user.age}</p>
+          <div className={classes.name}>{user.name}</div>
+          <div className={classes.age}>{user.age}</div>
         </div>
       )
     )}
