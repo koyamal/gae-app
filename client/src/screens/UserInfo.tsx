@@ -46,6 +46,7 @@ const styles = {
     border:"none"
   },
   age: {
+    padding: "10px 20px",
     background: "#ffffe0",
     border:"solid #f5deb3",
     textAlign: "center"
