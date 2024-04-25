@@ -43,17 +43,17 @@ const styles = {
   nameTitle: {
     width: "50%",
     padding: "10px 20px",
-    background: "#f7df1e",
+    background: "#ffa500",
     textAlign: "center",
-    border:"none",
+    border:"solid #ffa500",
     fontWeight: "bold",
     fontSize: "20px"
   },
   ageTitle: {
     width: "10%",
     padding: "10px 20px",
-    background: "#ffffe0",
-    border:"solid #f5deb3",
+    background: "#ffd700",
+    border:"solid #ffd700",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: "20px"
@@ -65,9 +65,9 @@ const styles = {
   name: {
     width: "50%",
     padding: "10px 20px",
-    background: "#f7df1e",
+    background: "#fdf5e6",
     textAlign: "center",
-    border:"none"
+    border:"solid #ffdab9"
   },
   age: {
     width: "10%",
