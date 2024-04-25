@@ -46,7 +46,8 @@ const styles = {
     background: "#f7df1e",
     textAlign: "center",
     border:"none",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: "20px"
   },
   ageTitle: {
     width: "10%",
@@ -54,7 +55,8 @@ const styles = {
     background: "#ffffe0",
     border:"solid #f5deb3",
     textAlign: "center",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: "20px"
   },
   userBox: {
     display: "flex",
