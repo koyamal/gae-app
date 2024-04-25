@@ -24,6 +24,10 @@ const UserInfo: React.FC = () => {
   return (
     <div className="container">
     <h1>User Info.</h1>
+    <div className={classes.userBox}>
+      <div className={classes.name}>Name</div>
+      <div className={classes.age}>Age</div>
+    </div>
     {userInfo?.map((user) => (
         <div className={classes.userBox} key={user.name}>
           <div className={classes.name}>{user.name}</div>
