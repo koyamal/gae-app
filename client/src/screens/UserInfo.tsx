@@ -45,14 +45,16 @@ const styles = {
     padding: "10px 20px",
     background: "#f7df1e",
     textAlign: "center",
-    border:"none"
+    border:"none",
+    fontWeight: "bold"
   },
   ageTitle: {
     width: "10%",
     padding: "10px 20px",
     background: "#ffffe0",
     border:"solid #f5deb3",
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: "bold"
   },
   userBox: {
     display: "flex",
