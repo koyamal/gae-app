@@ -43,7 +43,7 @@ const styles = {
   nameTitle: {
     width: "50%",
     padding: "10px 20px",
-    background: "#f7df1e",
+    background: "#ffa500",
     textAlign: "center",
     border:"none",
     fontWeight: "bold",
@@ -52,7 +52,7 @@ const styles = {
   ageTitle: {
     width: "10%",
     padding: "10px 20px",
-    background: "#ffffe0",
+    background: "#f0e68c",
     border:"solid #f5deb3",
     textAlign: "center",
     fontWeight: "bold",
@@ -65,7 +65,7 @@ const styles = {
   name: {
     width: "50%",
     padding: "10px 20px",
-    background: "#f7df1e",
+    background: "#fdf5e6",
     textAlign: "center",
     border:"none"
   },
