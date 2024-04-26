@@ -1,5 +1,5 @@
 # gae-app
-## test
+
 ## ローカル
 ### server側
 ```
