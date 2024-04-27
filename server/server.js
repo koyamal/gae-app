@@ -15,9 +15,8 @@ app.use(express.urlencoded({extended: true}));
 // app.engine('html', ejs.renderFile);
 // app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.static(__dirname + '/public'));
-app.use('/public', express.static(__dirname + '../public'));
+app.use('/', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 dotenv.config();
 const projectId = process.env.GCP_PROJECT;
@@ -27,10 +26,6 @@ const gcpOptions = {
 };
 
 const firestore = new Firestore(gcpOptions);
-
-app.get('/', (req, res) => {
-  res.send('Hello from App Engine!');
-});
 
 app.get('/firestore/get', async (req, res) => {
   const ref = await firestore.collection("test").get();
