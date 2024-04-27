@@ -3,11 +3,14 @@ import { Firestore } from '@google-cloud/firestore';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import nocache from 'nocache';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+app.use(nocache());
 
 // This middleware is available in Express v4.16.0 onwards
 app.use(express.urlencoded({extended: true}));
