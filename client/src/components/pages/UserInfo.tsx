@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
 type User = {
@@ -7,6 +8,7 @@ type User = {
 };
 
 const UserInfo: React.FC = () => {
+  const navigate = useNavigate();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
   useEffect(() => {
@@ -21,6 +23,9 @@ const UserInfo: React.FC = () => {
     };
     fetchData();
   }, []);
+  const goUserPage = () => {
+    navigate("/oneuserinfo");
+  };
   return (
     <div className="container">
     <h1>User Info.</h1>
@@ -32,6 +37,7 @@ const UserInfo: React.FC = () => {
         <div className={classes.userBox} key={user.name}>
           <div className={classes.name}>{user.name}</div>
           <div className={classes.age}>{user.age}</div>
+          <div><button onClick={() => {goUserPage();}}>button</button></div>
         </div>
       )
     )}
