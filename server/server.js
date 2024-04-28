@@ -47,6 +47,13 @@ app.get('/firestore/get', async (req, res) => {
   res.send(output);
 });
 
+app.get('/get/userinfo/xxxxx', async (req, res) => {
+  const docId = "EtmZYxxbMUgCs2NekJP8"
+  const ref = await firestore.collection("test").doc(docId).get();
+  const data = await ref.data();
+  res.send(data);
+});
+
 app.get('/submit', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/form.html'));
 });
