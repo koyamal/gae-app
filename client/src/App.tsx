@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import UserInfo from "./screens/UserInfo";
-import Home from "./screens/Home";
+import UserInfo from "./components/pages/UserInfo";
+import Home from "./components/pages/Home";
 
 const App: React.FC = () => {
   return (
