@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
-type User = {
-  age: number;
-  name: string;
-};
+import User from '../../types/User';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
@@ -23,8 +20,8 @@ const UserInfo: React.FC = () => {
     };
     fetchData();
   }, []);
-  const goUserPage = () => {
-    navigate("/oneuserinfo");
+  const goUserPage = (docId: string) => {
+    navigate(`/oneuserinfo/${docId}`);
   };
   return (
     <div className="container">
@@ -34,10 +31,12 @@ const UserInfo: React.FC = () => {
       <div className={classes.ageTitle}>Age</div>
     </div>
     {userInfo?.map((user) => (
-        <div className={classes.userBox} key={user.name}>
+        <div className={classes.userBox} key={user.docId}>
           <div className={classes.name}>{user.name}</div>
           <div className={classes.age}>{user.age}</div>
-          <div><button onClick={() => {goUserPage();}}>button</button></div>
+          <div className={classes.btnBox}>
+            <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>
+          </div>
         </div>
       )
     )}
@@ -79,9 +78,22 @@ const styles = {
     width: "10%",
     padding: "10px 20px",
     background: "#ffffe0",
-    border:"solid #f5deb3",
+    border: "solid #f5deb3",
     textAlign: "center"
-  }
+  },
+  detailBtn: {
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  },
+  btnBox: {
+    display: "flex",
+    alignItems: "center",
+    padding: "10px"
+  },
 };
 const useStyles = createUseStyles(styles);
 
