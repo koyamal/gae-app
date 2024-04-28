@@ -34,7 +34,9 @@ const UserInfo: React.FC = () => {
         <div className={classes.userBox} key={user.docId}>
           <div className={classes.name}>{user.name}</div>
           <div className={classes.age}>{user.age}</div>
-          <div><button onClick={() => {goUserPage(user.docId);}}>button</button></div>
+          <div className={classes.btnBox}>
+            <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>
+          </div>
         </div>
       )
     )}
@@ -76,9 +78,19 @@ const styles = {
     width: "10%",
     padding: "10px 20px",
     background: "#ffffe0",
-    border:"solid #f5deb3",
+    border: "solid #f5deb3",
     textAlign: "center"
-  }
+  },
+  detailBtn: {
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+  },
+  btnBox: {
+    display: "flex",
+    alignItems: "center",
+    padding: "10px"
+  },
 };
 const useStyles = createUseStyles(styles);
 
