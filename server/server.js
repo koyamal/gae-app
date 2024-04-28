@@ -59,7 +59,16 @@ app.get('/get/userinfo/:docId', async (req, res) => {
   const userData = {
     name: data.name,
     age: data.age,
-    docId: ref.id
+    docId: ref.id,
+    ...(data.detailInfo && {
+      detailInfo: {
+        imageUrl: data.detailInfo?.imageUrl || '',
+        country: data.detailInfo?.country || '',
+        job: data.detailInfo?.job || '',
+        gender: data.detailInfo?.gender || '',
+        email: data.detailInfo?.email || '',
+      }
+    })
   }
   res.send(userData);
 });

@@ -33,6 +33,14 @@ const OneUserInfo: React.FC = () => {
           <div className={classes.age}>{userInfo.age}</div>
         </div>
     )}
+    {userInfo?.detailInfo && (
+      <div>
+        <div>{userInfo.detailInfo.country}</div>
+        <div>{userInfo.detailInfo.gender}</div>
+        <div>{userInfo.detailInfo.email}</div>
+        <img className={classes.photo} src={userInfo.detailInfo.imageUrl} />
+      </div>
+    )}
   </div>
   )
 };
@@ -73,6 +81,9 @@ const styles = {
     background: "#ffffe0",
     border:"solid #f5deb3",
     textAlign: "center"
+  },
+  photo: {
+    width: '200px',
   }
 };
 const useStyles = createUseStyles(styles);
