@@ -12,10 +12,9 @@ const OneUserInfo: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/firestore/get");
+        const res = await fetch("/get/userinfo/xxxxx");
         const json: React.SetStateAction<User | null> = await res.json();
-        // setUserInfo(json);
-        setUserInfo({age: 47, name: 'TestUser'});
+        setUserInfo(json);
       } catch (e) {
         console.log(e);
       }
