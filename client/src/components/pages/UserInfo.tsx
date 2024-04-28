@@ -85,6 +85,9 @@ const styles = {
     background: "#ffffe0",
     borderRadius: "100px",
     border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
   },
   btnBox: {
     display: "flex",
