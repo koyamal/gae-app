@@ -47,10 +47,10 @@ app.get('/firestore/get', async (req, res) => {
   res.send(output);
 });
 
-app.get('/get/userinfo/xxxxx', async (req, res) => {
-  const docId = "EtmZYxxbMUgCs2NekJP8"
+app.get('/get/userinfo/:docId', async (req, res) => {
+  const docId = req.params.docId;
   const ref = await firestore.collection("test").doc(docId).get();
-  const data = await ref.data();
+  const data = ref.data();
   res.send(data);
 });
 

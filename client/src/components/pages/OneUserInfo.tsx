@@ -12,7 +12,8 @@ const OneUserInfo: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/get/userinfo/xxxxx");
+        const docId = "pOchZhko2fwMSDE3tqLx";
+        const res = await fetch(`/get/userinfo/${docId}`);
         const json: React.SetStateAction<User | null> = await res.json();
         setUserInfo(json);
       } catch (e) {
