@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
-type User = {
-  age: number;
-  name: string;
-};
+import User from '../../types/User';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();

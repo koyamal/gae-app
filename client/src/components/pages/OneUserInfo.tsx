@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles } from "react-jss";
 
-type User = {
-  age: number;
-  name: string;
-};
+import User from '../../types/User';
 
 const OneUserInfo: React.FC = () => {
   const classes = useStyles();
