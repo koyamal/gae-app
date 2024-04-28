@@ -20,8 +20,8 @@ const UserInfo: React.FC = () => {
     };
     fetchData();
   }, []);
-  const goUserPage = () => {
-    navigate("/oneuserinfo");
+  const goUserPage = (docId: string) => {
+    navigate(`/oneuserinfo/${docId}`);
   };
   return (
     <div className="container">
@@ -34,7 +34,7 @@ const UserInfo: React.FC = () => {
         <div className={classes.userBox} key={user.docId}>
           <div className={classes.name}>{user.name}</div>
           <div className={classes.age}>{user.age}</div>
-          <div><button onClick={() => {goUserPage();}}>button</button></div>
+          <div><button onClick={() => {goUserPage(user.docId);}}>button</button></div>
         </div>
       )
     )}

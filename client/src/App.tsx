@@ -11,13 +11,11 @@ const App: React.FC = () => {
         <Link to="/">Home</Link>
         <br />
         <Link to="/user">UserInfo</Link>
-        <br />
-        <Link to="/oneuserinfo">OneUserInfo</Link>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/user" element={<UserInfo />} />
-        <Route path="/oneuserinfo" element={<OneUserInfo />} />
+        <Route path="/oneuserinfo/:docId" element={<OneUserInfo />} />
       </Routes>
     </BrowserRouter>
     // <UserInfo />

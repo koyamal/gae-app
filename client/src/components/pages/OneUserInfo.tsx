@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles } from "react-jss";
+import { useParams } from "react-router-dom";
 
 import User from '../../types/User';
 
 const OneUserInfo: React.FC = () => {
+  const params = useParams();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User | null>(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const docId = "pOchZhko2fwMSDE3tqLx";
-        const res = await fetch(`/get/userinfo/${docId}`);
+        const res = await fetch(`/get/userinfo/${params.docId}`);
         const json: React.SetStateAction<User | null> = await res.json();
         setUserInfo(json);
       } catch (e) {
