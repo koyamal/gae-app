@@ -42,7 +42,12 @@ app.get('/firestore/get', async (req, res) => {
   const output = [];
   for (const doc of ref.docs) {
     const data = doc.data();
-    output.push(data);
+    const userData = {
+      name: data.name,
+      age: data.age,
+      docId: doc.id
+    }
+    output.push(userData);
   }
   res.send(output);
 });
@@ -51,7 +56,12 @@ app.get('/get/userinfo/:docId', async (req, res) => {
   const docId = req.params.docId;
   const ref = await firestore.collection("test").doc(docId).get();
   const data = ref.data();
-  res.send(data);
+  const userData = {
+    name: data.name,
+    age: data.age,
+    docId: ref.id
+  }
+  res.send(userData);
 });
 
 app.get('/submit', (req, res) => {

@@ -1,4 +1,5 @@
 type User = {
+    docId: string;
     age: number;
     name: string;
   };

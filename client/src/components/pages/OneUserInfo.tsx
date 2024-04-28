@@ -27,7 +27,7 @@ const OneUserInfo: React.FC = () => {
       <div className={classes.ageTitle}>Age</div>
     </div>
     {userInfo && (
-        <div className={classes.userBox} key={userInfo.name}>
+        <div className={classes.userBox} key={userInfo.docId}>
           <div className={classes.name}>{userInfo.name}</div>
           <div className={classes.age}>{userInfo.age}</div>
         </div>

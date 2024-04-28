@@ -31,7 +31,7 @@ const UserInfo: React.FC = () => {
       <div className={classes.ageTitle}>Age</div>
     </div>
     {userInfo?.map((user) => (
-        <div className={classes.userBox} key={user.name}>
+        <div className={classes.userBox} key={user.docId}>
           <div className={classes.name}>{user.name}</div>
           <div className={classes.age}>{user.age}</div>
           <div><button onClick={() => {goUserPage();}}>button</button></div>
