@@ -2,7 +2,6 @@ import express from 'express';
 import { Firestore } from '@google-cloud/firestore';
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import nocache from 'nocache';
 
 const app = express();
