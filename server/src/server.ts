@@ -18,11 +18,12 @@ app.use(express.urlencoded({extended: true}));
 // app.engine('html', ejs.renderFile);
 // app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '../public'));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('../public'));
 // app.use('/', express.static(__dirname + '/public'));
-console.log("__dirname: ", __dirname);
-app.use('/public', express.static(__dirname + '../public'));
+console.log(path.join("__dirname: ", __dirname));
+console.log(path.join(__dirname, '../public'));
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 dotenv.config();
 const projectId = process.env.GCP_PROJECT;
