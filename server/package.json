@@ -7,7 +7,7 @@
     "tsbuild": "tsc --noEmit false",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/server.js",
-    "start:local": "node dist/server.js local",
+    "start:local": "npm run tsbuild && node dist/server.js local",
     "deploy": "npm run tsbuild && gcloud app deploy"
   },
   "dependencies": {

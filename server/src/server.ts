@@ -2,11 +2,7 @@ import express from 'express';
 import { Firestore } from '@google-cloud/firestore';
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import nocache from 'nocache';
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -15,12 +11,8 @@ app.use(nocache());
 // This middleware is available in Express v4.16.0 onwards
 app.use(express.urlencoded({extended: true}));
 
-// app.engine('html', ejs.renderFile);
-// app.set('view engine', 'ejs');
-
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('../public'));
-// app.use('/', express.static(__dirname + '/public'));
 console.log(path.join("__dirname: ", __dirname));
 console.log(path.join(__dirname, '../public'));
 app.use('/public', express.static(path.join(__dirname, '../public')));

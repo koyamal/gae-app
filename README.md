@@ -5,7 +5,6 @@
 ```
 cd server
 npm install
-npm run tsbuild
 npm run start:local
 ```
 
@@ -21,8 +20,7 @@ npm run start
 ```
 cd client
 npm install
-npm run build
-npm run copyBuild
+npm run build:gae
 ```
 
 ### server側
