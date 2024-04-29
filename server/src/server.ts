@@ -5,8 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import nocache from 'nocache';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -18,11 +18,12 @@ app.use(express.urlencoded({extended: true}));
 // app.engine('html', ejs.renderFile);
 // app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.static('/public'));
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('../public'));
 // app.use('/', express.static(__dirname + '/public'));
-console.log("__dirname: ", __dirname);
-app.use('/public', express.static(__dirname + '/public'));
+console.log(path.join("__dirname: ", __dirname));
+console.log(path.join(__dirname, '../public'));
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 dotenv.config();
 const projectId = process.env.GCP_PROJECT;
@@ -57,10 +58,10 @@ app.get('/get/userinfo/:docId', async (req, res) => {
   const ref = await firestore.collection("test").doc(docId).get();
   const data = ref.data();
   const userData = {
-    name: data.name,
-    age: data.age,
+    name: data?.name,
+    age: data?.age,
     docId: ref.id,
-    ...(data.detailInfo && {
+    ...(data?.detailInfo && {
       detailInfo: {
         imageUrl: data.detailInfo?.imageUrl || '',
         country: data.detailInfo?.country || '',
