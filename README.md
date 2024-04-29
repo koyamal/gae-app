@@ -5,6 +5,7 @@
 ```
 cd server
 npm install
+npm run tsbuild
 npm run start:local
 ```
 
