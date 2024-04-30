@@ -35,9 +35,9 @@ const OneUserInfo: React.FC = () => {
     )}
     {userInfo?.detailInfo && (
       <div>
-        <div>{userInfo.detailInfo.country}</div>
-        <div>{userInfo.detailInfo.gender}</div>
-        <div>{userInfo.detailInfo.email}</div>
+        <div>country: {userInfo.detailInfo.country}</div>
+        <div>gender: {userInfo.detailInfo.gender}</div>
+        <div>email: {userInfo.detailInfo.email}</div>
         <img className={classes.photo} src={userInfo.detailInfo.imageUrl} />
       </div>
     )}
