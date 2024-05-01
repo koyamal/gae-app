@@ -67,6 +67,8 @@ app.get('/get/userinfo/:docId', async (req, res) => {
 });
 
 app.get('/submit', (req, res) => {
+  const foo: number = 12;
+  const bar: number = '12';
   res.sendFile(path.join(__dirname, '/views/form.html'));
 });
 
