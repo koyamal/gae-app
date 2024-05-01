@@ -36,3 +36,12 @@ nameTemp = {
 function log(msg: string): void {
     console.log(msg);
 }
+
+function returnRow<T>(items: T[]): T[] {
+    return items;
+}
+
+let sample = [1, 2, 3];
+let returned = returnRow(sample);
+returned = [4, 5, 6];
+returned = ['1', '2', '3'];
