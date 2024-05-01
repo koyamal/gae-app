@@ -32,3 +32,7 @@ nameTemp = {
     first: 0,
     second: 'Doe'
 }
+
+function log(msg: string): void {
+    console.log(msg);
+}
