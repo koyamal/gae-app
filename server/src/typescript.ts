@@ -4,3 +4,4 @@ interface Foo {
 };
 
 const foo: Foo = { x: 'x', y: false};
+const foo2 = Foo;
