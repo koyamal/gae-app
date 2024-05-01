@@ -4,4 +4,9 @@ interface Foo {
 };
 
 const foo: Foo = { x: 'x', y: false};
-const foo2 = Foo;
+// const foo2 = Foo;
+
+const num: number = 123;
+function identity(num: number): number {
+    return num;
+}
