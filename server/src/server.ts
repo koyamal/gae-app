@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import path from 'path';
 import nocache from 'nocache';
 
+import User from './types/User';
+
 const app = express();
 
 app.use(nocache());
@@ -35,7 +37,7 @@ app.get('/firestore/get', async (req, res) => {
   const output = [];
   for (const doc of ref.docs) {
     const data = doc.data();
-    const userData = {
+    const userData: User = {
       name: data.name,
       age: data.age,
       docId: doc.id
@@ -49,7 +51,7 @@ app.get('/get/userinfo/:docId', async (req, res) => {
   const docId = req.params.docId;
   const ref = await firestore.collection("test").doc(docId).get();
   const data = ref.data();
-  const userData = {
+  const userData: User = {
     name: data?.name,
     age: data?.age,
     docId: ref.id,
