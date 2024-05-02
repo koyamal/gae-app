@@ -51,3 +51,7 @@ let sampleSorN: StrOrNum;
 sampleSorN = 123;
 sampleSorN = '123';
 sampleSorN = true;
+
+Math.floor(3);
+
+declare var window: Window;
