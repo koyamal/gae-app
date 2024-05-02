@@ -89,3 +89,35 @@ let fooInterface = {} as {
 fooInterface.bar = 123;
 fooInterface.bas = 'Good'
 // baxがなくてもエラーが出ない
+
+let fooInterfaceNotAs: {
+    bar: number;
+    bas: string;
+    bax: boolean;
+} = {
+    bar: 123,
+    bas: 'Good',
+    // baxがないとエラーが出る。
+}
+
+function logName(something: { name: string }) {
+    console.log(something.name);
+}
+
+var person = { name: 'matt', job: 'being awesome' };
+var animal = { name: 'cow', diet: 'vegan, but has milk of own species' };
+var random = { note: `I don't have a name property` };
+
+logName(person); // okay
+logName(animal); // okay
+logName(random); // Error: property `name` is missing
+
+logName({ name: 'matt' }); // okay
+logName({ name: 'matt', job: 'being awesome' });
+
+type typeUser = 'Normal' | "VIP" | "GOD"
+function checkUserRank(userRank: typeUser) {
+    console.log(userRank);
+}
+checkUserRank('Normal');
+checkUserRank('GUD');
