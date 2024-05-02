@@ -89,3 +89,13 @@ let fooInterface = {} as {
 fooInterface.bar = 123;
 fooInterface.bas = 'Good'
 // baxがなくてもエラーが出ない
+
+let fooInterfaceNotAs: {
+    bar: number;
+    bas: string;
+    bax: boolean;
+} = {
+    bar: 123,
+    bas: 'Good',
+    // baxがないとエラーが出る。
+}
