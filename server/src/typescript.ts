@@ -114,3 +114,10 @@ logName(random); // Error: property `name` is missing
 
 logName({ name: 'matt' }); // okay
 logName({ name: 'matt', job: 'being awesome' });
+
+type typeUser = 'Normal' | "VIP" | "GOD"
+function checkUserRank(userRank: typeUser) {
+    console.log(userRank);
+}
+checkUserRank('Normal');
+checkUserRank('GUD');
