@@ -1,9 +1,9 @@
-interface Foo {
-    x: string,
-    y: boolean,
-};
+// interface Foo {
+//     x: string,
+//     y: boolean,
+// };
 
-const foo: Foo = { x: 'x', y: false};
+// const foo: Foo = { x: 'x', y: false};
 // const foo2 = Foo;
 
 const num: number = 123;
@@ -51,3 +51,41 @@ let sampleSorN: StrOrNum;
 sampleSorN = 123;
 sampleSorN = '123';
 sampleSorN = true;
+
+Math.floor(3);
+
+declare var window: Window;
+
+interface Foo {
+    foo: string;
+}
+function foo(sample: Foo): Foo {
+    return sample;
+}
+function fooFalse(sample: Foo) {
+    return { fou: 'Jhon' }
+}
+console.log(fooFalse({foo: 'Tom'}).foo);
+
+function fooOption(bar: number, foo?: number): number {
+    if(foo) {
+        return bar ** foo;
+    }
+    return bar;
+}
+
+console.log(fooOption(2, 4));
+console.log(fooOption(2));
+
+let fooNoInterface = {};
+fooNoInterface.bar = 123;
+fooNoInterface.bas = 'Good';
+
+let fooInterface = {} as {
+    bar: number;
+    bas: string;
+    bax: boolean;
+}
+fooInterface.bar = 123;
+fooInterface.bas = 'Good'
+// baxがなくてもエラーが出ない
