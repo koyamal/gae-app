@@ -62,3 +62,7 @@ interface Foo {
 function foo(sample: Foo): Foo {
     return sample;
 }
+function fooFalse(sample: Foo) {
+    return { fou: 'Jhon' }
+}
+console.log(fooFalse({foo: 'Tom'}).foo);
