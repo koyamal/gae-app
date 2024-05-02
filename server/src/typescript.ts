@@ -66,3 +66,13 @@ function fooFalse(sample: Foo) {
     return { fou: 'Jhon' }
 }
 console.log(fooFalse({foo: 'Tom'}).foo);
+
+function fooOption(bar: number, foo?: number): number {
+    if(foo) {
+        return bar ** foo;
+    }
+    return bar;
+}
+
+console.log(fooOption(2, 4));
+console.log(fooOption(2));
