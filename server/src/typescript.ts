@@ -84,6 +84,8 @@ fooNoInterface.bas = 'Good';
 let fooInterface = {} as {
     bar: number;
     bas: string;
+    bax: boolean;
 }
 fooInterface.bar = 123;
 fooInterface.bas = 'Good'
+// baxがなくてもエラーが出ない
