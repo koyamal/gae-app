@@ -76,3 +76,14 @@ function fooOption(bar: number, foo?: number): number {
 
 console.log(fooOption(2, 4));
 console.log(fooOption(2));
+
+let fooNoInterface = {};
+fooNoInterface.bar = 123;
+fooNoInterface.bas = 'Good';
+
+let fooInterface = {} as {
+    bar: number;
+    bas: string;
+}
+fooInterface.bar = 123;
+fooInterface.bas = 'Good'
