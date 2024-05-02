@@ -1,9 +1,9 @@
-interface Foo {
-    x: string,
-    y: boolean,
-};
+// interface Foo {
+//     x: string,
+//     y: boolean,
+// };
 
-const foo: Foo = { x: 'x', y: false};
+// const foo: Foo = { x: 'x', y: false};
 // const foo2 = Foo;
 
 const num: number = 123;
@@ -55,3 +55,10 @@ sampleSorN = true;
 Math.floor(3);
 
 declare var window: Window;
+
+interface Foo {
+    foo: string;
+}
+function foo(sample: Foo): Foo {
+    return sample;
+}
