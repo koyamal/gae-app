@@ -121,3 +121,11 @@ function checkUserRank(userRank: typeUser) {
 }
 checkUserRank('Normal');
 checkUserRank('GUD');
+
+function fooReadOnly(config: {
+    readonly bar: number,
+    readonly bas: number
+}) {
+    config.bar = 123;
+    return config.bar + config.bas
+}
