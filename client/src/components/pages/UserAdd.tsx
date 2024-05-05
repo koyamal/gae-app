@@ -7,8 +7,14 @@ import User from '../../types/User';
 const UserAdd: React.FC = () => {
   return (
     <div className="container">
-      <input type="text" />
-      <input type="number" />
+      <div>
+        Name:
+        <input type="text" />
+      </div>
+      <div>
+        Age:
+        <input type="number" />
+      </div>
     </div>
   )
 };
