@@ -15,6 +15,9 @@ const UserAdd: React.FC = () => {
         Age:
         <input type="number" />
       </div>
+      <div>
+        <button>登録</button>
+      </div>
     </div>
   )
 };
