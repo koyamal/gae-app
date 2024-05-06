@@ -6,11 +6,17 @@ import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
   const [userInfo, setUserInfo] = useState<User | null>(null);
+  const [userName, setUserName] = useState<String>("");
   return (
     <div className="container">
       <div>
         Name:
-        <input type="text" />
+        <input
+          type="text"
+          onChange={(event) => {
+            setUserName(event.target.value);
+          }}
+        />
       </div>
       <div>
         Age:
@@ -18,7 +24,7 @@ const UserAdd: React.FC = () => {
       </div>
       <div>
         <button onClick={() => {
-          console.log("button clicked");
+          console.log(userName);
         }}>登録</button>
       </div>
     </div>
