@@ -16,7 +16,9 @@ const UserAdd: React.FC = () => {
         <input type="number" />
       </div>
       <div>
-        <button>登録</button>
+        <button onClick={() => {
+          console.log("button clicked");
+        }}>登録</button>
       </div>
     </div>
   )
