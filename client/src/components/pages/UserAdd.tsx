@@ -7,6 +7,8 @@ import User from '../../types/User';
 const UserAdd: React.FC = () => {
   const [userInfo, setUserInfo] = useState<User | null>(null);
   const [userName, setUserName] = useState<String>("");
+  const [userAge, setUserAge] = useState<Number>(NaN);
+
   return (
     <div className="container">
       <div>
@@ -20,11 +22,16 @@ const UserAdd: React.FC = () => {
       </div>
       <div>
         Age:
-        <input type="number" />
+        <input
+          type="number"
+          onChange={(event) => {
+            setUserAge(event.target.valueAsNumber);
+          }}     
+        />
       </div>
       <div>
         <button onClick={() => {
-          console.log(userName);
+          console.log(userName, userAge);
         }}>登録</button>
       </div>
     </div>
