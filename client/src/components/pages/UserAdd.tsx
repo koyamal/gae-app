@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
 import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
+  const [userInfo, setUserInfo] = useState<User | null>(null);
   return (
     <div className="container">
       <div>
