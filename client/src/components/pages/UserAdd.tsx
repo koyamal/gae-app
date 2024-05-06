@@ -34,6 +34,7 @@ const UserAdd: React.FC = () => {
           console.log(userName, userAge);
         }}>登録</button>
       </div>
+      <p>{userName}{userAge.toString()}</p>
     </div>
   )
 };
