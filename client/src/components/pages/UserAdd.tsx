@@ -8,6 +8,11 @@ const UserAdd: React.FC = () => {
   const [userInfo, setUserInfo] = useState<User | null>(null);
   const [userName, setUserName] = useState<String>("");
   const [userAge, setUserAge] = useState<Number>(NaN);
+  const [isDetail, setIsDetail] = useState<Boolean>(false);
+
+  const onClickDetailButton = (): void => {
+    setIsDetail(!isDetail);
+  }
 
   return (
     <div className="container">
@@ -35,6 +40,13 @@ const UserAdd: React.FC = () => {
         }}>登録</button>
       </div>
       <p>{userName}{userAge.toString()}</p>
+      <div>
+        <button onClick={onClickDetailButton}>詳細を追加</button>
+        {isDetail && (
+          <div>Hello</div>
+        )}
+        <p>{isDetail? 'true': 'false'}</p>
+      </div>
     </div>
   )
 };
