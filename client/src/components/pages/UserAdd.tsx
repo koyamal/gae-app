@@ -35,6 +35,9 @@ const UserAdd: React.FC = () => {
         }}>登録</button>
       </div>
       <p>{userName}{userAge.toString()}</p>
+      <div>
+        <button>詳細を追加</button>
+      </div>
     </div>
   )
 };
