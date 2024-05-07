@@ -1,131 +1,131 @@
-// interface Foo {
-//     x: string,
-//     y: boolean,
+// // interface Foo {
+// //     x: string,
+// //     y: boolean,
+// // };
+
+// // const foo: Foo = { x: 'x', y: false};
+// // const foo2 = Foo;
+
+// const num: number = 123;
+// function identity(num: number): number {
+//     return num;
+// }
+
+// let boolArray: boolean[];
+// boolArray = [true, false];
+// boolArray = ["true", false];
+// boolArray = false;
+
+// interface Name {
+//     first: string;
+//     second: string;
+// }
+// let nameTemp: Name;
+// nameTemp = {
+//     first: 'John',
+//     second: 'Doe'
 // };
+// nameTemp = {
+//     first: 'John'
+// }
+// nameTemp = {
+//     first: 0,
+//     second: 'Doe'
+// }
 
-// const foo: Foo = { x: 'x', y: false};
-// const foo2 = Foo;
+// function log(msg: string): void {
+//     console.log(msg);
+// }
 
-const num: number = 123;
-function identity(num: number): number {
-    return num;
-}
+// function returnRow<T>(items: T[]): T[] {
+//     return items;
+// }
 
-let boolArray: boolean[];
-boolArray = [true, false];
-boolArray = ["true", false];
-boolArray = false;
+// let sample = [1, 2, 3];
+// let returned = returnRow(sample);
+// returned = [4, 5, 6];
+// returned = ['1', '2', '3'];
 
-interface Name {
-    first: string;
-    second: string;
-}
-let nameTemp: Name;
-nameTemp = {
-    first: 'John',
-    second: 'Doe'
-};
-nameTemp = {
-    first: 'John'
-}
-nameTemp = {
-    first: 0,
-    second: 'Doe'
-}
+// type StrOrNum = string | number;
+// let sampleSorN: StrOrNum;
+// sampleSorN = 123;
+// sampleSorN = '123';
+// sampleSorN = true;
 
-function log(msg: string): void {
-    console.log(msg);
-}
+// Math.floor(3);
 
-function returnRow<T>(items: T[]): T[] {
-    return items;
-}
+// declare var window: Window;
 
-let sample = [1, 2, 3];
-let returned = returnRow(sample);
-returned = [4, 5, 6];
-returned = ['1', '2', '3'];
+// interface Foo {
+//     foo: string;
+// }
+// function foo(sample: Foo): Foo {
+//     return sample;
+// }
+// function fooFalse(sample: Foo) {
+//     return { fou: 'Jhon' }
+// }
+// console.log(fooFalse({foo: 'Tom'}).foo);
 
-type StrOrNum = string | number;
-let sampleSorN: StrOrNum;
-sampleSorN = 123;
-sampleSorN = '123';
-sampleSorN = true;
+// function fooOption(bar: number, foo?: number): number {
+//     if(foo) {
+//         return bar ** foo;
+//     }
+//     return bar;
+// }
 
-Math.floor(3);
+// console.log(fooOption(2, 4));
+// console.log(fooOption(2));
 
-declare var window: Window;
+// let fooNoInterface = {};
+// fooNoInterface.bar = 123;
+// fooNoInterface.bas = 'Good';
 
-interface Foo {
-    foo: string;
-}
-function foo(sample: Foo): Foo {
-    return sample;
-}
-function fooFalse(sample: Foo) {
-    return { fou: 'Jhon' }
-}
-console.log(fooFalse({foo: 'Tom'}).foo);
+// let fooInterface = {} as {
+//     bar: number;
+//     bas: string;
+//     bax: boolean;
+// }
+// fooInterface.bar = 123;
+// fooInterface.bas = 'Good'
+// // baxがなくてもエラーが出ない
 
-function fooOption(bar: number, foo?: number): number {
-    if(foo) {
-        return bar ** foo;
-    }
-    return bar;
-}
+// let fooInterfaceNotAs: {
+//     bar: number;
+//     bas: string;
+//     bax: boolean;
+// } = {
+//     bar: 123,
+//     bas: 'Good',
+//     // baxがないとエラーが出る。
+// }
 
-console.log(fooOption(2, 4));
-console.log(fooOption(2));
+// function logName(something: { name: string }) {
+//     console.log(something.name);
+// }
 
-let fooNoInterface = {};
-fooNoInterface.bar = 123;
-fooNoInterface.bas = 'Good';
+// var person = { name: 'matt', job: 'being awesome' };
+// var animal = { name: 'cow', diet: 'vegan, but has milk of own species' };
+// var random = { note: `I don't have a name property` };
 
-let fooInterface = {} as {
-    bar: number;
-    bas: string;
-    bax: boolean;
-}
-fooInterface.bar = 123;
-fooInterface.bas = 'Good'
-// baxがなくてもエラーが出ない
+// logName(person); // okay
+// logName(animal); // okay
+// logName(random); // Error: property `name` is missing
 
-let fooInterfaceNotAs: {
-    bar: number;
-    bas: string;
-    bax: boolean;
-} = {
-    bar: 123,
-    bas: 'Good',
-    // baxがないとエラーが出る。
-}
+// logName({ name: 'matt' }); // okay
+// logName({ name: 'matt', job: 'being awesome' });
 
-function logName(something: { name: string }) {
-    console.log(something.name);
-}
+// type typeUser = 'Normal' | "VIP" | "GOD"
+// function checkUserRank(userRank: typeUser) {
+//     console.log(userRank);
+// }
+// checkUserRank('Normal');
+// checkUserRank('GUD');
 
-var person = { name: 'matt', job: 'being awesome' };
-var animal = { name: 'cow', diet: 'vegan, but has milk of own species' };
-var random = { note: `I don't have a name property` };
-
-logName(person); // okay
-logName(animal); // okay
-logName(random); // Error: property `name` is missing
-
-logName({ name: 'matt' }); // okay
-logName({ name: 'matt', job: 'being awesome' });
-
-type typeUser = 'Normal' | "VIP" | "GOD"
-function checkUserRank(userRank: typeUser) {
-    console.log(userRank);
-}
-checkUserRank('Normal');
-checkUserRank('GUD');
-
-function fooReadOnly(config: {
-    readonly bar: number,
-    readonly bas: number
-}) {
-    config.bar = 123;
-    return config.bar + config.bas
-}
+// function fooReadOnly(config: {
+//     readonly bar: number,
+//     readonly bas: number
+// }) {
+//     config.bar = 123;
+//     return config.bar + config.bas
+// }
