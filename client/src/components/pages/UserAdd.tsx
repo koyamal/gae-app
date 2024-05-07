@@ -43,7 +43,20 @@ const UserAdd: React.FC = () => {
       <div>
         <button onClick={onClickDetailButton}>詳細を追加</button>
         {isDetail && (
-          <div>Hello</div>
+          <div>
+            <div>
+              country: <input type="text" />
+            </div>
+            <div>
+              job: <input type="text" />
+            </div>
+            <div>
+              gender: <input type="text" />
+            </div>
+            <div>
+              email: <input type="text" />
+            </div>
+          </div>
         )}
         <p>{isDetail? 'true': 'false'}</p>
       </div>
