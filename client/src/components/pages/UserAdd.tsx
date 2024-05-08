@@ -6,9 +6,9 @@ import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
   const [userInfo, setUserInfo] = useState<User | null>(null);
-  const [userName, setUserName] = useState<String>("");
-  const [userAge, setUserAge] = useState<Number>(NaN);
-  const [isDetail, setIsDetail] = useState<Boolean>(false);
+  const [userName, setUserName] = useState<string>("");
+  const [userAge, setUserAge] = useState<number>(NaN);
+  const [isDetail, setIsDetail] = useState<boolean>(false);
 
   const onClickSubmitButton = (): void => {
     const errMsg: Array<string> =[];
@@ -19,7 +19,12 @@ const UserAdd: React.FC = () => {
       console.log(errMsg);
       return;
     }
-    console.log(userName, userAge);
+    const tempUserInfo: User = {
+      docId: '',
+      name: userName,
+      age: userAge,
+    };
+    console.log(tempUserInfo);
   }
 
   const onClickDetailButton = (): void => {
