@@ -10,7 +10,7 @@ const UserAdd: React.FC = () => {
   const [userAge, setUserAge] = useState<number>(NaN);
   const [isDetail, setIsDetail] = useState<boolean>(false);
 
-  const onClickSubmitButton = (): void => {
+  const onClickSubmitButton = async () => {
     const errMsg: Array<string> =[];
     !userName && errMsg.push("Nameを入力してください。");
     !userAge && errMsg.push("Ageを入力してください。");
@@ -25,6 +25,17 @@ const UserAdd: React.FC = () => {
       age: userAge,
     };
     console.log(tempUserInfo);
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(tempUserInfo),
+    };
+    try{
+      const res = await fetch("/add/user", options);
+      console.log(await res.json());
+    } catch(e) {
+      console.log("error");
+    }
   }
 
   const onClickDetailButton = (): void => {
