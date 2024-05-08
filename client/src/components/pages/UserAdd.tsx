@@ -6,9 +6,26 @@ import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
   const [userInfo, setUserInfo] = useState<User | null>(null);
-  const [userName, setUserName] = useState<String>("");
-  const [userAge, setUserAge] = useState<Number>(NaN);
-  const [isDetail, setIsDetail] = useState<Boolean>(false);
+  const [userName, setUserName] = useState<string>("");
+  const [userAge, setUserAge] = useState<number>(NaN);
+  const [isDetail, setIsDetail] = useState<boolean>(false);
+
+  const onClickSubmitButton = (): void => {
+    const errMsg: Array<string> =[];
+    !userName && errMsg.push("Nameを入力してください。");
+    !userAge && errMsg.push("Ageを入力してください。");
+
+    if(errMsg.length > 0) {
+      console.log(errMsg);
+      return;
+    }
+    const tempUserInfo: User = {
+      docId: '',
+      name: userName,
+      age: userAge,
+    };
+    console.log(tempUserInfo);
+  }
 
   const onClickDetailButton = (): void => {
     setIsDetail(!isDetail);
@@ -34,14 +51,9 @@ const UserAdd: React.FC = () => {
           }}     
         />
       </div>
-      <div>
-        <button onClick={() => {
-          console.log(userName, userAge);
-        }}>登録</button>
-      </div>
       <p>{userName}{userAge.toString()}</p>
       <div>
-        <button onClick={onClickDetailButton}>詳細を追加</button>
+        <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
         {isDetail && (
           <div>
             <div>
@@ -59,6 +71,9 @@ const UserAdd: React.FC = () => {
           </div>
         )}
         <p>{isDetail? 'true': 'false'}</p>
+      </div>
+      <div>
+        <button onClick={onClickSubmitButton}>登録</button>
       </div>
     </div>
   )
