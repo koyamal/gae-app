@@ -11,6 +11,14 @@ const UserAdd: React.FC = () => {
   const [isDetail, setIsDetail] = useState<Boolean>(false);
 
   const onClickSubmitButton = (): void => {
+    const errMsg: Array<string> =[];
+    !userName && errMsg.push("Nameを入力してください。");
+    !userAge && errMsg.push("Ageを入力してください。");
+
+    if(errMsg.length > 0) {
+      console.log(errMsg);
+      return;
+    }
     console.log(userName, userAge);
   }
 
