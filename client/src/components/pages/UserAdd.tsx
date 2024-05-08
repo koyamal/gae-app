@@ -34,14 +34,9 @@ const UserAdd: React.FC = () => {
           }}     
         />
       </div>
-      <div>
-        <button onClick={() => {
-          console.log(userName, userAge);
-        }}>登録</button>
-      </div>
       <p>{userName}{userAge.toString()}</p>
       <div>
-        <button onClick={onClickDetailButton}>詳細を追加</button>
+        <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
         {isDetail && (
           <div>
             <div>
@@ -59,6 +54,11 @@ const UserAdd: React.FC = () => {
           </div>
         )}
         <p>{isDetail? 'true': 'false'}</p>
+      </div>
+      <div>
+        <button onClick={() => {
+          console.log(userName, userAge);
+        }}>登録</button>
       </div>
     </div>
   )
