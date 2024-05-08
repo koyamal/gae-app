@@ -10,6 +10,10 @@ const UserAdd: React.FC = () => {
   const [userAge, setUserAge] = useState<Number>(NaN);
   const [isDetail, setIsDetail] = useState<Boolean>(false);
 
+  const onClickSubmitButton = (): void => {
+    console.log(userName, userAge);
+  }
+
   const onClickDetailButton = (): void => {
     setIsDetail(!isDetail);
   }
@@ -56,9 +60,7 @@ const UserAdd: React.FC = () => {
         <p>{isDetail? 'true': 'false'}</p>
       </div>
       <div>
-        <button onClick={() => {
-          console.log(userName, userAge);
-        }}>登録</button>
+        <button onClick={onClickSubmitButton}>登録</button>
       </div>
     </div>
   )
