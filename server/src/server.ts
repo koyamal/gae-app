@@ -8,6 +8,7 @@ import User from './types/User';
 
 const app = express();
 
+app.use(express.json());
 app.use(nocache());
 
 // This middleware is available in Express v4.16.0 onwards
@@ -66,6 +67,12 @@ app.get('/get/userinfo/:docId', async (req, res) => {
     })
   }
   res.send(userData);
+});
+
+app.post('/add/user', async (req, res) => {
+  const userInfo: User = req.body;
+  console.log(userInfo);
+  res.send({msg: 'done'});
 });
 
 app.get('/submit', (req, res) => {
