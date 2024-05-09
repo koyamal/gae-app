@@ -5,7 +5,6 @@ import { createUseStyles } from "react-jss";
 import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
-  const [userInfo, setUserInfo] = useState<User | null>(null);
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [isDetail, setIsDetail] = useState<boolean>(false);
