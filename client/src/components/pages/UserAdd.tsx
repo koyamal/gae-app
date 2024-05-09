@@ -8,6 +8,7 @@ const UserAdd: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [isDetail, setIsDetail] = useState<boolean>(false);
+  const [msgInfo, setMsgInfo] = useState<string>("");
 
   const onClickSubmitButton = async () => {
     const errMsg: Array<string> =[];
@@ -31,7 +32,8 @@ const UserAdd: React.FC = () => {
     };
     try{
       const res = await fetch("/add/user", options);
-      console.log(await res.json());
+      const temMsg = await res.json();
+      setMsgInfo(temMsg.msg);
     } catch(e) {
       console.log("error");
     }
@@ -85,6 +87,7 @@ const UserAdd: React.FC = () => {
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
+      <div>{msgInfo}</div>
     </div>
   )
 };
