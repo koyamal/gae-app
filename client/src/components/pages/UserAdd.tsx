@@ -35,7 +35,7 @@ const UserAdd: React.FC = () => {
       const temMsg = await res.json();
       setMsgInfo(temMsg.msg);
     } catch(e) {
-      console.log("error");
+      console.log(`error: ${e}`);
     }
   }
 
