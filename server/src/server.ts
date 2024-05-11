@@ -71,6 +71,11 @@ app.get('/get/userinfo/:docId', async (req, res) => {
 
 app.post('/add/user', async (req, res) => {
   const userInfo: User = req.body;
+  const ref = await firestore.collection("test").doc();
+  await ref.set({
+    name: userInfo.name,
+    age: Number(userInfo.age),
+  });
   console.log(userInfo);
   res.send({msg: 'done'});
 });
