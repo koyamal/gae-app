@@ -8,16 +8,16 @@ const UserInfo: React.FC = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
+  const fetchData = async () => {
+    try {
+      const res = await fetch("/firestore/get");
+      const json: React.SetStateAction<User[] | null> = await res.json();
+      setUserInfo(json);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/firestore/get");
-        const json: React.SetStateAction<User[] | null> = await res.json();
-        setUserInfo(json);
-      } catch (e) {
-        console.log(e);
-      }
-    };
     fetchData();
   }, []);
   const goUserPage = (docId: string) => {
@@ -28,6 +28,7 @@ const UserInfo: React.FC = () => {
       const res = await fetch(`/delete/user/${docId}`);
       const temMsg = await res.json();
       console.log(temMsg);
+      fetchData();
     } catch (e) {
       console.log(e);
     }
