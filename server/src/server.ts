@@ -80,6 +80,13 @@ app.post('/add/user', async (req, res) => {
   res.send({msg: 'done'});
 });
 
+app.get('/delete/user/:docId',async (req, res) => {
+  const docId = req.params.docId;
+  const result = await firestore.collection("test").doc(docId).delete();
+  console.log(result);
+  res.send({msg: 'done'});
+})
+
 app.get('/submit', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/form.html'));
 });
