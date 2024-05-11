@@ -23,6 +23,15 @@ const UserInfo: React.FC = () => {
   const goUserPage = (docId: string) => {
     navigate(`/oneuserinfo/${docId}`);
   };
+  const deleteUser = async (docId: string) => {
+    try {
+      const res = await fetch(`/delete/user/${docId}`);
+      const temMsg = await res.json();
+      console.log(temMsg);
+    } catch (e) {
+      console.log(e);
+    }
+  }
   return (
     <div className="container">
     <h1>User Info.</h1>
@@ -36,7 +45,7 @@ const UserInfo: React.FC = () => {
           <div className={classes.age}>{user.age}</div>
           <div className={classes.btnBox}>
             <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>
-            <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>削除</button>
+            <button className={classes.detailBtn} onClick={() => {deleteUser(user.docId);}}>削除</button>
           </div>
         </div>
       )
