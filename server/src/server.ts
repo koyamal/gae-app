@@ -41,7 +41,16 @@ app.get('/firestore/get', async (req, res) => {
     const userData: User = {
       name: data.name,
       age: data.age,
-      docId: doc.id
+      docId: doc.id,
+      ...(data?.detailInfo && {
+        detailInfo: {
+          imageUrl: data.detailInfo?.imageUrl || '',
+          country: data.detailInfo?.country || '',
+          job: data.detailInfo?.job || '',
+          gender: data.detailInfo?.gender || '',
+          email: data.detailInfo?.email || '',
+        }
+      })
     }
     output.push(userData);
   }
