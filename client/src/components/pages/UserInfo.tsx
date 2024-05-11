@@ -45,7 +45,7 @@ const UserInfo: React.FC = () => {
           <div className={classes.name}>{user.name}</div>
           <div className={classes.age}>{user.age}</div>
           <div className={classes.btnBox}>
-            <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>
+            {user.detailInfo && (<button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>)}
             <button className={classes.detailBtn} onClick={() => {deleteUser(user.docId);}}>削除</button>
           </div>
         </div>
