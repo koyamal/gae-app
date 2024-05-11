@@ -36,6 +36,7 @@ const UserInfo: React.FC = () => {
           <div className={classes.age}>{user.age}</div>
           <div className={classes.btnBox}>
             <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>
+            <button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>削除</button>
           </div>
         </div>
       )
