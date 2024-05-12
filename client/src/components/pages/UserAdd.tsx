@@ -7,6 +7,11 @@ import User from '../../types/User';
 const UserAdd: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
+  const [userCountry, setUserCountry] = useState<number>(NaN);
+  const [userGender, setUserGender] = useState<number>(NaN);
+  const [userJob, setUserJob] = useState<number>(NaN);
+  const [userEmail, setUserEmail] = useState<number>(NaN);
+  const [userImageUrl, setUserImageUrl] = useState<number>(NaN);
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
 
@@ -14,6 +19,10 @@ const UserAdd: React.FC = () => {
     const errMsg: Array<string> =[];
     !userName && errMsg.push("Nameを入力してください。");
     !userAge && errMsg.push("Ageを入力してください。");
+
+    if(isDetail) {
+
+    }
 
     if(errMsg.length > 0) {
       console.log(errMsg);
