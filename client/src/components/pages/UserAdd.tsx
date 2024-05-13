@@ -21,7 +21,7 @@ const UserAdd: React.FC = () => {
     !userAge && errMsg.push("Ageを入力してください。");
 
     if(isDetail) {
-
+      !userCountry && errMsg.push("Countryを入力してください。")
     }
 
     if(errMsg.length > 0) {
