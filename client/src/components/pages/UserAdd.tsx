@@ -49,11 +49,15 @@ const UserAdd: React.FC = () => {
     } catch(e) {
       console.log(`error: ${e}`);
     }
-  }
+  };
+
+  const onClickModalButton = (): void => {
+    setIsModal(!isModal);
+  };
 
   const onClickDetailButton = (): void => {
     setIsDetail(!isDetail);
-  }
+  };
 
   return (
     <div className="container">
@@ -128,7 +132,7 @@ const UserAdd: React.FC = () => {
         <div className={classes.overlay}>
           <div className={classes.content}>
             <p>モーダル</p>
-            <p><button>OK</button></p>
+            <p><button onClick={onClickModalButton}>OK</button></p>
           </div>
         </div>
       )}
