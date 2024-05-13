@@ -124,12 +124,14 @@ const UserAdd: React.FC = () => {
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
       <div>{msgInfo}</div>
-      <div className={classes.overlay}>
-        <div className={classes.content}>
-          <p>モーダル</p>
-          <p><button>OK</button></p>
+      {isModal && (
+        <div className={classes.overlay}>
+          <div className={classes.content}>
+            <p>モーダル</p>
+            <p><button>OK</button></p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 };
