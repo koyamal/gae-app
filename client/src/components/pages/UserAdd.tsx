@@ -5,6 +5,8 @@ import { createUseStyles } from "react-jss";
 import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
+  const classes = useStyles();
+
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [userCountry, setUserCountry] = useState<string>("");
@@ -121,11 +123,34 @@ const UserAdd: React.FC = () => {
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
       <div>{msgInfo}</div>
+      <div className={classes.overlay}>
+        <div className={classes.content}>
+          <p>モーダル</p>
+          <p><button>OK</button></p>
+        </div>
+      </div>
     </div>
   )
 };
 
 const styles = {
+  content: {
+    zIndex:"2",
+    width:"50%",
+    padding: "1em",
+    background:"#83ccd2",
+  },
+  overlay: {
+    position:"fixed",
+    top:"0",
+    left:"0",
+    width:"100%",
+    height:"100%",
+    backgroundColor:"rgba(0,0,0,0.5)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 };
 const useStyles = createUseStyles(styles);
 
