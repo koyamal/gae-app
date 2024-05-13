@@ -7,6 +7,7 @@ import User from '../../types/User';
 const UserAdd: React.FC = () => {
   const classes = useStyles();
 
+  const [isModal, setIsModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [userCountry, setUserCountry] = useState<string>("");
