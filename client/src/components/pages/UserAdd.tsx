@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 import Modal from '../molecules/Modal';
 
@@ -143,23 +142,6 @@ const UserAdd: React.FC = () => {
 };
 
 const styles = {
-  content: {
-    zIndex:"2",
-    width:"50%",
-    padding: "1em",
-    background:"#83ccd2",
-  },
-  overlay: {
-    position:"fixed",
-    top:"0",
-    left:"0",
-    width:"100%",
-    height:"100%",
-    backgroundColor:"rgba(0,0,0,0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
 };
 const useStyles = createUseStyles(styles);
 
