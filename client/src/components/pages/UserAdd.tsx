@@ -33,6 +33,7 @@ const UserAdd: React.FC = () => {
     }
 
     if(tmpErrMsg.length > 0) {
+      setIsModal(true);
       setErrMsg(tmpErrMsg);
       return;
     }
