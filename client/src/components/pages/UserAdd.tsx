@@ -20,17 +20,17 @@ const UserAdd: React.FC = () => {
   const [errMsg, setErrMsg] = useState<string[]>([]);
 
   const onClickSubmitButton = async () => {
-    const errMsg: Array<string> =[];
-    !userName && errMsg.push("Nameを入力してください。");
-    !userAge && errMsg.push("Ageを入力してください。");
+    const tmpErrMsg: Array<string> =[];
+    !userName && tmpErrMsg.push("Nameを入力してください。");
+    !userAge && tmpErrMsg.push("Ageを入力してください。");
 
     if(isDetail) {
-      !userCountry && errMsg.push("Countryを入力してください。");
-      !userGender && errMsg.push("Genderを入力してください。");
+      !userCountry && tmpErrMsg.push("Countryを入力してください。");
+      !userGender && tmpErrMsg.push("Genderを入力してください。");
     }
 
-    if(errMsg.length > 0) {
-      setErrMsg(errMsg);
+    if(tmpErrMsg.length > 0) {
+      setErrMsg(tmpErrMsg);
       return;
     }
     const tempUserInfo: User = {
