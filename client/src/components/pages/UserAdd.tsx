@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
+import Modal from '../molecules/Modal';
 
 import User from '../../types/User';
 
@@ -135,15 +136,7 @@ const UserAdd: React.FC = () => {
       </div>
       <div>{msgInfo}</div>
       {isModal && (
-        <div className={classes.overlay}>
-          <div className={classes.content}>
-            <p>エラー</p>
-            {
-              errMsg.map((msg, index) => (<div key={index}>{msg}</div>))
-            }
-            <p><button onClick={onClickModalButton}>OK</button></p>
-          </div>
-        </div>
+        <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
       )}
     </div>
   )
