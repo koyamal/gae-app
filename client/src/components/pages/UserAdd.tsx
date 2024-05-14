@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 import Modal from '../molecules/Modal';
 
@@ -9,6 +8,7 @@ const UserAdd: React.FC = () => {
   const classes = useStyles();
 
   const [isModal, setIsModal] = useState<boolean>(false);
+  const [modalType, setModalType] = useState<'error'|'done'| ''>('');
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [userCountry, setUserCountry] = useState<string>("");
@@ -34,6 +34,7 @@ const UserAdd: React.FC = () => {
     }
 
     if(tmpErrMsg.length > 0) {
+      setModalType('error');
       setIsModal(true);
       setErrMsg(tmpErrMsg);
       return;
@@ -52,13 +53,19 @@ const UserAdd: React.FC = () => {
     try{
       const res = await fetch("/add/user", options);
       const temMsg = await res.json();
-      setMsgInfo(temMsg.msg);
+      setMsgInfo("登録しました。");
+      setModalType('done');
+      setIsModal(true);
     } catch(e) {
+      setMsgInfo("エラー：登録に失敗しました。");
+      setModalType('done');
+      setIsModal(true);
       console.log(`error: ${e}`);
     }
   };
 
   const onClickModalButton = (): void => {
+    setModalType('');
     setIsModal(!isModal);
   };
 
@@ -135,31 +142,17 @@ const UserAdd: React.FC = () => {
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
       <div>{msgInfo}</div>
-      {isModal && (
+      {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
+      )}
+      {isModal && modalType === 'done' && (
+        <Modal titleMsg='メッセージ' msgList={[msgInfo]} onClickFunc={onClickModalButton}></Modal>
       )}
     </div>
   )
 };
 
 const styles = {
-  content: {
-    zIndex:"2",
-    width:"50%",
-    padding: "1em",
-    background:"#83ccd2",
-  },
-  overlay: {
-    position:"fixed",
-    top:"0",
-    left:"0",
-    width:"100%",
-    height:"100%",
-    backgroundColor:"rgba(0,0,0,0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
 };
 const useStyles = createUseStyles(styles);
 
