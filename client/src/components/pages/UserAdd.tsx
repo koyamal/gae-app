@@ -137,7 +137,10 @@ const UserAdd: React.FC = () => {
       {isModal && (
         <div className={classes.overlay}>
           <div className={classes.content}>
-            <p>モーダル</p>
+            <p>エラー</p>
+            {
+              errMsg.map((msg, index) => (<div key={index}>{msg}</div>))
+            }
             <p><button onClick={onClickModalButton}>OK</button></p>
           </div>
         </div>
