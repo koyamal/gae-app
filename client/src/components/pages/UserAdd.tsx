@@ -17,6 +17,7 @@ const UserAdd: React.FC = () => {
   const [userImageUrl, setUserImageUrl] = useState<string>("");
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
+  const [errMsg, setErrMsg] = useState<string[]>([]);
 
   const onClickSubmitButton = async () => {
     const errMsg: Array<string> =[];
@@ -24,11 +25,12 @@ const UserAdd: React.FC = () => {
     !userAge && errMsg.push("Ageを入力してください。");
 
     if(isDetail) {
-      !userCountry && errMsg.push("Countryを入力してください。")
+      !userCountry && errMsg.push("Countryを入力してください。");
+      !userGender && errMsg.push("Genderを入力してください。");
     }
 
     if(errMsg.length > 0) {
-      console.log(errMsg);
+      setErrMsg(errMsg);
       return;
     }
     const tempUserInfo: User = {
