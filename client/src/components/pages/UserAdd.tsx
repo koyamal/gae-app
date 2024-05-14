@@ -8,6 +8,7 @@ const UserAdd: React.FC = () => {
   const classes = useStyles();
 
   const [isModal, setIsModal] = useState<boolean>(false);
+  const [modalType, setModalType] = useState<'error'|'done'>('error');
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [userCountry, setUserCountry] = useState<string>("");
@@ -33,6 +34,7 @@ const UserAdd: React.FC = () => {
     }
 
     if(tmpErrMsg.length > 0) {
+      setModalType('error');
       setIsModal(true);
       setErrMsg(tmpErrMsg);
       return;
@@ -134,7 +136,7 @@ const UserAdd: React.FC = () => {
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
       <div>{msgInfo}</div>
-      {isModal && (
+      {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
       )}
     </div>
