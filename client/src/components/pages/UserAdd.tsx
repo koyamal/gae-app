@@ -8,7 +8,7 @@ const UserAdd: React.FC = () => {
   const classes = useStyles();
 
   const [isModal, setIsModal] = useState<boolean>(false);
-  const [modalType, setModalType] = useState<'error'|'done'>('error');
+  const [modalType, setModalType] = useState<'error'|'done'| ''>('');
   const [userName, setUserName] = useState<string>("");
   const [userAge, setUserAge] = useState<number>(NaN);
   const [userCountry, setUserCountry] = useState<string>("");
@@ -53,13 +53,19 @@ const UserAdd: React.FC = () => {
     try{
       const res = await fetch("/add/user", options);
       const temMsg = await res.json();
-      setMsgInfo(temMsg.msg);
+      setMsgInfo("登録しました。");
+      setModalType('done');
+      setIsModal(true);
     } catch(e) {
+      setMsgInfo("エラー：登録に失敗しました。");
+      setModalType('done');
+      setIsModal(true);
       console.log(`error: ${e}`);
     }
   };
 
   const onClickModalButton = (): void => {
+    setModalType('');
     setIsModal(!isModal);
   };
 
@@ -138,6 +144,9 @@ const UserAdd: React.FC = () => {
       <div>{msgInfo}</div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
+      )}
+      {isModal && modalType === 'done' && (
+        <Modal titleMsg='メッセージ' msgList={[msgInfo]} onClickFunc={onClickModalButton}></Modal>
       )}
     </div>
   )
