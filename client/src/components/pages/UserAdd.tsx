@@ -17,18 +17,24 @@ const UserAdd: React.FC = () => {
   const [userImageUrl, setUserImageUrl] = useState<string>("");
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
+  const [errMsg, setErrMsg] = useState<string[]>([]);
 
   const onClickSubmitButton = async () => {
-    const errMsg: Array<string> =[];
-    !userName && errMsg.push("Nameを入力してください。");
-    !userAge && errMsg.push("Ageを入力してください。");
+    const tmpErrMsg: Array<string> =[];
+    !userName && tmpErrMsg.push("Nameを入力してください。");
+    !userAge && tmpErrMsg.push("Ageを入力してください。");
 
     if(isDetail) {
-      !userCountry && errMsg.push("Countryを入力してください。")
+      !userCountry && tmpErrMsg.push("Countryを入力してください。");
+      !userGender && tmpErrMsg.push("Genderを入力してください。");
+      !userJob && tmpErrMsg.push("Jobを入力してください。");
+      !userEmail && tmpErrMsg.push("Emailを入力してください。");
+      // !userImageUrl && tmpErrMsg.push("画像を入力してください。");
     }
 
-    if(errMsg.length > 0) {
-      console.log(errMsg);
+    if(tmpErrMsg.length > 0) {
+      setIsModal(true);
+      setErrMsg(tmpErrMsg);
       return;
     }
     const tempUserInfo: User = {
@@ -49,11 +55,15 @@ const UserAdd: React.FC = () => {
     } catch(e) {
       console.log(`error: ${e}`);
     }
-  }
+  };
+
+  const onClickModalButton = (): void => {
+    setIsModal(!isModal);
+  };
 
   const onClickDetailButton = (): void => {
     setIsDetail(!isDetail);
-  }
+  };
 
   return (
     <div className="container">
@@ -128,7 +138,7 @@ const UserAdd: React.FC = () => {
         <div className={classes.overlay}>
           <div className={classes.content}>
             <p>モーダル</p>
-            <p><button>OK</button></p>
+            <p><button onClick={onClickModalButton}>OK</button></p>
           </div>
         </div>
       )}
