@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { createUseStyles } from "react-jss";
+import {useNavigate} from "react-router-dom";
+
 import Modal from '../molecules/Modal';
 
 import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
   const classes = useStyles();
+  const navigation = useNavigate()
 
   const [isModal, setIsModal] = useState<boolean>(false);
   const [modalType, setModalType] = useState<'error'|'done'| ''>('');
@@ -72,6 +75,7 @@ const UserAdd: React.FC = () => {
   const onClickGoUserInfo = (): void => {
     setModalType('');
     setIsModal(!isModal);
+    navigation("/user")
   };
 
   const onClickDetailButton = (): void => {
