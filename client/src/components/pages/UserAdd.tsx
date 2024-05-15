@@ -69,6 +69,11 @@ const UserAdd: React.FC = () => {
     setIsModal(!isModal);
   };
 
+  const onClickGoUserInfo = (): void => {
+    setModalType('');
+    setIsModal(!isModal);
+  };
+
   const onClickDetailButton = (): void => {
     setIsDetail(!isDetail);
   };
@@ -146,7 +151,7 @@ const UserAdd: React.FC = () => {
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
       )}
       {isModal && modalType === 'done' && (
-        <Modal titleMsg='メッセージ' msgList={[msgInfo]} onClickFunc={onClickModalButton}></Modal>
+        <Modal titleMsg='メッセージ' msgList={[msgInfo]} onClickFunc={onClickGoUserInfo}></Modal>
       )}
     </div>
   )
