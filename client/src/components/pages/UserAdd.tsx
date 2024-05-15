@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createUseStyles } from "react-jss";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Modal from '../molecules/Modal';
 
