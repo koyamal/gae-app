@@ -56,7 +56,7 @@ const UserAdd: React.FC = () => {
     try{
       const res = await fetch("/add/user", options);
       const temMsg = await res.json();
-      setMsgInfo("登録しました。");
+      setMsgInfo("ユーザーを登録しました。");
       setModalType('done');
       setIsModal(true);
     } catch(e) {
