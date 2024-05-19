@@ -1,45 +1,23 @@
+import { on } from 'events';
 import React from 'react';
 import { createUseStyles } from "react-jss";
 
 interface Props {
-  titleMsg: string;
-  msgList: string[];
-  onClickFunc: () => void;
+  onClickEvent:() => void;
 }
 
 const Button: React.FC<Props> = (props) => {
-  const {titleMsg, msgList, onClickFunc} = props;
+  const {onClickEvent} = props;
   const classes = useStyles();
   return (
-    <div className={classes.overlay}>
-      <div className={classes.content}>
-        <p>{titleMsg}</p>
-        {
-          msgList.map((msg, index) => (<div key={index}>{msg}</div>))
-        }
-        <p><button onClick={onClickFunc}>OK</button></p>
-      </div>
+    <div className={classes.btnContainer}>
+      <button onClick={onClickEvent}></button>
     </div>
   );
 };
 
 const styles = {
-  content: {
-    zIndex:"2",
-    width:"50%",
-    padding: "1em",
-    background:"#83ccd2",
-  },
-  overlay: {
-    position:"fixed",
-    top:"0",
-    left:"0",
-    width:"100%",
-    height:"100%",
-    backgroundColor:"rgba(0,0,0,0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+  btnContainer: {
   },
 };
 const useStyles = createUseStyles(styles);
