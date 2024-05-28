@@ -102,7 +102,6 @@ const UserAdd: React.FC = () => {
           }}     
         />
       </div>
-      <p>{userName}{userAge.toString()}</p>
       <div>
         <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
         {isDetail && (
