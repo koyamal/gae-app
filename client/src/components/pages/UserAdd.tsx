@@ -144,7 +144,6 @@ const UserAdd: React.FC = () => {
             </div>
           </div>
         )}
-        <p>{isDetail? 'true': 'false'}</p>
       </div>
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
