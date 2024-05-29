@@ -47,7 +47,13 @@ const UserAdd: React.FC = () => {
       name: userName,
       age: userAge,
       ...(isDetail && {
-        
+        detailInfo: {
+          imageUrl:,
+          country:,
+          job:,
+          gender:,
+          email:,
+      }
       })
     };
     console.log(tempUserInfo);
