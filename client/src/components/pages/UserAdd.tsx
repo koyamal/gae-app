@@ -46,6 +46,15 @@ const UserAdd: React.FC = () => {
       docId: '',
       name: userName,
       age: userAge,
+      ...(isDetail && {
+        detailInfo: {
+          imageUrl: '',
+          country: userCountry,
+          job: userJob,
+          gender: userGender,
+          email: userEmail,
+      }
+      })
     };
     console.log(tempUserInfo);
     const options = {
