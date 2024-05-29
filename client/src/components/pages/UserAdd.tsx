@@ -48,11 +48,11 @@ const UserAdd: React.FC = () => {
       age: userAge,
       ...(isDetail && {
         detailInfo: {
-          imageUrl:,
-          country:,
-          job:,
-          gender:,
-          email:,
+          imageUrl: '',
+          country: userCountry,
+          job: userJob,
+          gender: userGender,
+          email: userEmail,
       }
       })
     };
