@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss";
 import { useNavigate } from "react-router-dom";
 
 import Modal from '../molecules/Modal';
+import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
 
@@ -151,6 +152,7 @@ const UserAdd: React.FC = () => {
                 }}
               />
             </div>
+            <ImageUploader></ImageUploader>
           </div>
         )}
       </div>
