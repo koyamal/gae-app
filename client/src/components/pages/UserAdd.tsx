@@ -157,7 +157,6 @@ const UserAdd: React.FC = () => {
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
-      <div>{msgInfo}</div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
       )}
