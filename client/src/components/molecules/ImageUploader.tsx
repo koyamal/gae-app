@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 
-const ImageUploader: React.FC = (props) => {
+interface Props {
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+}
+const ImageUploader: React.FC<Props> = (props) => {
+  const { setImage } = props;
   const [images, setImages] = useState([]);
   const maxNumber = 69;
 
@@ -12,6 +16,11 @@ const ImageUploader: React.FC = (props) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
+    if(imageList.length > 0) {
+      setImage(imageList[0].dataURL? imageList[0].dataURL: '');
+    } else {
+      setImage('');
+    }
   };
 
   return (
