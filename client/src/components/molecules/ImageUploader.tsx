@@ -7,7 +7,7 @@ interface Props {
 const ImageUploader: React.FC<Props> = (props) => {
   const { setImage } = props;
   const [images, setImages] = useState([]);
-  const maxNumber = 69;
+  // const maxNumber = 69;
 
   const onChange = (
     imageList: ImageListType,
@@ -29,7 +29,7 @@ const ImageUploader: React.FC<Props> = (props) => {
         // multiple
         value={images}
         onChange={onChange}
-        maxNumber={maxNumber}
+        // maxNumber={maxNumber}
       >
         {({
           imageList,
