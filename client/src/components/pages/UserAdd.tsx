@@ -23,6 +23,7 @@ const UserAdd: React.FC = () => {
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
+  const [image, setImage] = useState<string>("");
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
@@ -152,7 +153,8 @@ const UserAdd: React.FC = () => {
                 }}
               />
             </div>
-            <ImageUploader></ImageUploader>
+            <ImageUploader setImage={setImage}></ImageUploader>
+            <img src={image} alt="" width="200" />
           </div>
         )}
       </div>
