@@ -14,6 +14,7 @@ const ImageUploader: React.FC<Props> = (props) => {
   ) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
+    console.log(images);
     setImages(imageList as never[]);
     if(imageList.length > 0) {
       setImage(imageList[0].dataURL || '');
