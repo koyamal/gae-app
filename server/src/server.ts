@@ -84,6 +84,15 @@ app.post('/add/user', async (req, res) => {
   await ref.set({
     name: userInfo.name,
     age: Number(userInfo.age),
+    ...(userInfo.detailInfo && {
+      detailInfo: {
+          imageUrl: userInfo.detailInfo.imageUrl,
+          country: userInfo.detailInfo.country,
+          job: userInfo.detailInfo.job,
+          gender: userInfo.detailInfo.gender,
+          email: userInfo.detailInfo.email,
+        }
+      })
   });
   console.log(userInfo);
   res.send({msg: 'done'});
