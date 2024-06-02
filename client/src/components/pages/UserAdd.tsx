@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss";
 import { useNavigate } from "react-router-dom";
 
 import Modal from '../molecules/Modal';
+import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
 
@@ -22,6 +23,7 @@ const UserAdd: React.FC = () => {
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
+  const [image, setImage] = useState<string>("");
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
@@ -46,6 +48,15 @@ const UserAdd: React.FC = () => {
       docId: '',
       name: userName,
       age: userAge,
+      ...(isDetail && {
+        detailInfo: {
+          imageUrl: '',
+          country: userCountry,
+          job: userJob,
+          gender: userGender,
+          email: userEmail,
+      }
+      })
     };
     console.log(tempUserInfo);
     const options = {
@@ -102,7 +113,6 @@ const UserAdd: React.FC = () => {
           }}     
         />
       </div>
-      <p>{userName}{userAge.toString()}</p>
       <div>
         <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
         {isDetail && (
@@ -143,14 +153,14 @@ const UserAdd: React.FC = () => {
                 }}
               />
             </div>
+            <ImageUploader setImage={setImage}></ImageUploader>
+            <img src={image} alt="" width="200" />
           </div>
         )}
-        <p>{isDetail? 'true': 'false'}</p>
       </div>
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
-      <div>{msgInfo}</div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
       )}
