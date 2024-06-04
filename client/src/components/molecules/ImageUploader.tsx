@@ -51,7 +51,7 @@ const ImageUploader: React.FC<Props> = (props) => {
               <div key={index} className="image-item">
                 <img src={image.dataURL} alt="" width="100" />
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                  <button onClick={() => onImageRemove(index)}>x</button>
                 </div>
               </div>
             ))}
