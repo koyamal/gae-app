@@ -35,7 +35,7 @@ const UserAdd: React.FC = () => {
       !userGender && tmpErrMsg.push("Genderを入力してください。");
       !userJob && tmpErrMsg.push("Jobを入力してください。");
       !userEmail && tmpErrMsg.push("Emailを入力してください。");
-      // !userImageUrl && tmpErrMsg.push("画像を入力してください。");
+      !image && tmpErrMsg.push("画像を入力してください。");
     }
 
     if(tmpErrMsg.length > 0) {
