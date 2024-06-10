@@ -153,7 +153,6 @@ const UserAdd: React.FC = () => {
               />
             </div>
             <ImageUploader setImage={setImage}></ImageUploader>
-            {/* <img src={image} alt="" width="200" /> */}
           </div>
         )}
       </div>
