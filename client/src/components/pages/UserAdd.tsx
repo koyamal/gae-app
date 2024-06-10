@@ -19,7 +19,6 @@ const UserAdd: React.FC = () => {
   const [userGender, setUserGender] = useState<string>("");
   const [userJob, setUserJob] = useState<string>("");
   const [userEmail, setUserEmail] = useState<string>("");
-  // const [userImageUrl, setUserImageUrl] = useState<string>("");
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
