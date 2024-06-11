@@ -12,7 +12,6 @@ const ImageUploader: React.FC<Props> = (props) => {
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
   ) => {
-    // data for submit
     console.log(imageList, addUpdateIndex);
     console.log(images);
     setImages(imageList as never[]);
@@ -48,14 +47,12 @@ const ImageUploader: React.FC<Props> = (props) => {
               Click or Drop here
             </button>
             &nbsp;
-            {/* <button onClick={onImageRemoveAll}>Remove all images</button> */}
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <img src={image.dataURL} alt="" width="100" />
                 <div className="image-item__btn-wrapper">
-                  {/* <button onClick={() => onImageUpdate(index)}>Update</button> */}
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                  <button onClick={() => onImageRemove(index)}>x</button>
                 </div>
+                <img src={image.dataURL} alt="" width="200" />
               </div>
             ))}
           </div>
