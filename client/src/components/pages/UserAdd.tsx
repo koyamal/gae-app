@@ -37,6 +37,8 @@ const UserAdd: React.FC = () => {
       !userEmail && tmpErrMsg.push("Emailを入力してください。");
       !image && tmpErrMsg.push("画像を登録してください。");
     }
+    // console.log("before");
+    // fileChangeImg(image);
 
     if(tmpErrMsg.length > 0) {
       setModalType('error');
@@ -78,6 +80,25 @@ const UserAdd: React.FC = () => {
     }
   };
 
+  // const fileChangeImg = (fileObj: any) => {
+  //   console.log(fileObj);
+  //   const reader = new FileReader();
+  //   reader.addEventListener(
+  //     'load',
+  //     function() {
+  //       if(reader.result) {
+  //         console.log(reader.result);
+  //         // fileObj.binary = content;
+  //       }
+  //     },
+  //     false
+  //   );
+  //   if(fileObj.file[0]){
+  //     console.log("0")
+  //   }
+  //   console.log(reader);
+  //   // console.log(fileObj.binary);
+  // }
   const onClickModalButton = (): void => {
     setModalType('');
     setIsModal(!isModal);
