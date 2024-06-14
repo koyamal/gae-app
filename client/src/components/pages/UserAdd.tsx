@@ -9,7 +9,6 @@ import User from '../../types/User';
 import createBucket from '../utils/cloudStorage';
 
 const UserAdd: React.FC = () => {
-  console.log(process.env.REACT_APP_Storage_PRIVATE_KEY_FILE);
   const classes = useStyles();
   const navigation = useNavigate()
 
@@ -25,10 +24,6 @@ const UserAdd: React.FC = () => {
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
   const [image, setImage] = useState<string>("");
-
-  const onClickCreateButton = async() => {
-    await createBucket();
-  }
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
