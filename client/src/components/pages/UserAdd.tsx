@@ -8,6 +8,7 @@ import ImageUploader from '../molecules/ImageUploader';
 import User from '../../types/User';
 
 const UserAdd: React.FC = () => {
+  console.log(process.env.REACT_APP_Storage_PRIVATE_KEY_FILE);
   const classes = useStyles();
   const navigation = useNavigate()
 
