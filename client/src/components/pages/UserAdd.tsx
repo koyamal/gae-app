@@ -26,6 +26,16 @@ const UserAdd: React.FC = () => {
   const [image, setImage] = useState<File>();
   const [image64, setImage64] = useState<string>("");
 
+  const onClickImageUpload = async () => {
+    const options2 = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({image64: image64}),
+    }
+    const res2 = await fetch("/upload/image", options2);
+    console.log(res2);
+  }
+
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
     !userName && tmpErrMsg.push("Nameを入力してください。");
@@ -176,6 +186,9 @@ const UserAdd: React.FC = () => {
       </div>
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
+      </div>
+      <div>
+        <button onClick={onClickImageUpload}>画像アップロード</button>
       </div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
