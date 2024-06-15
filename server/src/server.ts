@@ -8,11 +8,12 @@ import User from './types/User';
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 app.use(nocache());
 
 // This middleware is available in Express v4.16.0 onwards
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true, limit: '10mb'}));
+app.use(express.json({limit: '10mb' }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('../public'));
