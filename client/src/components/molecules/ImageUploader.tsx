@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 
 interface Props {
-  setImage: React.Dispatch<React.SetStateAction<string>>;
+  setImage: React.Dispatch<React.SetStateAction<File | undefined>>;
 }
 const ImageUploader: React.FC<Props> = (props) => {
   const { setImage } = props;
@@ -15,10 +15,8 @@ const ImageUploader: React.FC<Props> = (props) => {
     console.log(imageList, addUpdateIndex);
     console.log(images);
     setImages(imageList as never[]);
-    if(imageList.length > 0) {
-      setImage(imageList[0].dataURL || '');
-    } else {
-      setImage('');
+    if(imageList.length > 0 && imageList[0].file) {
+      setImage(imageList[0].file);
     }
   };
 

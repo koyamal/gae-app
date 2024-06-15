@@ -23,7 +23,7 @@ const UserAdd: React.FC = () => {
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<File>();
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
@@ -37,8 +37,8 @@ const UserAdd: React.FC = () => {
       !userEmail && tmpErrMsg.push("Emailを入力してください。");
       !image && tmpErrMsg.push("画像を登録してください。");
     }
-    // console.log("before");
-    // fileChangeImg(image);
+
+    changeBase64toFile(image);
 
     if(tmpErrMsg.length > 0) {
       setModalType('error');
@@ -66,8 +66,14 @@ const UserAdd: React.FC = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(tempUserInfo),
     };
+    const options2 = {
+      method: "POST",
+      headers: { "Content-Type": "application/image" },
+      body: image,
+    }
     try{
       const res = await fetch("/add/user", options);
+      // const res2 = await fetch("/upload/image", options2);
       const temMsg = await res.json();
       setMsgInfo("ユーザーを登録しました。");
       setModalType('done');
@@ -80,25 +86,11 @@ const UserAdd: React.FC = () => {
     }
   };
 
-  // const fileChangeImg = (fileObj: any) => {
-  //   console.log(fileObj);
-  //   const reader = new FileReader();
-  //   reader.addEventListener(
-  //     'load',
-  //     function() {
-  //       if(reader.result) {
-  //         console.log(reader.result);
-  //         // fileObj.binary = content;
-  //       }
-  //     },
-  //     false
-  //   );
-  //   if(fileObj.file[0]){
-  //     console.log("0")
-  //   }
-  //   console.log(reader);
-  //   // console.log(fileObj.binary);
-  // }
+  const changeBase64toFile = (image: any) => {
+    console.log("before")
+    console.log(image);
+  }
+
   const onClickModalButton = (): void => {
     setModalType('');
     setIsModal(!isModal);
