@@ -24,6 +24,7 @@ const UserAdd: React.FC = () => {
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
   const [image, setImage] = useState<File>();
+  const [image64, setImage64] = useState<string>("");
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
@@ -66,14 +67,12 @@ const UserAdd: React.FC = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(tempUserInfo),
     };
-    const formData = new FormData();
-    formData.append("file", image|| new Blob(), "test.jpg");
-    // formData.append("avatar", image || "");
     console.log(await image?.arrayBuffer())
+    console.log(image?.type);
     const options2 = {
       method: "POST",
-      // headers: { "Content-Type": "application/json" },
-      body: formData,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({image64: image64}),
     }
     console.log("options2", options2.body);
     try{
@@ -171,7 +170,7 @@ const UserAdd: React.FC = () => {
                 }}
               />
             </div>
-            <ImageUploader setImage={setImage}></ImageUploader>
+            <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
           </div>
         )}
       </div>

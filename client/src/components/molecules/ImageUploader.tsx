@@ -3,9 +3,10 @@ import ImageUploading, { ImageListType } from "react-images-uploading";
 
 interface Props {
   setImage: React.Dispatch<React.SetStateAction<File | undefined>>;
+  setImage64: React.Dispatch<React.SetStateAction<string>>;
 }
 const ImageUploader: React.FC<Props> = (props) => {
-  const { setImage } = props;
+  const { setImage, setImage64 } = props;
   const [images, setImages] = useState([]);
 
   const onChange = (
@@ -17,6 +18,7 @@ const ImageUploader: React.FC<Props> = (props) => {
     setImages(imageList as never[]);
     if(imageList.length > 0 && imageList[0].file) {
       setImage(imageList[0].file);
+      setImage64(imageList[0].dataURL || "");
     }
   };
 
