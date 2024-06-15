@@ -24,6 +24,17 @@ const UserAdd: React.FC = () => {
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
   const [image, setImage] = useState<File>();
+  const [image64, setImage64] = useState<string>("");
+
+  const onClickImageUpload = async () => {
+    const options2 = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({image64: image64}),
+    }
+    const res2 = await fetch("/upload/image", options2);
+    console.log(res2);
+  }
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
@@ -66,14 +77,17 @@ const UserAdd: React.FC = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(tempUserInfo),
     };
+    console.log(await image?.arrayBuffer())
+    console.log(image?.type);
     const options2 = {
       method: "POST",
-      headers: { "Content-Type": "application/image" },
-      body: image,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({image64: image64}),
     }
+    console.log("options2", options2.body);
     try{
       const res = await fetch("/add/user", options);
-      // const res2 = await fetch("/upload/image", options2);
+      const res2 = await fetch("/upload/image", options2);
       const temMsg = await res.json();
       setMsgInfo("ユーザーを登録しました。");
       setModalType('done');
@@ -166,12 +180,15 @@ const UserAdd: React.FC = () => {
                 }}
               />
             </div>
-            <ImageUploader setImage={setImage}></ImageUploader>
+            <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
           </div>
         )}
       </div>
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
+      </div>
+      <div>
+        <button onClick={onClickImageUpload}>画像アップロード</button>
       </div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>

@@ -1,18 +1,21 @@
 import express from 'express';
 import { Firestore } from '@google-cloud/firestore';
+import { Storage } from '@google-cloud/storage';
 import dotenv from 'dotenv';
 import path from 'path';
 import nocache from 'nocache';
+import { v4 as uuidv4 } from 'uuid';
 
 import User from './types/User';
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 app.use(nocache());
 
 // This middleware is available in Express v4.16.0 onwards
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true, limit: '10mb'}));
+app.use(express.json({limit: '10mb' }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('../public'));
@@ -28,6 +31,7 @@ const gcpOptions = {
 };
 
 const firestore = new Firestore(gcpOptions);
+const storage = new Storage({keyFilename: process.env.STORAGE_PRIVATE_KEY_FILE});
 
 app.get('/', async (req, res) => {
   res.send('hello');
@@ -97,6 +101,26 @@ app.post('/add/user', async (req, res) => {
   console.log(userInfo);
   res.send({msg: 'done'});
 });
+
+app.post('/upload/image', async (req, res) => {
+  const imageFile = req.body.image64;
+  console.log('called /upload/image');
+  console.log(imageFile);
+  const bucketName: string = process.env.BUCKET_NAME || '';
+  const fileName = uuidv4() + '.jpg';
+  const fileGCS = storage.bucket(bucketName).file(fileName);
+  const fileOptions = {
+    public: true,
+    resumable: false,
+    metadata: { contentType: 'image/jpg' },
+    validation: false
+  }
+  const base64EncodedString = imageFile.replace(/^data:\w+\/\w+;base64,/, '');
+  const fileBuffer = Buffer.from(base64EncodedString, 'base64');
+  await fileGCS.save(fileBuffer, fileOptions);
+  const publicUrl = `https://storage.googleapis.com/${bucketName}/${fileName}`
+  res.send({msg: publicUrl});
+})
 
 app.get('/delete/user/:docId',async (req, res) => {
   const docId = req.params.docId;
