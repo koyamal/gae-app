@@ -1,5 +1,6 @@
 import express from 'express';
 import { Firestore } from '@google-cloud/firestore';
+import { Storage } from '@google-cloud/storage';
 import dotenv from 'dotenv';
 import path from 'path';
 import nocache from 'nocache';
