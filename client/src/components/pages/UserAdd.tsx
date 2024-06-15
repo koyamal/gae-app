@@ -66,14 +66,19 @@ const UserAdd: React.FC = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(tempUserInfo),
     };
+    const formData = new FormData();
+    formData.append("file", image|| new Blob(), "test.jpg");
+    // formData.append("avatar", image || "");
+    console.log(await image?.arrayBuffer())
     const options2 = {
       method: "POST",
-      headers: { "Content-Type": "application/image" },
-      body: image,
+      // headers: { "Content-Type": "application/json" },
+      body: formData,
     }
+    console.log("options2", options2.body);
     try{
       const res = await fetch("/add/user", options);
-      // const res2 = await fetch("/upload/image", options2);
+      const res2 = await fetch("/upload/image", options2);
       const temMsg = await res.json();
       setMsgInfo("ユーザーを登録しました。");
       setModalType('done');
