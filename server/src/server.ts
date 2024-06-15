@@ -98,6 +98,13 @@ app.post('/add/user', async (req, res) => {
   res.send({msg: 'done'});
 });
 
+app.post('/upload/image', async (req, res) => {
+  const imageFile = req.body;
+  console.log('called /upload/image')
+  console.log(imageFile);
+  res.send({msg: 'done'});
+})
+
 app.get('/delete/user/:docId',async (req, res) => {
   const docId = req.params.docId;
   const result = await firestore.collection("test").doc(docId).delete();
