@@ -29,9 +29,12 @@ const gcpOptions = {
   projectId,
   ...(process.argv[2] === 'local' && { keyFilename: process.env.FIRESTORE_PRIVATE_KEY_FILE}),
 };
+const gcsOptions = {
+  ...(process.argv[2] === 'local' && {keyFilename: process.env.STORAGE_PRIVATE_KEY_FILE})
+}
 
 const firestore = new Firestore(gcpOptions);
-const storage = new Storage({keyFilename: process.env.STORAGE_PRIVATE_KEY_FILE});
+const storage = new Storage(gcsOptions);
 
 app.get('/', async (req, res) => {
   res.send('hello');
