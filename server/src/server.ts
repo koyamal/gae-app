@@ -99,7 +99,7 @@ app.post('/add/user', async (req, res) => {
         }
       })
   });
-  console.log(userInfo);
+  console.log({name: userInfo.name, age: userInfo.age});
   res.send({msg: 'done'});
 });
 
@@ -119,26 +119,6 @@ const uploadImageToGSC = async (image64: string) => {
   const publicUrl = `https://storage.googleapis.com/${bucketName}/${fileName}`;
   return publicUrl;
 }
-
-app.post('/upload/image', async (req, res) => {
-  const imageFile = req.body.image64;
-  console.log('called /upload/image');
-  console.log(imageFile);
-  const bucketName: string = process.env.BUCKET_NAME || '';
-  const fileName = uuidv4() + '.jpg';
-  const fileGCS = storage.bucket(bucketName).file(fileName);
-  const fileOptions = {
-    public: true,
-    resumable: false,
-    metadata: { contentType: 'image/jpg' },
-    validation: false
-  }
-  const base64EncodedString = imageFile.replace(/^data:\w+\/\w+;base64,/, '');
-  const fileBuffer = Buffer.from(base64EncodedString, 'base64');
-  await fileGCS.save(fileBuffer, fileOptions);
-  const publicUrl = `https://storage.googleapis.com/${bucketName}/${fileName}`
-  res.send({msg: publicUrl});
-})
 
 app.get('/delete/user/:docId',async (req, res) => {
   const docId = req.params.docId;
