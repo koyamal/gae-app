@@ -63,7 +63,7 @@ const UserAdd: React.FC = () => {
       age: userAge,
       ...(isDetail && {
         detailInfo: {
-          imageUrl: '',
+          imageUrl: image64,
           country: userCountry,
           job: userJob,
           gender: userGender,
@@ -87,7 +87,7 @@ const UserAdd: React.FC = () => {
     console.log("options2", options2.body);
     try{
       const res = await fetch("/add/user", options);
-      const res2 = await fetch("/upload/image", options2);
+      // const res2 = await fetch("/upload/image", options2);
       const temMsg = await res.json();
       setMsgInfo("ユーザーを登録しました。");
       setModalType('done');
