@@ -108,7 +108,7 @@ app.post('/add/user', async (req, res) => {
 
 const uploadImageToGSC = async (image64: string) => {
   const bucketName: string = process.env.BUCKET_NAME || '';
-  const fileName = uuidv4() + '.jpg';
+  const fileName = 'userInfo/' + uuidv4() + '.jpg';
   const fileGCS = storage.bucket(bucketName).file(fileName);
   const fileOptions = {
     public: true,
@@ -123,9 +123,19 @@ const uploadImageToGSC = async (image64: string) => {
   return publicUrl;
 }
 
-app.get('/delete/user/:docId',async (req, res) => {
+app.get('/delete/user/:docId', async (req, res) => {
   const docId = req.params.docId;
-  const result = await firestore.collection("test").doc(docId).delete();
+  const ref = await firestore.collection("test").doc(docId);
+  const data = (await ref.get()).data();
+  if(data && data.detailInfo && data.detailInfo.imageUrl != ''){
+    const bucketName: string = process.env.BUCKET_NAME || '';
+    const fileName: string = data.detailInfo.imageUrl.split(`${bucketName}/`)[1];
+    console.log(fileName);
+    await storage.bucket(bucketName).file(fileName).delete();
+    console.log('deleted from GCS');
+  }
+
+  const result = await ref.delete();
   console.log(result);
   res.send({msg: 'done'});
 })
