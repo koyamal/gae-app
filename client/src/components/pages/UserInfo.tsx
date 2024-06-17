@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
 import User from '../../types/User';
+import Modal from '../molecules/Modal';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ const UserInfo: React.FC = () => {
         </div>
       )
     )}
+    <Modal titleMsg='エラー' msgList={["hello"]} onClickFunc={() => {}}></Modal>
   </div>
   )
 };
