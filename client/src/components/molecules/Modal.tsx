@@ -5,10 +5,11 @@ interface Props {
   titleMsg: string;
   msgList: string[];
   onClickFunc: () => void;
+  onClickSecondFunc?: () => void;
 }
 
 const Modal: React.FC<Props> = (props) => {
-  const {titleMsg, msgList, onClickFunc} = props;
+  const {titleMsg, msgList, onClickFunc, onClickSecondFunc} = props;
   const classes = useStyles();
   return (
     <div className={classes.overlay}>
@@ -18,6 +19,9 @@ const Modal: React.FC<Props> = (props) => {
           msgList.map((msg, index) => (<div key={index}>{msg}</div>))
         }
         <p><button onClick={onClickFunc}>OK</button></p>
+        {onClickSecondFunc && (
+          <p><button onClick={onClickSecondFunc}>NO</button></p>
+        )}
       </div>
     </div>
   );
