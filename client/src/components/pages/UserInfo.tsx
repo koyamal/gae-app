@@ -9,6 +9,7 @@ const UserInfo: React.FC = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const fetchData = async () => {
     try {
       const res = await fetch("/firestore/get");
@@ -53,7 +54,10 @@ const UserInfo: React.FC = () => {
         </div>
       )
     )}
-    <Modal titleMsg='エラー' msgList={["hello"]} onClickFunc={() => {}}></Modal>
+    {deleteModal && (
+      <Modal titleMsg='エラー' msgList={["hello"]} onClickFunc={() => {setDeleteModal(!deleteModal)}}></Modal>
+    )}
+    <div><button onClick={() => { setDeleteModal(!deleteModal)}}>deletemodal</button></div>
   </div>
   )
 };
