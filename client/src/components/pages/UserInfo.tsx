@@ -24,6 +24,7 @@ const UserInfo: React.FC = () => {
     navigate(`/oneuserinfo/${docId}`);
   };
   const deleteUser = async (docId: string) => {
+    // todo: 削除ボタンが押された後に本当に削除するか確認モーダルを表示させる。
     try {
       const res = await fetch(`/delete/user/${docId}`);
       const temMsg = await res.json();
