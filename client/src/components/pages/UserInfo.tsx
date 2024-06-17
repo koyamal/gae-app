@@ -55,7 +55,12 @@ const UserInfo: React.FC = () => {
       )
     )}
     {deleteModal && (
-      <Modal titleMsg='エラー' msgList={["hello"]} onClickFunc={() => {setDeleteModal(!deleteModal)}}></Modal>
+      <Modal
+        titleMsg='エラー'
+        msgList={["hello"]}
+        onClickFunc={() => {setDeleteModal(!deleteModal)}}
+        onClickSecondFunc={() => {setDeleteModal(!deleteModal)}}
+      ></Modal>
     )}
     <div><button onClick={() => { setDeleteModal(!deleteModal)}}>deletemodal</button></div>
   </div>
