@@ -18,10 +18,12 @@ const Modal: React.FC<Props> = (props) => {
         {
           msgList.map((msg, index) => (<div key={index}>{msg}</div>))
         }
-        <p><button onClick={onClickFunc}>OK</button></p>
-        {onClickSecondFunc && (
-          <p><button onClick={onClickSecondFunc}>NO</button></p>
-        )}
+        <div className={classes.secondButton}>
+          <button onClick={onClickFunc}>OK</button>
+          {onClickSecondFunc && (
+            <button onClick={onClickSecondFunc}>NO</button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -45,6 +47,10 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
+  secondButton: {
+    mergin: "1px",
+    backgroundColor: 'green'
+  }
 };
 const useStyles = createUseStyles(styles);
 
