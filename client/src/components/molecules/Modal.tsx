@@ -14,14 +14,14 @@ const Modal: React.FC<Props> = (props) => {
   return (
     <div className={classes.overlay}>
       <div className={classes.content}>
-        <p>{titleMsg}</p>
+        <div>{titleMsg}</div>
         {
           msgList.map((msg, index) => (<div key={index}>{msg}</div>))
         }
-        <div className={classes.secondButton}>
-          <button onClick={onClickFunc}>OK</button>
+        <div className={classes.buttonContainer}>
+          <button className={classes.firstButton} onClick={onClickFunc}>OK</button>
           {onClickSecondFunc && (
-            <button onClick={onClickSecondFunc}>NO</button>
+            <button className={classes.secondButton} onClick={onClickSecondFunc}>NO</button>
           )}
         </div>
       </div>
@@ -47,9 +47,16 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
+  buttonContainer:{
+    display: 'flex',
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  firstButton: {
+    margin: "10px",    
+  },
   secondButton: {
-    mergin: "1px",
-    backgroundColor: 'green'
+    margin: "10px",
   }
 };
 const useStyles = createUseStyles(styles);
