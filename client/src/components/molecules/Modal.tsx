@@ -53,10 +53,24 @@ const styles = {
     justifyContent: "center",
   },
   firstButton: {
-    margin: "10px",    
+    margin: "10px",
+    fontSize: "20px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },  
   },
   secondButton: {
     margin: "10px",
+    fontSize: "20px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
   }
 };
 const useStyles = createUseStyles(styles);
