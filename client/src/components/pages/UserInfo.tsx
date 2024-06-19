@@ -79,7 +79,6 @@ const UserInfo: React.FC = () => {
         onClickSecondFunc={onClickDeleteModalNoButton}
       ></Modal>
     )}
-    <div><button onClick={() => { setDeleteModal(!deleteModal)}}>deletemodal</button></div>
   </div>
   )
 };
