@@ -77,6 +77,8 @@ const UserInfo: React.FC = () => {
         msgList={["ユーザーを削除しますか？"]}
         onClickFunc={onClickDeleteModalOkButton}
         onClickSecondFunc={onClickDeleteModalNoButton}
+        firstButtonText='削除する'
+        secondButtonText='キャンセル'
       ></Modal>
     )}
   </div>
