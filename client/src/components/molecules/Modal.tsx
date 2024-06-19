@@ -6,10 +6,12 @@ interface Props {
   msgList: string[];
   onClickFunc: () => void;
   onClickSecondFunc?: () => void;
+  firstButtonText?: string;
+  secondButtonText?: string;
 }
 
 const Modal: React.FC<Props> = (props) => {
-  const {titleMsg, msgList, onClickFunc, onClickSecondFunc} = props;
+  const {titleMsg, msgList, onClickFunc, onClickSecondFunc, firstButtonText="OK", secondButtonText="NO"} = props;
   const classes = useStyles();
   return (
     <div className={classes.overlay}>
@@ -19,9 +21,9 @@ const Modal: React.FC<Props> = (props) => {
           msgList.map((msg, index) => (<div key={index}>{msg}</div>))
         }
         <div className={classes.buttonContainer}>
-          <button className={classes.firstButton} onClick={onClickFunc}>OK</button>
+          <button className={classes.firstButton} onClick={onClickFunc}>{firstButtonText}</button>
           {onClickSecondFunc && (
-            <button className={classes.secondButton} onClick={onClickSecondFunc}>NO</button>
+            <button className={classes.secondButton} onClick={onClickSecondFunc}>{secondButtonText}</button>
           )}
         </div>
       </div>
@@ -54,7 +56,7 @@ const styles = {
   },
   firstButton: {
     margin: "10px",
-    fontSize: "20px",
+    fontSize: "15px",
     background: "#ffffe0",
     borderRadius: "100px",
     border: "solid #f5deb3",
@@ -64,7 +66,7 @@ const styles = {
   },
   secondButton: {
     margin: "10px",
-    fontSize: "20px",
+    fontSize: "15px",
     background: "#ffffe0",
     borderRadius: "100px",
     border: "solid #f5deb3",
