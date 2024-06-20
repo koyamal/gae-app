@@ -6,6 +6,7 @@ import Modal from '../molecules/Modal';
 import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
+import Button from '../atoms/Button';
 
 const UserAdd: React.FC = () => {
   const classes = useStyles();
@@ -101,6 +102,7 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
+      <Button onClickEvent={() => {console.log("hello")}}>aaaa</Button>
       <div>
         Name:
         <input
