@@ -11,6 +11,8 @@ const UserInfo: React.FC = () => {
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [deleteDocId, setDeleteDocId] = useState<string>("");
+  const [modalMsg, setModalMsg] = useState<string>("");
+
   const fetchData = async () => {
     try {
       const res = await fetch("/firestore/get");
@@ -26,8 +28,9 @@ const UserInfo: React.FC = () => {
   const goUserPage = (docId: string) => {
     navigate(`/oneuserinfo/${docId}`);
   };
-  const onClickDeleteButton = (docId: string) => {
+  const onClickDeleteButton = (docId: string, userName: string) => {
     setDeleteDocId(docId);
+    setModalMsg(`${userName}の情報を削除しますか？`);
     setDeleteModal(true);
   };
   const onClickDeleteModalOkButton = async () => {
@@ -66,7 +69,7 @@ const UserInfo: React.FC = () => {
           <div className={classes.age}>{user.age}</div>
           <div className={classes.btnBox}>
             {user.detailInfo && (<button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>)}
-            <button className={classes.detailBtn} onClick={() => {onClickDeleteButton(user.docId);}}>削除</button>
+            <button className={classes.detailBtn} onClick={() => {onClickDeleteButton(user.docId, user.name);}}>削除</button>
           </div>
         </div>
       )
@@ -74,7 +77,7 @@ const UserInfo: React.FC = () => {
     {deleteModal && (
       <Modal
         titleMsg='確認'
-        msgList={["ユーザーを削除しますか？"]}
+        msgList={[modalMsg]}
         onClickFunc={onClickDeleteModalOkButton}
         onClickSecondFunc={onClickDeleteModalNoButton}
         firstButtonText='削除する'
