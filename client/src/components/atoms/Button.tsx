@@ -12,7 +12,7 @@ const Button: React.FC<Props> = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.btnContainer}>
-      <button onClick={onClickEvent}>{children}</button>
+      <button className={classes.btn} onClick={onClickEvent}>{children}</button>
     </div>
   );
 };
@@ -20,6 +20,15 @@ const Button: React.FC<Props> = (props) => {
 const styles = {
   btnContainer: {
   },
+  btn: {
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  }
 };
 const useStyles = createUseStyles(styles);
 
