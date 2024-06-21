@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
+import { createUseStyles } from "react-jss";
 
 interface Props {
   setImage: React.Dispatch<React.SetStateAction<File | undefined>>;
@@ -8,6 +9,8 @@ interface Props {
 const ImageUploader: React.FC<Props> = (props) => {
   const { setImage, setImage64 } = props;
   const [images, setImages] = useState([]);
+
+  const classes = useStyles();
 
   const onChange = (
     imageList: ImageListType,
@@ -21,6 +24,16 @@ const ImageUploader: React.FC<Props> = (props) => {
       setImage64(imageList[0].dataURL || "");
     }
   };
+
+  const styleButton = {
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  }
 
   return (
     <div className="App">
@@ -39,7 +52,7 @@ const ImageUploader: React.FC<Props> = (props) => {
         }) => (
           <div className="upload__image-wrapper">
             <button
-              style={isDragging ? { color: "red" } : undefined}
+              className={isDragging ? classes.btnDrag: classes.btn}
               onClick={onImageUpload}
               {...dragProps}
             >
@@ -60,5 +73,30 @@ const ImageUploader: React.FC<Props> = (props) => {
     </div>
   );
 }
+
+const styles = {
+  btnContainer: {
+  },
+  btn: {
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  },
+  btnDrag: {
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+    color: "red"
+  }
+};
+const useStyles = createUseStyles(styles);
 
 export default ImageUploader;

@@ -102,7 +102,6 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <Button onClickEvent={() => {console.log("hello")}}>aaaa</Button>
       <div>
         Name:
         <input
