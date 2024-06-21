@@ -122,7 +122,7 @@ const UserAdd: React.FC = () => {
         />
       </div>
       <div>
-        <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
+        <Button onClickEvent={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</Button>
         {isDetail && (
           <div>
             <div>
