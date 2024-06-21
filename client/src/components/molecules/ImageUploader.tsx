@@ -62,7 +62,12 @@ const ImageUploader: React.FC<Props> = (props) => {
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageRemove(index)}>x</button>
+                  <button 
+                    onClick={() => onImageRemove(index)}
+                    className={classes.btn}
+                  >
+                    x
+                  </button>
                 </div>
                 <img src={image.dataURL} alt="" width="200" />
               </div>
