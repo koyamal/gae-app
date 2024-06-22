@@ -106,11 +106,9 @@ const UserAdd: React.FC = () => {
       <Input onChangeEvent={(e) => {console.log(e)}} />
       <div>
         Name:
-        <input
+        <Input 
           type="text"
-          onChange={(event) => {
-            setUserName(event.target.value);
-          }}
+          onChangeEvent={setUserName}
         />
       </div>
       <div>
