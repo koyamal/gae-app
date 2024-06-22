@@ -7,7 +7,7 @@ import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
 import Button from '../atoms/Button';
-import Input from '../atoms/Input';
+import InputWithLabel from '../molecules/InputWithLabel';
 
 const UserAdd: React.FC = () => {
   const classes = useStyles();
@@ -103,16 +103,16 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <Input label='hello' onChangeEvent={(e) => {console.log(e)}} />
+      <InputWithLabel label='hello' onChangeEvent={(e) => {console.log(e)}} />
       <div>
-        <Input
+        <InputWithLabel
           label='Name'
           type="text"
           onChangeEvent={setUserName}
         />
       </div>
       <div>
-        <Input
+        <InputWithLabel
           label='Age'
           type="number"
           onChangeEvent={setUserAge}     
@@ -123,28 +123,28 @@ const UserAdd: React.FC = () => {
         {isDetail && (
           <div>
             <div>
-              <Input
+              <InputWithLabel
                 label='country'
                 type="text"
                 onChangeEvent={setUserCountry}
               />
             </div>
             <div>
-              <Input
+              <InputWithLabel
                 label='job'
                 type="text"
                 onChangeEvent={setUserJob}
               />
             </div>
             <div>
-              <Input
+              <InputWithLabel
                 label='gender'
                 type="text"
                 onChangeEvent={setUserGender}
               />
             </div>
             <div>
-              <Input
+              <InputWithLabel
                 label='email'
                 type="text"
                 onChangeEvent={setUserEmail}
