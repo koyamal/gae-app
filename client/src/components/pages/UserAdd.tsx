@@ -7,6 +7,7 @@ import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
 import Button from '../atoms/Button';
+import Input from '../atoms/Input';
 
 const UserAdd: React.FC = () => {
   const classes = useStyles();
@@ -102,13 +103,12 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
+      <Input onChangeEvent={(e) => {console.log(e)}} />
       <div>
         Name:
-        <input
+        <Input 
           type="text"
-          onChange={(event) => {
-            setUserName(event.target.value);
-          }}
+          onChangeEvent={setUserName}
         />
       </div>
       <div>
