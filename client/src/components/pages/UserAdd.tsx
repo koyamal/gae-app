@@ -7,7 +7,7 @@ import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
 import Button from '../atoms/Button';
-import Input from '../atoms/Input';
+import InputWithLabel from '../molecules/InputWithLabel';
 
 const UserAdd: React.FC = () => {
   const classes = useStyles();
@@ -103,21 +103,19 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <Input onChangeEvent={(e) => {console.log(e)}} />
+      <InputWithLabel label='hello' onChangeEvent={(e) => {console.log(e)}} />
       <div>
-        Name:
-        <Input 
+        <InputWithLabel
+          label='Name'
           type="text"
           onChangeEvent={setUserName}
         />
       </div>
       <div>
-        Age:
-        <input
+        <InputWithLabel
+          label='Age'
           type="number"
-          onChange={(event) => {
-            setUserAge(event.target.valueAsNumber);
-          }}     
+          onChangeEvent={setUserAge}     
         />
       </div>
       <div>
@@ -125,39 +123,31 @@ const UserAdd: React.FC = () => {
         {isDetail && (
           <div>
             <div>
-              country: 
-              <input 
+              <InputWithLabel
+                label='country'
                 type="text"
-                onChange={(event) => {
-                  setUserCountry(event.target.value);
-                }}
+                onChangeEvent={setUserCountry}
               />
             </div>
             <div>
-              job: 
-              <input
+              <InputWithLabel
+                label='job'
                 type="text"
-                onChange={(event) => {
-                  setUserJob(event.target.value);
-                }}
+                onChangeEvent={setUserJob}
               />
             </div>
             <div>
-              gender:
-              <input
+              <InputWithLabel
+                label='gender'
                 type="text"
-                onChange={(event) => {
-                  setUserGender(event.target.value);
-                }}
+                onChangeEvent={setUserGender}
               />
             </div>
             <div>
-              email:
-              <input
+              <InputWithLabel
+                label='email'
                 type="text"
-                onChange={(event) => {
-                  setUserEmail(event.target.value);
-                }}
+                onChangeEvent={setUserEmail}
               />
             </div>
             <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
