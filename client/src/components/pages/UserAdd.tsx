@@ -103,7 +103,6 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <InputWithLabel label='hello' onChangeEvent={(e) => {console.log(e)}} />
       <div>
         <InputWithLabel
           label='Name'
