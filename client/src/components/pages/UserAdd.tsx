@@ -113,11 +113,9 @@ const UserAdd: React.FC = () => {
       </div>
       <div>
         Age:
-        <input
+        <Input
           type="number"
-          onChange={(event) => {
-            setUserAge(event.target.valueAsNumber);
-          }}     
+          onChangeEvent={setUserAge}     
         />
       </div>
       <div>
@@ -126,38 +124,30 @@ const UserAdd: React.FC = () => {
           <div>
             <div>
               country: 
-              <input 
+              <Input 
                 type="text"
-                onChange={(event) => {
-                  setUserCountry(event.target.value);
-                }}
+                onChangeEvent={setUserCountry}
               />
             </div>
             <div>
               job: 
-              <input
+              <Input
                 type="text"
-                onChange={(event) => {
-                  setUserJob(event.target.value);
-                }}
+                onChangeEvent={setUserJob}
               />
             </div>
             <div>
               gender:
-              <input
+              <Input
                 type="text"
-                onChange={(event) => {
-                  setUserGender(event.target.value);
-                }}
+                onChangeEvent={setUserGender}
               />
             </div>
             <div>
               email:
-              <input
+              <Input
                 type="text"
-                onChange={(event) => {
-                  setUserEmail(event.target.value);
-                }}
+                onChangeEvent={setUserEmail}
               />
             </div>
             <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
