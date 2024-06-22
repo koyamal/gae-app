@@ -103,17 +103,17 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <Input onChangeEvent={(e) => {console.log(e)}} />
+      <Input label='hello' onChangeEvent={(e) => {console.log(e)}} />
       <div>
-        Name:
-        <Input 
+        <Input
+          label='Name'
           type="text"
           onChangeEvent={setUserName}
         />
       </div>
       <div>
-        Age:
         <Input
+          label='Age'
           type="number"
           onChangeEvent={setUserAge}     
         />
@@ -123,29 +123,29 @@ const UserAdd: React.FC = () => {
         {isDetail && (
           <div>
             <div>
-              country: 
-              <Input 
+              <Input
+                label='country'
                 type="text"
                 onChangeEvent={setUserCountry}
               />
             </div>
             <div>
-              job: 
               <Input
+                label='job'
                 type="text"
                 onChangeEvent={setUserJob}
               />
             </div>
             <div>
-              gender:
               <Input
+                label='gender'
                 type="text"
                 onChangeEvent={setUserGender}
               />
             </div>
             <div>
-              email:
               <Input
+                label='email'
                 type="text"
                 onChangeEvent={setUserEmail}
               />
