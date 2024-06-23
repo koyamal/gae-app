@@ -7,16 +7,18 @@ interface Props {
   onChangeEvent:(event: any) => void;
   label: string;
   type?: string;
+  placeholder?: string;
 }
 
 const InputWithLabel: React.FC<Props> = (props) => {
-  const {onChangeEvent, label, type="text"} = props;
+  const {onChangeEvent, label, type="text", placeholder=""} = props;
   const classes = useStyles();
   return (
     <div className={classes.inputContainer}>
       {label}:
       <Input
         type={type}
+        placeholder={placeholder}
         onChangeEvent={onChangeEvent}
       />
     </div>
