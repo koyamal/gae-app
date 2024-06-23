@@ -27,7 +27,6 @@ const InputWithLabel: React.FC<Props> = (props) => {
 
 const styles = {
   inputContainer: {
-    padding: "15px 0px 15px 10px"
   },
   labelBody: {
     marginBottom: "5px"
