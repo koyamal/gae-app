@@ -15,7 +15,7 @@ const InputWithLabel: React.FC<Props> = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.inputContainer}>
-      {label}:
+      <div className={classes.labelBody}>{label}:</div>
       <Input
         type={type}
         placeholder={placeholder}
@@ -27,7 +27,11 @@ const InputWithLabel: React.FC<Props> = (props) => {
 
 const styles = {
   inputContainer: {
+    padding: "15px 0px 15px 10px"
   },
+  labelBody: {
+    marginBottom: "5px"
+  }
 };
 const useStyles = createUseStyles(styles);
 
