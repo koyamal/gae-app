@@ -26,7 +26,7 @@ const styles = {
   inputBody: {
     height: "35px",
     width: "300px",
-    fontSize: "20px",
+    fontSize: "15px",
     padding: "5px"
   }
 };
