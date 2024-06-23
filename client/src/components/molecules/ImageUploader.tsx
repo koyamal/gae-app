@@ -56,7 +56,10 @@ const ImageUploader: React.FC<Props> = (props) => {
               onClick={onImageUpload}
               {...dragProps}
             >
-              Click or Drop here
+              ドラッグ&ドロップ<br></br>
+              <div className={classes.btnText}>
+                画像を選択
+              </div>
             </button>
             &nbsp;
             {imageList.map((image, index) => (
@@ -84,12 +87,11 @@ const styles = {
   },
   btn: {
     fontSize: "15px",
-    background: "#ffffe0",
-    borderRadius: "100px",
-    border: "solid #f5deb3",
-    '&:hover': {
-      background: "#fdf5e6",
-    },
+    background: "#EDEEEE",
+    border: "solid #EDEEEE",
+    borderRadius: "10px",
+    height: "100px",
+    width: "300px"
   },
   btnDrag: {
     fontSize: "15px",
@@ -100,6 +102,16 @@ const styles = {
       background: "#fdf5e6",
     },
     color: "red"
+  },
+  btnText: {
+    display: 'inline-block',
+    background: "#ffffe0",
+    borderRadius: "100px",
+    padding: "3px 5px 3px 5px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
   }
 };
 const useStyles = createUseStyles(styles);
