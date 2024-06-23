@@ -103,7 +103,7 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <div>
+      <div className={classes.inputContainer}>
         <InputWithLabel
           label='名前'
           type="text"
@@ -111,7 +111,7 @@ const UserAdd: React.FC = () => {
           onChangeEvent={setUserName}
         />
       </div>
-      <div>
+      <div className={classes.inputContainer}>
         <InputWithLabel
           label='年齢'
           type="number"
@@ -123,7 +123,7 @@ const UserAdd: React.FC = () => {
         <Button onClickEvent={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</Button>
         {isDetail && (
           <div>
-            <div>
+            <div className={classes.inputContainer}>
               <InputWithLabel
                 label='国籍'
                 type="text"
@@ -131,7 +131,7 @@ const UserAdd: React.FC = () => {
                 onChangeEvent={setUserCountry}
               />
             </div>
-            <div>
+            <div className={classes.inputContainer}>
               <InputWithLabel
                 label='仕事'
                 type="text"
@@ -139,7 +139,7 @@ const UserAdd: React.FC = () => {
                 onChangeEvent={setUserJob}
               />
             </div>
-            <div>
+            <div className={classes.inputContainer}>
               <InputWithLabel
                 label='性別'
                 type="text"
@@ -147,7 +147,7 @@ const UserAdd: React.FC = () => {
                 onChangeEvent={setUserGender}
               />
             </div>
-            <div>
+            <div className={classes.inputContainer}>
               <InputWithLabel
                 label='メールアドレス'
                 type="text"
@@ -155,7 +155,10 @@ const UserAdd: React.FC = () => {
                 onChangeEvent={setUserEmail}
               />
             </div>
-            <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
+            <div className={classes.inputContainer}>
+              <div>写真:</div>
+              <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
+            </div>
           </div>
         )}
       </div>
@@ -173,6 +176,9 @@ const UserAdd: React.FC = () => {
 };
 
 const styles = {
+  inputContainer: {
+    padding: "15px 0px 15px 10px"
+  }
 };
 const useStyles = createUseStyles(styles);
 

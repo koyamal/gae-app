@@ -24,6 +24,7 @@ const styles = {
     background: "#ffffe0",
     borderRadius: "100px",
     border: "solid #f5deb3",
+    margin: "3px",
     '&:hover': {
       background: "#fdf5e6",
     },
