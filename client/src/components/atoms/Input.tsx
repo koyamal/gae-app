@@ -24,7 +24,7 @@ const styles = {
   inputContainer: {
   },
   inputBody: {
-    height: "35px",
+    height: "30px",
     width: "300px",
     fontSize: "15px",
     padding: "5px"

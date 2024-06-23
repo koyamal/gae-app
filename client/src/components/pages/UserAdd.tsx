@@ -105,7 +105,7 @@ const UserAdd: React.FC = () => {
     <div className="container">
       <div>
         <InputWithLabel
-          label='Name'
+          label='名前'
           type="text"
           placeholder='名前を入力してください。'
           onChangeEvent={setUserName}
@@ -113,7 +113,7 @@ const UserAdd: React.FC = () => {
       </div>
       <div>
         <InputWithLabel
-          label='Age'
+          label='年齢'
           type="number"
           placeholder='年齢を入力してください。'
           onChangeEvent={setUserAge}     
@@ -125,7 +125,7 @@ const UserAdd: React.FC = () => {
           <div>
             <div>
               <InputWithLabel
-                label='country'
+                label='国籍'
                 type="text"
                 placeholder='国籍を入力してください。'
                 onChangeEvent={setUserCountry}
@@ -133,7 +133,7 @@ const UserAdd: React.FC = () => {
             </div>
             <div>
               <InputWithLabel
-                label='job'
+                label='仕事'
                 type="text"
                 placeholder='仕事を入力してください。'
                 onChangeEvent={setUserJob}
@@ -141,7 +141,7 @@ const UserAdd: React.FC = () => {
             </div>
             <div>
               <InputWithLabel
-                label='gender'
+                label='性別'
                 type="text"
                 placeholder='性別を入力してください。'
                 onChangeEvent={setUserGender}
@@ -149,7 +149,7 @@ const UserAdd: React.FC = () => {
             </div>
             <div>
               <InputWithLabel
-                label='email'
+                label='メールアドレス'
                 type="text"
                 placeholder='xxxx@example.com'
                 onChangeEvent={setUserEmail}
