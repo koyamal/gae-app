@@ -37,7 +37,7 @@ const UserAdd: React.FC = () => {
       !userGender && tmpErrMsg.push("性別を入力してください。");
       !userJob && tmpErrMsg.push("職業を入力してください。");
       !userEmail && tmpErrMsg.push("メールアドレスを入力してください。");
-      !image && tmpErrMsg.push("画像を登録してください。");
+      !image && tmpErrMsg.push("写真を登録してください。");
     }
 
     changeBase64toFile(image);
