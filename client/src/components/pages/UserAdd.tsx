@@ -33,10 +33,10 @@ const UserAdd: React.FC = () => {
     !userAge && tmpErrMsg.push("年齢を入力してください。");
 
     if(isDetail) {
-      !userCountry && tmpErrMsg.push("Countryを入力してください。");
-      !userGender && tmpErrMsg.push("Genderを入力してください。");
-      !userJob && tmpErrMsg.push("Jobを入力してください。");
-      !userEmail && tmpErrMsg.push("Emailを入力してください。");
+      !userCountry && tmpErrMsg.push("国籍を入力してください。");
+      !userGender && tmpErrMsg.push("性別を入力してください。");
+      !userJob && tmpErrMsg.push("職業を入力してください。");
+      !userEmail && tmpErrMsg.push("メールアドレスを入力してください。");
       !image && tmpErrMsg.push("画像を登録してください。");
     }
 
