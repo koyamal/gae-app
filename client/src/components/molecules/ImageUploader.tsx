@@ -66,7 +66,10 @@ const ImageUploader: React.FC<Props> = (props) => {
               <div key={index} className="image-item">
                 <div className="image-item__btn-wrapper">
                   <button 
-                    onClick={() => onImageRemove(index)}
+                    onClick={() => {
+                      onImageRemove(index);
+                      setImage64("");
+                    }}
                     className={classes.btnClose}
                   >
                     x
