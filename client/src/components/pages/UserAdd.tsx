@@ -37,10 +37,8 @@ const UserAdd: React.FC = () => {
       !userGender && tmpErrMsg.push("性別を入力してください。");
       !userJob && tmpErrMsg.push("職業を入力してください。");
       !userEmail && tmpErrMsg.push("メールアドレスを入力してください。");
-      !image && tmpErrMsg.push("写真を登録してください。");
+      !image64 && tmpErrMsg.push("写真を登録してください。");
     }
-
-    changeBase64toFile(image);
 
     if(tmpErrMsg.length > 0) {
       setModalType('error');
@@ -80,11 +78,6 @@ const UserAdd: React.FC = () => {
       console.log(`error: ${e}`);
     }
   };
-
-  const changeBase64toFile = (image: any) => {
-    console.log("before")
-    console.log(image);
-  }
 
   const onClickModalButton = (): void => {
     setModalType('');
