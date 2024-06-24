@@ -52,7 +52,7 @@ const ImageUploader: React.FC<Props> = (props) => {
         }) => (
           <div className="upload__image-wrapper">
             <button
-              className={isDragging ? classes.btnDrag: classes.btn}
+              className={isDragging ? classes.btn: classes.btn}
               onClick={onImageUpload}
               {...dragProps}
             >
@@ -67,7 +67,7 @@ const ImageUploader: React.FC<Props> = (props) => {
                 <div className="image-item__btn-wrapper">
                   <button 
                     onClick={() => onImageRemove(index)}
-                    className={classes.btn}
+                    className={classes.btnClose}
                   >
                     x
                   </button>
@@ -112,7 +112,9 @@ const styles = {
     '&:hover': {
       background: "#fdf5e6",
     },
-  }
+  },
+  btnClose: {
+  },
 };
 const useStyles = createUseStyles(styles);
 
