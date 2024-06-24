@@ -29,8 +29,8 @@ const UserAdd: React.FC = () => {
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
-    !userName && tmpErrMsg.push("Nameを入力してください。");
-    !userAge && tmpErrMsg.push("Ageを入力してください。");
+    !userName && tmpErrMsg.push("名前を入力してください。");
+    !userAge && tmpErrMsg.push("年齢を入力してください。");
 
     if(isDetail) {
       !userCountry && tmpErrMsg.push("Countryを入力してください。");
