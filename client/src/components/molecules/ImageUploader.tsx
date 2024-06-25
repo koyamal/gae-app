@@ -132,6 +132,11 @@ const styles = {
     right: "0px",
   },
   btnClose: {
+    borderRadius: '100px',
+    border: "1px solid #000000",
+    '&:hover': {
+      background: "#C0C0C0",
+    },
   },
   imgBox: {
     position: 'relative',
