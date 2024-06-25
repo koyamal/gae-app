@@ -72,13 +72,13 @@ const ImageUploader: React.FC<Props> = (props) => {
                     alt=""
                     width="200"
                   />
-                  <div className={classes.btnClose}>
+                  <div className={classes.btnCloseBox}>
                   <button 
                     onClick={() => {
                       onImageRemove(index);
                       setImage64("");
                     }}
-                    // className={classes.btnClose}
+                    className={classes.btnClose}
                   >
                     x
                   </button>
@@ -128,14 +128,23 @@ const styles = {
       background: "#fdf5e6",
     },
   },
-  btnClose: {
+  btnCloseBox: {
     zIndex: "10",
     position: 'absolute',
-    // top:"0",
-    // right: "0"
+    top:"0",
+    right: "0",
+    padding: '0',
+    margin: '0'
+  },
+  btnClose: {
+    padding: '0',
+    margin: '0'
   },
   imgBox: {
     position: 'relative',
+    // width: '200px',
+    background: 'yellow',
+    padding: '0'
   },
   outBox: {
     position: 'relative',
