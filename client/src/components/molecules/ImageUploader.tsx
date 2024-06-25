@@ -131,20 +131,14 @@ const styles = {
   btnCloseBox: {
     zIndex: "10",
     position: 'absolute',
-    top:"0",
-    right: "0",
-    padding: '0',
-    margin: '0'
+    top:"-3px",
+    right: "0px",
   },
   btnClose: {
-    padding: '0',
-    margin: '0'
   },
   imgBox: {
     position: 'relative',
-    // width: '200px',
-    background: 'yellow',
-    padding: '0'
+    width: '200px',
   },
   outBox: {
     position: 'relative',
