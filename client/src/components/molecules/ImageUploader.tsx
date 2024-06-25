@@ -125,6 +125,8 @@ const styles = {
   btnClose: {
     zIndex: "10",
     position: 'absolute',
+    // top:"0",
+    // right: "0"
   },
   imgBox: {
     position: 'relative',
