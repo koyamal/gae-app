@@ -64,7 +64,15 @@ const ImageUploader: React.FC<Props> = (props) => {
             &nbsp;
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <div className="image-item__btn-wrapper">
+                {/* <div className="image-item__btn-wrapper"> */}
+                <div className={classes.imgBox}>
+                  <img
+                    src={image.dataURL}
+                    // className={classes.imgBox}
+                    alt=""
+                    width="200"
+                  />
+                  <div className={classes.btnCloseBox}>
                   <button 
                     onClick={() => {
                       onImageRemove(index);
@@ -74,13 +82,17 @@ const ImageUploader: React.FC<Props> = (props) => {
                   >
                     x
                   </button>
+                  </div>
+
                 </div>
-                <img src={image.dataURL} alt="" width="200" />
               </div>
             ))}
           </div>
         )}
       </ImageUploading>
+      <div className={classes.outBox}>
+        <div className={classes.inBox}><button>x</button></div>
+      </div>
     </div>
   );
 }
@@ -116,8 +128,31 @@ const styles = {
       background: "#fdf5e6",
     },
   },
+  btnCloseBox: {
+    zIndex: "10",
+    position: 'absolute',
+    top:"-3px",
+    right: "0px",
+  },
   btnClose: {
   },
+  imgBox: {
+    position: 'relative',
+    width: '200px',
+  },
+  outBox: {
+    position: 'relative',
+    height: '300px',
+    width: '300px',
+    background: 'red',
+  },
+  inBox: {
+    position: 'absolute',
+    height: '30px',
+    width: '30px',
+    background: 'blue',
+    right: '0'
+  }
 };
 const useStyles = createUseStyles(styles);
 
