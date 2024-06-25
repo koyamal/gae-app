@@ -64,7 +64,8 @@ const ImageUploader: React.FC<Props> = (props) => {
             &nbsp;
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <div className="image-item__btn-wrapper">
+                {/* <div className="image-item__btn-wrapper"> */}
+                <div>
                   <button 
                     onClick={() => {
                       onImageRemove(index);
@@ -75,7 +76,12 @@ const ImageUploader: React.FC<Props> = (props) => {
                     x
                   </button>
                 </div>
-                <img src={image.dataURL} alt="" width="200" />
+                <img
+                  src={image.dataURL}
+                  className={classes.imgBox}
+                  alt=""
+                  width="200"
+                />
               </div>
             ))}
           </div>
@@ -117,7 +123,12 @@ const styles = {
     },
   },
   btnClose: {
+    zIndex: "10",
+    position: 'absolute',
   },
+  imgBox: {
+    position: 'relative',
+  }
 };
 const useStyles = createUseStyles(styles);
 
