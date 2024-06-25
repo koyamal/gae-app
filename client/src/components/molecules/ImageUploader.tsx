@@ -90,9 +90,6 @@ const ImageUploader: React.FC<Props> = (props) => {
           </div>
         )}
       </ImageUploading>
-      <div className={classes.outBox}>
-        <div className={classes.inBox}><button>x</button></div>
-      </div>
     </div>
   );
 }
@@ -140,19 +137,6 @@ const styles = {
     position: 'relative',
     width: '200px',
   },
-  outBox: {
-    position: 'relative',
-    height: '300px',
-    width: '300px',
-    background: 'red',
-  },
-  inBox: {
-    position: 'absolute',
-    height: '30px',
-    width: '30px',
-    background: 'blue',
-    right: '0'
-  }
 };
 const useStyles = createUseStyles(styles);
 
