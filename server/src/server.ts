@@ -1,18 +1,21 @@
 import express from 'express';
 import { Firestore } from '@google-cloud/firestore';
+import { Storage } from '@google-cloud/storage';
 import dotenv from 'dotenv';
 import path from 'path';
 import nocache from 'nocache';
+import { v4 as uuidv4 } from 'uuid';
 
 import User from './types/User';
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 app.use(nocache());
 
 // This middleware is available in Express v4.16.0 onwards
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true, limit: '10mb'}));
+app.use(express.json({limit: '10mb' }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('../public'));
@@ -26,8 +29,12 @@ const gcpOptions = {
   projectId,
   ...(process.argv[2] === 'local' && { keyFilename: process.env.FIRESTORE_PRIVATE_KEY_FILE}),
 };
+const gcsOptions = {
+  ...(process.argv[2] === 'local' && {keyFilename: process.env.STORAGE_PRIVATE_KEY_FILE})
+}
 
 const firestore = new Firestore(gcpOptions);
+const storage = new Storage(gcsOptions);
 
 app.get('/', async (req, res) => {
   res.send('hello');
@@ -80,13 +87,14 @@ app.get('/get/userinfo/:docId', async (req, res) => {
 
 app.post('/add/user', async (req, res) => {
   const userInfo: User = req.body;
+  const imageUrl = userInfo.detailInfo? await uploadImageToGSC(userInfo.detailInfo.imageUrl) : '';
   const ref = await firestore.collection("test").doc();
   await ref.set({
     name: userInfo.name,
     age: Number(userInfo.age),
     ...(userInfo.detailInfo && {
       detailInfo: {
-          imageUrl: userInfo.detailInfo.imageUrl,
+          imageUrl: imageUrl,
           country: userInfo.detailInfo.country,
           job: userInfo.detailInfo.job,
           gender: userInfo.detailInfo.gender,
@@ -94,13 +102,40 @@ app.post('/add/user', async (req, res) => {
         }
       })
   });
-  console.log(userInfo);
+  console.log({name: userInfo.name, age: userInfo.age});
   res.send({msg: 'done'});
 });
 
-app.get('/delete/user/:docId',async (req, res) => {
+const uploadImageToGSC = async (image64: string) => {
+  const bucketName: string = process.env.BUCKET_NAME || '';
+  const fileName = 'userInfo/' + uuidv4() + '.jpg';
+  const fileGCS = storage.bucket(bucketName).file(fileName);
+  const fileOptions = {
+    public: true,
+    resumable: false,
+    metadata: { contentType: 'image/jpg' },
+    validation: false
+  }
+  const base64EncodedString = image64.replace(/^data:\w+\/\w+;base64,/, '');
+  const fileBuffer = Buffer.from(base64EncodedString, 'base64');
+  await fileGCS.save(fileBuffer, fileOptions);
+  const publicUrl = `https://storage.googleapis.com/${bucketName}/${fileName}`;
+  return publicUrl;
+}
+
+app.get('/delete/user/:docId', async (req, res) => {
   const docId = req.params.docId;
-  const result = await firestore.collection("test").doc(docId).delete();
+  const ref = await firestore.collection("test").doc(docId);
+  const data = (await ref.get()).data();
+  if(data && data.detailInfo && data.detailInfo.imageUrl != ''){
+    const bucketName: string = process.env.BUCKET_NAME || '';
+    const fileName: string = data.detailInfo.imageUrl.split(`${bucketName}/`)[1];
+    console.log(fileName);
+    await storage.bucket(bucketName).file(fileName).delete();
+    console.log('deleted from GCS');
+  }
+
+  const result = await ref.delete();
   console.log(result);
   res.send({msg: 'done'});
 })

@@ -5,19 +5,27 @@ interface Props {
   titleMsg: string;
   msgList: string[];
   onClickFunc: () => void;
+  onClickSecondFunc?: () => void;
+  firstButtonText?: string;
+  secondButtonText?: string;
 }
 
 const Modal: React.FC<Props> = (props) => {
-  const {titleMsg, msgList, onClickFunc} = props;
+  const {titleMsg, msgList, onClickFunc, onClickSecondFunc, firstButtonText="OK", secondButtonText="NO"} = props;
   const classes = useStyles();
   return (
     <div className={classes.overlay}>
       <div className={classes.content}>
-        <p>{titleMsg}</p>
+        <div>{titleMsg}</div>
         {
           msgList.map((msg, index) => (<div key={index}>{msg}</div>))
         }
-        <p><button onClick={onClickFunc}>OK</button></p>
+        <div className={classes.buttonContainer}>
+          <button className={classes.firstButton} onClick={onClickFunc}>{firstButtonText}</button>
+          {onClickSecondFunc && (
+            <button className={classes.secondButton} onClick={onClickSecondFunc}>{secondButtonText}</button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -41,6 +49,31 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
+  buttonContainer:{
+    display: 'flex',
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  firstButton: {
+    margin: "10px",
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },  
+  },
+  secondButton: {
+    margin: "10px",
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  }
 };
 const useStyles = createUseStyles(styles);
 
