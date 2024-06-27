@@ -3,11 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
 import User from '../../types/User';
+import Modal from '../molecules/Modal';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const [deleteDocId, setDeleteDocId] = useState<string>("");
+  const [modalMsg, setModalMsg] = useState<string>("");
+
   const fetchData = async () => {
     try {
       const res = await fetch("/firestore/get");
@@ -23,11 +28,29 @@ const UserInfo: React.FC = () => {
   const goUserPage = (docId: string) => {
     navigate(`/oneuserinfo/${docId}`);
   };
+  const onClickDeleteButton = (docId: string, userName: string) => {
+    setDeleteDocId(docId);
+    setModalMsg(`${userName}の情報を削除しますか？`);
+    setDeleteModal(true);
+  };
+  const onClickDeleteModalOkButton = async () => {
+    if(deleteDocId) {
+      setDeleteModal(false);
+      await deleteUser(deleteDocId);
+    }
+  };
+  const onClickDeleteModalNoButton = async () => {
+    setDeleteModal(false);
+    setDeleteDocId("");
+  }
+
   const deleteUser = async (docId: string) => {
+    // todo: 削除ボタンが押された後に本当に削除するか確認モーダルを表示させる。
     try {
       const res = await fetch(`/delete/user/${docId}`);
       const temMsg = await res.json();
       console.log(temMsg);
+      setDeleteDocId("");
       fetchData();
     } catch (e) {
       console.log(e);
@@ -46,10 +69,20 @@ const UserInfo: React.FC = () => {
           <div className={classes.age}>{user.age}</div>
           <div className={classes.btnBox}>
             {user.detailInfo && (<button className={classes.detailBtn} onClick={() => {goUserPage(user.docId);}}>詳細を見る</button>)}
-            <button className={classes.detailBtn} onClick={() => {deleteUser(user.docId);}}>削除</button>
+            <button className={classes.detailBtn} onClick={() => {onClickDeleteButton(user.docId, user.name);}}>削除</button>
           </div>
         </div>
       )
+    )}
+    {deleteModal && (
+      <Modal
+        titleMsg='確認'
+        msgList={[modalMsg]}
+        onClickFunc={onClickDeleteModalOkButton}
+        onClickSecondFunc={onClickDeleteModalNoButton}
+        firstButtonText='削除する'
+        secondButtonText='キャンセル'
+      ></Modal>
     )}
   </div>
   )

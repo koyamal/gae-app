@@ -6,6 +6,8 @@ import Modal from '../molecules/Modal';
 import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
+import Button from '../atoms/Button';
+import InputWithLabel from '../molecules/InputWithLabel';
 
 const UserAdd: React.FC = () => {
   const classes = useStyles();
@@ -22,19 +24,20 @@ const UserAdd: React.FC = () => {
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<File>();
+  const [image64, setImage64] = useState<string>("");
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
-    !userName && tmpErrMsg.push("Nameを入力してください。");
-    !userAge && tmpErrMsg.push("Ageを入力してください。");
+    !userName && tmpErrMsg.push("名前を入力してください。");
+    !userAge && tmpErrMsg.push("年齢を入力してください。");
 
     if(isDetail) {
-      !userCountry && tmpErrMsg.push("Countryを入力してください。");
-      !userGender && tmpErrMsg.push("Genderを入力してください。");
-      !userJob && tmpErrMsg.push("Jobを入力してください。");
-      !userEmail && tmpErrMsg.push("Emailを入力してください。");
-      !image && tmpErrMsg.push("画像を入力してください。");
+      !userCountry && tmpErrMsg.push("国籍を入力してください。");
+      !userGender && tmpErrMsg.push("性別を入力してください。");
+      !userJob && tmpErrMsg.push("職業を入力してください。");
+      !userEmail && tmpErrMsg.push("メールアドレスを入力してください。");
+      !image64 && tmpErrMsg.push("写真を登録してください。");
     }
 
     if(tmpErrMsg.length > 0) {
@@ -49,7 +52,7 @@ const UserAdd: React.FC = () => {
       age: userAge,
       ...(isDetail && {
         detailInfo: {
-          imageUrl: '',
+          imageUrl: image64,
           country: userCountry,
           job: userJob,
           gender: userGender,
@@ -65,7 +68,6 @@ const UserAdd: React.FC = () => {
     };
     try{
       const res = await fetch("/add/user", options);
-      const temMsg = await res.json();
       setMsgInfo("ユーザーを登録しました。");
       setModalType('done');
       setIsModal(true);
@@ -94,70 +96,67 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
-      <div>
-        Name:
-        <input
+      <div className={classes.inputContainer}>
+        <InputWithLabel
+          label='名前'
           type="text"
-          onChange={(event) => {
-            setUserName(event.target.value);
-          }}
+          placeholder='名前を入力してください。'
+          onChangeEvent={setUserName}
         />
       </div>
-      <div>
-        Age:
-        <input
+      <div className={classes.inputContainer}>
+        <InputWithLabel
+          label='年齢'
           type="number"
-          onChange={(event) => {
-            setUserAge(event.target.valueAsNumber);
-          }}     
+          placeholder='年齢を入力してください。'
+          onChangeEvent={setUserAge}     
         />
       </div>
       <div>
-        <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
+        <Button onClickEvent={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</Button>
         {isDetail && (
           <div>
-            <div>
-              country: 
-              <input 
+            <div className={classes.inputContainer}>
+              <InputWithLabel
+                label='国籍'
                 type="text"
-                onChange={(event) => {
-                  setUserCountry(event.target.value);
-                }}
+                placeholder='国籍を入力してください。'
+                onChangeEvent={setUserCountry}
               />
             </div>
-            <div>
-              job: 
-              <input
+            <div className={classes.inputContainer}>
+              <InputWithLabel
+                label='仕事'
                 type="text"
-                onChange={(event) => {
-                  setUserJob(event.target.value);
-                }}
+                placeholder='仕事を入力してください。'
+                onChangeEvent={setUserJob}
               />
             </div>
-            <div>
-              gender:
-              <input
+            <div className={classes.inputContainer}>
+              <InputWithLabel
+                label='性別'
                 type="text"
-                onChange={(event) => {
-                  setUserGender(event.target.value);
-                }}
+                placeholder='性別を入力してください。'
+                onChangeEvent={setUserGender}
               />
             </div>
-            <div>
-              email:
-              <input
+            <div className={classes.inputContainer}>
+              <InputWithLabel
+                label='メールアドレス'
                 type="text"
-                onChange={(event) => {
-                  setUserEmail(event.target.value);
-                }}
+                placeholder='xxxx@example.com'
+                onChangeEvent={setUserEmail}
               />
             </div>
-            <ImageUploader setImage={setImage}></ImageUploader>
+            <div className={classes.inputContainer}>
+              <div>写真:</div>
+              <ImageUploader setImage={setImage} setImage64={setImage64}></ImageUploader>
+            </div>
           </div>
         )}
       </div>
       <div>
-        <button onClick={onClickSubmitButton}>登録</button>
+        <Button onClickEvent={onClickSubmitButton}>登録</Button>
       </div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
@@ -170,6 +169,9 @@ const UserAdd: React.FC = () => {
 };
 
 const styles = {
+  inputContainer: {
+    padding: "15px 0px 15px 10px"
+  }
 };
 const useStyles = createUseStyles(styles);
 

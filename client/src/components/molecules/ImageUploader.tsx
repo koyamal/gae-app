@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import ImageUploading, { ImageListType } from "react-images-uploading";
+import { createUseStyles } from "react-jss";
 
 interface Props {
-  setImage: React.Dispatch<React.SetStateAction<string>>;
+  setImage: React.Dispatch<React.SetStateAction<File | undefined>>;
+  setImage64: React.Dispatch<React.SetStateAction<string>>;
 }
 const ImageUploader: React.FC<Props> = (props) => {
-  const { setImage } = props;
+  const { setImage, setImage64 } = props;
   const [images, setImages] = useState([]);
+
+  const classes = useStyles();
 
   const onChange = (
     imageList: ImageListType,
@@ -15,12 +19,21 @@ const ImageUploader: React.FC<Props> = (props) => {
     console.log(imageList, addUpdateIndex);
     console.log(images);
     setImages(imageList as never[]);
-    if(imageList.length > 0) {
-      setImage(imageList[0].dataURL || '');
-    } else {
-      setImage('');
+    if(imageList.length > 0 && imageList[0].file) {
+      setImage(imageList[0].file);
+      setImage64(imageList[0].dataURL || "");
     }
   };
+
+  const styleButton = {
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  }
 
   return (
     <div className="App">
@@ -37,22 +50,41 @@ const ImageUploader: React.FC<Props> = (props) => {
           isDragging,
           dragProps
         }) => (
-          // write your building UI
           <div className="upload__image-wrapper">
             <button
-              style={isDragging ? { color: "red" } : undefined}
+              className={isDragging ? classes.btn: classes.btn}
               onClick={onImageUpload}
               {...dragProps}
             >
-              Click or Drop here
+              ドラッグ&ドロップ<br></br>
+              <div className={classes.btnText}>
+                画像を選択
+              </div>
             </button>
             &nbsp;
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageRemove(index)}>x</button>
+                {/* <div className="image-item__btn-wrapper"> */}
+                <div className={classes.imgBox}>
+                  <img
+                    src={image.dataURL}
+                    // className={classes.imgBox}
+                    alt=""
+                    width="200"
+                  />
+                  <div className={classes.btnCloseBox}>
+                  <button 
+                    onClick={() => {
+                      onImageRemove(index);
+                      setImage64("");
+                    }}
+                    className={classes.btnClose}
+                  >
+                    x
+                  </button>
+                  </div>
+
                 </div>
-                <img src={image.dataURL} alt="" width="200" />
               </div>
             ))}
           </div>
@@ -61,5 +93,56 @@ const ImageUploader: React.FC<Props> = (props) => {
     </div>
   );
 }
+
+const styles = {
+  btnContainer: {
+  },
+  btn: {
+    fontSize: "15px",
+    background: "#EDEEEE",
+    border: "solid #EDEEEE",
+    borderRadius: "10px",
+    height: "100px",
+    width: "300px"
+  },
+  btnDrag: {
+    fontSize: "15px",
+    background: "#ffffe0",
+    borderRadius: "100px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+    color: "red"
+  },
+  btnText: {
+    display: 'inline-block',
+    background: "#ffffe0",
+    borderRadius: "100px",
+    padding: "3px 5px 3px 5px",
+    border: "solid #f5deb3",
+    '&:hover': {
+      background: "#fdf5e6",
+    },
+  },
+  btnCloseBox: {
+    zIndex: "10",
+    position: 'absolute',
+    top:"-3px",
+    right: "0px",
+  },
+  btnClose: {
+    borderRadius: '100px',
+    border: "1px solid #000000",
+    '&:hover': {
+      background: "#C0C0C0",
+    },
+  },
+  imgBox: {
+    position: 'relative',
+    width: '200px',
+  },
+};
+const useStyles = createUseStyles(styles);
 
 export default ImageUploader;
