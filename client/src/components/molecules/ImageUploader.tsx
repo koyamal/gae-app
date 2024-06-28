@@ -103,7 +103,7 @@ const styles = {
     border: "solid #EDEEEE",
     borderRadius: "10px",
     height: "100px",
-    width: "300px"
+    width: "315px"
   },
   btnDrag: {
     fontSize: "15px",
