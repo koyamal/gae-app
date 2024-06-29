@@ -13,7 +13,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 
-export default function TemporaryDrawer() {
+export default function MyDrawer() {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -29,8 +29,6 @@ export default function TemporaryDrawer() {
         <Link to="/user">UserInfo</Link>
         <br />
         <Link to="/adduser">UserAdd</Link>
-        <br />
-        <Link to="/test">Test</Link>
       </div>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
