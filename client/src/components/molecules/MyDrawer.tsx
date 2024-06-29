@@ -12,13 +12,21 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function MyDrawer() {
+  const navigation = useNavigate();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  const MenuList = [
+    {pageTitle: "Home", pagePath: "/"},
+    {pageTitle: "UserInfo", pagePath: "/user"},
+    {pageTitle: "UserAdd", pagePath: "/adduser"},
+  ];
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -30,13 +38,13 @@ export default function MyDrawer() {
         <br />
         <Link to="/adduser">UserAdd</Link>
       </div>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        {MenuList.map((menuItem, index) => (
+          <ListItem key={menuItem.pageTitle} disablePadding>
+            <ListItemButton onClick={() => { navigation(menuItem.pagePath)}}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={menuItem.pageTitle} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -45,7 +53,7 @@ export default function MyDrawer() {
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => {console.log("hello")}}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
