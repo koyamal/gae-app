@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
@@ -21,6 +22,15 @@ export default function TemporaryDrawer() {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
+      <div className="App">
+        <Link to="/">Home</Link>
+        <br />
+        <Link to="/user">UserInfo</Link>
+        <br />
+        <Link to="/adduser">UserAdd</Link>
+        <br />
+        <Link to="/test">Test</Link>
+      </div>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
