@@ -10,6 +10,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className="App">
+        <TemporaryDrawer />
         <Link to="/">Home</Link>
         <br />
         <Link to="/user">UserInfo</Link>
