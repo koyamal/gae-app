@@ -31,13 +31,6 @@ export default function MyDrawer() {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-      <div className="App">
-        <Link to="/">Home</Link>
-        <br />
-        <Link to="/user">UserInfo</Link>
-        <br />
-        <Link to="/adduser">UserAdd</Link>
-      </div>
         {MenuList.map((menuItem, index) => (
           <ListItem key={menuItem.pageTitle} disablePadding>
             <ListItemButton onClick={() => { navigation(menuItem.pagePath)}}>
