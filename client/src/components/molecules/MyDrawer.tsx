@@ -22,7 +22,11 @@ export default function MyDrawer() {
     setOpen(newOpen);
   };
 
-  const MenuList = [{pageTitle: "Home", pagePath: "/"}];
+  const MenuList = [
+    {pageTitle: "Home", pagePath: "/"},
+    {pageTitle: "UserInfo", pagePath: "/user"},
+    {pageTitle: "UserAdd", pagePath: "/adduser"},
+  ];
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -36,7 +40,7 @@ export default function MyDrawer() {
       </div>
         {MenuList.map((menuItem, index) => (
           <ListItem key={menuItem.pageTitle} disablePadding>
-            <ListItemButton onClick={() => {}}>
+            <ListItemButton onClick={() => { navigation(menuItem.pagePath)}}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
