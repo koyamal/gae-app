@@ -29,8 +29,6 @@ export default function MyDrawer() {
         <Link to="/user">UserInfo</Link>
         <br />
         <Link to="/adduser">UserAdd</Link>
-        <br />
-        <Link to="/test">Test</Link>
       </div>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
