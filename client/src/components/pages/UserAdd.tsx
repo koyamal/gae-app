@@ -96,6 +96,7 @@ const UserAdd: React.FC = () => {
 
   return (
     <div className="container">
+      <h1>User Add</h1>
       <div className={classes.inputContainer}>
         <InputWithLabel
           label='名前'
