@@ -58,7 +58,7 @@ const UserInfo: React.FC = () => {
   }
   return (
     <div className="container">
-    <h1>User Info.</h1>
+    <h1>User Info</h1>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>

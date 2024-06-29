@@ -11,7 +11,6 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 export default function MyDrawer() {
@@ -31,13 +30,6 @@ export default function MyDrawer() {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-      <div className="App">
-        <Link to="/">Home</Link>
-        <br />
-        <Link to="/user">UserInfo</Link>
-        <br />
-        <Link to="/adduser">UserAdd</Link>
-      </div>
         {MenuList.map((menuItem, index) => (
           <ListItem key={menuItem.pageTitle} disablePadding>
             <ListItemButton onClick={() => { navigation(menuItem.pagePath)}}>
@@ -50,18 +42,6 @@ export default function MyDrawer() {
         ))}
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={() => {console.log("hello")}}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Box>
   );
 
