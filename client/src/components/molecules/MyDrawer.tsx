@@ -8,12 +8,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import HomeIcon from '@mui/icons-material/Home';
+import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import { useNavigate } from "react-router-dom";
 
 export default function MyDrawer() {
@@ -37,7 +36,7 @@ export default function MyDrawer() {
           <ListItem key={menuItem.pageTitle} disablePadding>
             <ListItemButton onClick={() => { navigation(menuItem.pagePath)}}>
               <ListItemIcon>
-                {menuItem.icon? <menuItem.icon /> : <MailIcon />}
+                {menuItem.icon? <menuItem.icon /> : <LunchDiningIcon />}
               </ListItemIcon>
               <ListItemText primary={menuItem.pageTitle} />
             </ListItemButton>
