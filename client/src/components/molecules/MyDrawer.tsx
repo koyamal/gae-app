@@ -11,6 +11,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import InfoIcon from '@mui/icons-material/Info';
 import { useNavigate } from "react-router-dom";
 
 export default function MyDrawer() {
@@ -23,8 +25,8 @@ export default function MyDrawer() {
 
   const MenuList = [
     {pageTitle: "Home", pagePath: "/"},
-    {pageTitle: "UserInfo", pagePath: "/user"},
-    {pageTitle: "UserAdd", pagePath: "/adduser"},
+    {pageTitle: "UserInfo", pagePath: "/user", icon: InfoIcon},
+    {pageTitle: "UserAdd", pagePath: "/adduser", icon: AddCircleIcon},
   ];
 
   const DrawerList = (
@@ -34,7 +36,7 @@ export default function MyDrawer() {
           <ListItem key={menuItem.pageTitle} disablePadding>
             <ListItemButton onClick={() => { navigation(menuItem.pagePath)}}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {menuItem.icon? <menuItem.icon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={menuItem.pageTitle} />
             </ListItemButton>
