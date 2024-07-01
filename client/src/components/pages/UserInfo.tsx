@@ -5,6 +5,7 @@ import { createUseStyles } from "react-jss";
 import User from '../../types/User';
 import Modal from '../molecules/Modal';
 import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const UserInfo: React.FC = () => {
     <div className="container">
     <h1>User Info</h1>
     <Input onChangeEvent={() => {}} type="text" placeholder='ユーザー名を入力'/>
+    <Button onClickEvent={() => {}}>検索</Button>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>
