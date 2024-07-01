@@ -24,7 +24,7 @@ const OneUserInfo: React.FC = () => {
   }, []);
 
   const onClickBack = () => {
-    console.log("back");
+    navigation("/user");
   }
 
   return (
