@@ -4,6 +4,7 @@ import { createUseStyles } from "react-jss";
 
 import User from '../../types/User';
 import Modal from '../molecules/Modal';
+import Input from '../atoms/Input';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ const UserInfo: React.FC = () => {
   return (
     <div className="container">
     <h1>User Info</h1>
+    <Input onChangeEvent={() => {}} type="text" placeholder='ユーザー名を入力'/>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>
