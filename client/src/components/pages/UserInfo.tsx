@@ -25,27 +25,32 @@ const UserInfo: React.FC = () => {
       console.log(e);
     }
   };
+  
   useEffect(() => {
     fetchData();
   }, []);
+
   const goUserPage = (docId: string) => {
     navigate(`/oneuserinfo/${docId}`);
   };
+
   const onClickDeleteButton = (docId: string, userName: string) => {
     setDeleteDocId(docId);
     setModalMsg(`${userName}の情報を削除しますか？`);
     setDeleteModal(true);
   };
+
   const onClickDeleteModalOkButton = async () => {
     if(deleteDocId) {
       setDeleteModal(false);
       await deleteUser(deleteDocId);
     }
   };
+
   const onClickDeleteModalNoButton = async () => {
     setDeleteModal(false);
     setDeleteDocId("");
-  }
+  };
 
   const deleteUser = async (docId: string) => {
     // todo: 削除ボタンが押された後に本当に削除するか確認モーダルを表示させる。
@@ -58,7 +63,8 @@ const UserInfo: React.FC = () => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
+
   return (
     <div className="container">
     <h1>User Info</h1>
