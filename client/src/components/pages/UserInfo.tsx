@@ -4,45 +4,55 @@ import { createUseStyles } from "react-jss";
 
 import User from '../../types/User';
 import Modal from '../molecules/Modal';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
+  const [userInfoOrigin, setUserInfoOrigin] = useState<User[] | null>(null);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [deleteDocId, setDeleteDocId] = useState<string>("");
   const [modalMsg, setModalMsg] = useState<string>("");
+  const [serachWord, setSearchWord] = useState<string>("");
 
   const fetchData = async () => {
     try {
       const res = await fetch("/firestore/get");
       const json: React.SetStateAction<User[] | null> = await res.json();
       setUserInfo(json);
+      setUserInfoOrigin(json);
     } catch (e) {
       console.log(e);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   const goUserPage = (docId: string) => {
     navigate(`/oneuserinfo/${docId}`);
   };
+
   const onClickDeleteButton = (docId: string, userName: string) => {
     setDeleteDocId(docId);
     setModalMsg(`${userName}の情報を削除しますか？`);
     setDeleteModal(true);
   };
+
   const onClickDeleteModalOkButton = async () => {
     if(deleteDocId) {
       setDeleteModal(false);
       await deleteUser(deleteDocId);
     }
   };
+
   const onClickDeleteModalNoButton = async () => {
     setDeleteModal(false);
     setDeleteDocId("");
-  }
+  };
 
   const deleteUser = async (docId: string) => {
     // todo: 削除ボタンが押された後に本当に削除するか確認モーダルを表示させる。
@@ -55,10 +65,27 @@ const UserInfo: React.FC = () => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
+
+  const searchUser = async () => {
+    if(!serachWord) {
+      setUserInfo(userInfoOrigin);
+      return
+    }
+    const result = userInfo?.filter((user) => {
+      return user.name.includes(serachWord);
+    });
+    setUserInfo(result || []);
+    console.log(result);
+  };
+
   return (
     <div className="container">
     <h1>User Info</h1>
+    <div className={classes.searchBox}>
+      <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力'/>
+      <Button onClickEvent={searchUser}>検索</Button>
+    </div>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>
@@ -138,6 +165,10 @@ const styles = {
     alignItems: "center",
     padding: "10px"
   },
+  searchBox: {
+    display: "flex",
+    alignItems: "center",
+  }
 };
 const useStyles = createUseStyles(styles);
 
