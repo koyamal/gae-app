@@ -14,6 +14,7 @@ const UserInfo: React.FC = () => {
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [deleteDocId, setDeleteDocId] = useState<string>("");
   const [modalMsg, setModalMsg] = useState<string>("");
+  const [serachWord, setSearchWord] = useState<string>("");
 
   const fetchData = async () => {
     try {
@@ -62,7 +63,7 @@ const UserInfo: React.FC = () => {
     <div className="container">
     <h1>User Info</h1>
     <div className={classes.searchBox}>
-      <Input onChangeEvent={() => {}} type="text" placeholder='ユーザー名を入力'/>
+      <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力'/>
       <Button onClickEvent={() => {}}>検索</Button>
     </div>
     <div className={classes.userBox}>
