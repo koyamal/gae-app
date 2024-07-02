@@ -11,6 +11,7 @@ const UserInfo: React.FC = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
+  const [userInfoOrigin, setUserInfoOrigin] = useState<User[] | null>(null);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [deleteDocId, setDeleteDocId] = useState<string>("");
   const [modalMsg, setModalMsg] = useState<string>("");
@@ -21,6 +22,7 @@ const UserInfo: React.FC = () => {
       const res = await fetch("/firestore/get");
       const json: React.SetStateAction<User[] | null> = await res.json();
       setUserInfo(json);
+      setUserInfoOrigin(json);
     } catch (e) {
       console.log(e);
     }
@@ -66,10 +68,14 @@ const UserInfo: React.FC = () => {
   };
 
   const searchUser = async () => {
+    if(!serachWord) {
+      setUserInfo(userInfoOrigin);
+      return
+    }
     const result = userInfo?.filter((user) => {
       return user.name.includes(serachWord);
     });
-    // setUserInfo(result || []);
+    setUserInfo(result || []);
     console.log(result);
   };
 
