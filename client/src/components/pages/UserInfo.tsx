@@ -25,7 +25,7 @@ const UserInfo: React.FC = () => {
       console.log(e);
     }
   };
-  
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -65,12 +65,20 @@ const UserInfo: React.FC = () => {
     }
   };
 
+  const searchUser = async () => {
+    const result = userInfo?.filter((user) => {
+      return user.name.includes(serachWord);
+    });
+    // setUserInfo(result || []);
+    console.log(result);
+  };
+
   return (
     <div className="container">
     <h1>User Info</h1>
     <div className={classes.searchBox}>
       <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力'/>
-      <Button onClickEvent={() => {}}>検索</Button>
+      <Button onClickEvent={searchUser}>検索</Button>
     </div>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
