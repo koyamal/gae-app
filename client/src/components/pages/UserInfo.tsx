@@ -61,8 +61,10 @@ const UserInfo: React.FC = () => {
   return (
     <div className="container">
     <h1>User Info</h1>
-    <Input onChangeEvent={() => {}} type="text" placeholder='ユーザー名を入力'/>
-    <Button onClickEvent={() => {}}>検索</Button>
+    <div className={classes.searchBox}>
+      <Input onChangeEvent={() => {}} type="text" placeholder='ユーザー名を入力'/>
+      <Button onClickEvent={() => {}}>検索</Button>
+    </div>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>
@@ -142,6 +144,10 @@ const styles = {
     alignItems: "center",
     padding: "10px"
   },
+  searchBox: {
+    display: "flex",
+    alignItems: "center",
+  }
 };
 const useStyles = createUseStyles(styles);
 
