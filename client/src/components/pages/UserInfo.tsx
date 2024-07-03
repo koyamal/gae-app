@@ -9,7 +9,7 @@ import Button from '../atoms/Button';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
-  const inputRefSearch = useRef("");
+  const inputRefSearch = useRef<HTMLInputElement>(null);
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
   const [userInfoOrigin, setUserInfoOrigin] = useState<User[] | null>(null);
@@ -83,6 +83,9 @@ const UserInfo: React.FC = () => {
   const resetSearch = async () => {
     setUserInfo(userInfoOrigin);
     setSearchWord("");
+    if(inputRefSearch.current) {
+      inputRefSearch.current.value = '';
+    }
   }
 
   return (
