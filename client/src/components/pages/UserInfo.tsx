@@ -79,13 +79,18 @@ const UserInfo: React.FC = () => {
     console.log(result);
   };
 
+  const resetSearch = async () => {
+    setUserInfo(userInfoOrigin);
+    setSearchWord("");
+  }
+
   return (
     <div className="container">
     <h1>User Info</h1>
     <div className={classes.searchBox}>
       <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力'/>
       <Button onClickEvent={searchUser}>検索</Button>
-      <Button onClickEvent={() => {}}>リセット</Button>
+      <Button onClickEvent={resetSearch}>リセット</Button>
     </div>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
