@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
@@ -9,6 +9,7 @@ import Button from '../atoms/Button';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
+  const inputRefSearch = useRef("");
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
   const [userInfoOrigin, setUserInfoOrigin] = useState<User[] | null>(null);
@@ -82,13 +83,16 @@ const UserInfo: React.FC = () => {
   const resetSearch = async () => {
     setUserInfo(userInfoOrigin);
     setSearchWord("");
+    console.log(inputRefSearch.current.valueOf());
+    // inputRefSearch.current = "hello";
+    console.log(inputRefSearch);
   }
 
   return (
     <div className="container">
     <h1>User Info</h1>
     <div className={classes.searchBox}>
-      <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力'/>
+      <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力' inputRef={inputRefSearch}/>
       <Button onClickEvent={searchUser}>検索</Button>
       <Button onClickEvent={resetSearch}>リセット</Button>
     </div>
