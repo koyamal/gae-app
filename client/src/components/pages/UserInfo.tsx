@@ -83,9 +83,6 @@ const UserInfo: React.FC = () => {
   const resetSearch = async () => {
     setUserInfo(userInfoOrigin);
     setSearchWord("");
-    console.log(inputRefSearch.current.valueOf());
-    // inputRefSearch.current = "hello";
-    console.log(inputRefSearch);
   }
 
   return (
