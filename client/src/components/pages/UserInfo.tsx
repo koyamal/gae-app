@@ -17,6 +17,7 @@ const UserInfo: React.FC = () => {
   const [deleteDocId, setDeleteDocId] = useState<string>("");
   const [modalMsg, setModalMsg] = useState<string>("");
   const [serachWord, setSearchWord] = useState<string>("");
+  const [noUserFlag, setNoUserFlag] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
@@ -77,10 +78,12 @@ const UserInfo: React.FC = () => {
       return user.name.includes(serachWord);
     });
     setUserInfo(result || []);
+    if(result?.length === 0) setNoUserFlag(true);
     console.log(result);
   };
 
   const resetSearch = async () => {
+    setNoUserFlag(false);
     setUserInfo(userInfoOrigin);
     setSearchWord("");
     if(inputRefSearch.current) {
@@ -111,6 +114,11 @@ const UserInfo: React.FC = () => {
         </div>
       )
     )}
+    {
+      noUserFlag && (
+        <div>検索結果0件</div>
+      )
+    }
     {deleteModal && (
       <Modal
         titleMsg='確認'
