@@ -72,7 +72,7 @@ const UserInfo: React.FC = () => {
       setUserInfo(userInfoOrigin);
       return
     }
-    const result = userInfo?.filter((user) => {
+    const result = userInfoOrigin?.filter((user) => {
       return user.name.includes(serachWord);
     });
     setUserInfo(result || []);
