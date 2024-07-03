@@ -78,7 +78,7 @@ const UserInfo: React.FC = () => {
       return user.name.includes(serachWord);
     });
     setUserInfo(result || []);
-    if(!result) setNoUserFlag(true);
+    if(result?.length === 0) setNoUserFlag(true);
     console.log(result);
   };
 
@@ -114,7 +114,11 @@ const UserInfo: React.FC = () => {
         </div>
       )
     )}
-    <div>検索結果0件</div>
+    {
+      noUserFlag && (
+        <div>検索結果0件</div>
+      )
+    }
     {deleteModal && (
       <Modal
         titleMsg='確認'
