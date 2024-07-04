@@ -116,7 +116,7 @@ const UserInfo: React.FC = () => {
     )}
     {
       noUserFlag && (
-        <div>検索結果0件</div>
+        <div>検索結果：0件</div>
       )
     }
     {deleteModal && (
