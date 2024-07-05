@@ -116,7 +116,7 @@ const UserInfo: React.FC = () => {
     )}
     {
       noUserFlag && (
-        <div>検索結果：0件</div>
+        <div className={classes.searchNoResult}>検索結果：0件</div>
       )
     }
     {deleteModal && (
@@ -153,6 +153,10 @@ const styles = {
     fontSize: "20px"
   },
   userBox: {
+    display: "flex",
+    margin: "10px"
+  },
+  searchNoResult: {
     display: "flex",
     margin: "10px"
   },
