@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss";
 import { useNavigate } from "react-router-dom";
 
 import Modal from '../molecules/Modal';
+import ImageUploader from '../molecules/ImageUploader';
 
 import User from '../../types/User';
 
@@ -18,10 +19,10 @@ const UserAdd: React.FC = () => {
   const [userGender, setUserGender] = useState<string>("");
   const [userJob, setUserJob] = useState<string>("");
   const [userEmail, setUserEmail] = useState<string>("");
-  const [userImageUrl, setUserImageUrl] = useState<string>("");
   const [isDetail, setIsDetail] = useState<boolean>(false);
   const [msgInfo, setMsgInfo] = useState<string>("");
   const [errMsg, setErrMsg] = useState<string[]>([]);
+  const [image, setImage] = useState<string>("");
 
   const onClickSubmitButton = async () => {
     const tmpErrMsg: Array<string> =[];
@@ -33,7 +34,7 @@ const UserAdd: React.FC = () => {
       !userGender && tmpErrMsg.push("Genderを入力してください。");
       !userJob && tmpErrMsg.push("Jobを入力してください。");
       !userEmail && tmpErrMsg.push("Emailを入力してください。");
-      // !userImageUrl && tmpErrMsg.push("画像を入力してください。");
+      !image && tmpErrMsg.push("画像を入力してください。");
     }
 
     if(tmpErrMsg.length > 0) {
@@ -46,6 +47,15 @@ const UserAdd: React.FC = () => {
       docId: '',
       name: userName,
       age: userAge,
+      ...(isDetail && {
+        detailInfo: {
+          imageUrl: '',
+          country: userCountry,
+          job: userJob,
+          gender: userGender,
+          email: userEmail,
+      }
+      })
     };
     console.log(tempUserInfo);
     const options = {
@@ -102,7 +112,6 @@ const UserAdd: React.FC = () => {
           }}     
         />
       </div>
-      <p>{userName}{userAge.toString()}</p>
       <div>
         <button onClick={onClickDetailButton}>{isDetail? "詳細を削除":"詳細を追加"}</button>
         {isDetail && (
@@ -143,14 +152,13 @@ const UserAdd: React.FC = () => {
                 }}
               />
             </div>
+            <ImageUploader setImage={setImage}></ImageUploader>
           </div>
         )}
-        <p>{isDetail? 'true': 'false'}</p>
       </div>
       <div>
         <button onClick={onClickSubmitButton}>登録</button>
       </div>
-      <div>{msgInfo}</div>
       {isModal && modalType === 'error' && (
         <Modal titleMsg='エラー' msgList={errMsg} onClickFunc={onClickModalButton}></Modal>
       )}
