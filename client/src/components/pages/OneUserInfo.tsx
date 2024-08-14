@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { createUseStyles } from "react-jss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import User from '../../types/User';
+import Button from '../atoms/Button';
 
 const OneUserInfo: React.FC = () => {
   const params = useParams();
   const classes = useStyles();
+  const navigation = useNavigate();
   const [userInfo, setUserInfo] = useState<User | null>(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -20,9 +22,14 @@ const OneUserInfo: React.FC = () => {
     };
     fetchData();
   }, []);
+
+  const onClickBack = () => {
+    navigation("/user");
+  }
+
   return (
     <div className="container">
-    <h1>User Info.</h1>
+    <h1>User Info</h1>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>
@@ -41,6 +48,7 @@ const OneUserInfo: React.FC = () => {
         <img className={classes.photo} src={userInfo.detailInfo.imageUrl} />
       </div>
     )}
+    <Button onClickEvent={onClickBack}>戻る</Button>
   </div>
   )
 };

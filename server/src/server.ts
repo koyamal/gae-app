@@ -159,6 +159,7 @@ app.post('/submit', async (req, res) => {
 
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });
+server.keepAliveTimeout = 700 * 1000;
