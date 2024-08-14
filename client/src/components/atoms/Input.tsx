@@ -5,10 +5,11 @@ interface Props {
   onChangeEvent:(event: any) => void;
   type: string;
   placeholder: string;
+  inputRef?: any;
 }
 
 const Input: React.FC<Props> = (props) => {
-  const {onChangeEvent, type, placeholder} = props;
+  const {onChangeEvent, type, placeholder, inputRef} = props;
   const classes = useStyles();
   return (
     <input
@@ -16,6 +17,7 @@ const Input: React.FC<Props> = (props) => {
       type={type}
       placeholder={placeholder}
       onChange={(event) => {onChangeEvent(event.target.value)}}
+      ref={inputRef}
     />
   );
 };

@@ -1,48 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUseStyles } from "react-jss";
 
 import User from '../../types/User';
 import Modal from '../molecules/Modal';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const UserInfo: React.FC = () => {
   const navigate = useNavigate();
+  const inputRefSearch = useRef<HTMLInputElement>(null);
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState<User[] | null>(null);
+  const [userInfoOrigin, setUserInfoOrigin] = useState<User[] | null>(null);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [deleteDocId, setDeleteDocId] = useState<string>("");
   const [modalMsg, setModalMsg] = useState<string>("");
+  const [serachWord, setSearchWord] = useState<string>("");
+  const [noUserFlag, setNoUserFlag] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
       const res = await fetch("/firestore/get");
       const json: React.SetStateAction<User[] | null> = await res.json();
       setUserInfo(json);
+      setUserInfoOrigin(json);
     } catch (e) {
       console.log(e);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   const goUserPage = (docId: string) => {
     navigate(`/oneuserinfo/${docId}`);
   };
+
   const onClickDeleteButton = (docId: string, userName: string) => {
     setDeleteDocId(docId);
     setModalMsg(`${userName}の情報を削除しますか？`);
     setDeleteModal(true);
   };
+
   const onClickDeleteModalOkButton = async () => {
     if(deleteDocId) {
       setDeleteModal(false);
       await deleteUser(deleteDocId);
     }
   };
+
   const onClickDeleteModalNoButton = async () => {
     setDeleteModal(false);
     setDeleteDocId("");
-  }
+  };
 
   const deleteUser = async (docId: string) => {
     // todo: 削除ボタンが押された後に本当に削除するか確認モーダルを表示させる。
@@ -55,10 +67,38 @@ const UserInfo: React.FC = () => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const searchUser = async () => {
+    if(!serachWord) {
+      setUserInfo(userInfoOrigin);
+      return
+    }
+    const result = userInfoOrigin?.filter((user) => {
+      return user.name.includes(serachWord);
+    });
+    setUserInfo(result || []);
+    if(result?.length === 0) setNoUserFlag(true);
+    console.log(result);
+  };
+
+  const resetSearch = async () => {
+    setNoUserFlag(false);
+    setUserInfo(userInfoOrigin);
+    setSearchWord("");
+    if(inputRefSearch.current) {
+      inputRefSearch.current.value = '';
+    }
   }
+
   return (
     <div className="container">
-    <h1>User Info.</h1>
+    <h1>User Info</h1>
+    <div className={classes.searchBox}>
+      <Input onChangeEvent={setSearchWord} type="text" placeholder='ユーザー名を入力' inputRef={inputRefSearch}/>
+      <Button onClickEvent={searchUser}>検索</Button>
+      <Button onClickEvent={resetSearch}>リセット</Button>
+    </div>
     <div className={classes.userBox}>
       <div className={classes.nameTitle}>Name</div>
       <div className={classes.ageTitle}>Age</div>
@@ -74,6 +114,11 @@ const UserInfo: React.FC = () => {
         </div>
       )
     )}
+    {
+      noUserFlag && (
+        <div className={classes.searchNoResult}>検索結果：0件</div>
+      )
+    }
     {deleteModal && (
       <Modal
         titleMsg='確認'
@@ -111,6 +156,10 @@ const styles = {
     display: "flex",
     margin: "10px"
   },
+  searchNoResult: {
+    display: "flex",
+    margin: "10px"
+  },
   name: {
     width: "50%",
     padding: "10px 20px",
@@ -138,6 +187,10 @@ const styles = {
     alignItems: "center",
     padding: "10px"
   },
+  searchBox: {
+    display: "flex",
+    alignItems: "center",
+  }
 };
 const useStyles = createUseStyles(styles);
 
