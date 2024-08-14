@@ -157,6 +157,11 @@ app.post('/submit', async (req, res) => {
   res.send('Thanks for your message!');
 });
 
+app.get('/helloWorld', (req, res) => {
+  console.log('helloWorld')
+  res.send({msg: 'helloWorld'});
+});
+
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, () => {
