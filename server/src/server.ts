@@ -38,7 +38,7 @@ const storage = new Storage(gcsOptions);
 
 app.get('/', async (req, res) => {
   res.send('hello');
-})
+});
 
 app.get('/firestore/get', async (req, res) => {
   const ref = await firestore.collection("test").get();
