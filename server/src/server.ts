@@ -162,6 +162,11 @@ app.get('/helloWorld', (req, res) => {
   res.send({msg: 'helloWorld'});
 });
 
+app.get('/helloWorld/20240818', (req, res) => {
+  console.log('helloWorld 20240818');
+  res.send({msg: 'helloWorld 20240818'});
+});
+
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, () => {
