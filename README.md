@@ -1,6 +1,6 @@
 # gae-app
 
-## ローカル
+## ローカルでのデプロイ
 ### server側
 ```
 cd server
@@ -15,7 +15,7 @@ npm install
 npm run start
 ```
 
-## GAEデプロイ
+## GAEへのデプロイ
 ### client側
 ```
 cd client
