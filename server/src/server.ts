@@ -38,7 +38,11 @@ const storage = new Storage(gcsOptions);
 
 app.get('/', async (req, res) => {
   res.send('hello');
-})
+});
+
+app.get('/hello/240818', (req, res) => {
+  res.send({msg: 'hello, 20240818 00:00:00'});
+});
 
 app.get('/firestore/get', async (req, res) => {
   const ref = await firestore.collection("test").get();
@@ -160,6 +164,11 @@ app.post('/submit', async (req, res) => {
 app.get('/helloWorld', (req, res) => {
   console.log('helloWorld')
   res.send({msg: 'helloWorld'});
+});
+
+app.get('/helloWorld/20240818', (req, res) => {
+  console.log('helloWorld 20240818');
+  res.send({msg: 'helloWorld 20240818'});
 });
 
 // Listen to the App Engine-specified port, or 8080 otherwise
