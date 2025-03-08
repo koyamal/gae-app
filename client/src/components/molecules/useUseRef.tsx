@@ -2,10 +2,15 @@ import { useRef, useState } from 'react';
 
 function UseUseRef() {
   const countRef = useRef(0);
+  const keyRef = useRef(0);
   const [countState, setCountState] = useState<number>(0);
 
   const incrementRef = () => {
     countRef.current += 1;
+  }
+
+  const incrementKeyRef = () => {
+    keyRef.current += 1;
   }
 
   const incrementState = () => {
@@ -16,6 +21,8 @@ function UseUseRef() {
     <div>
       <p>countRef: {countRef.current}</p>
       <button onClick={incrementRef}>incrementRef</button>
+      <p>keyRef: {keyRef.current}</p>
+      <button onClick={incrementKeyRef}>KeyRef</button>
       <p>レンダリング: {countState}</p>
       <button onClick={incrementState}>レンダリング</button>
     </div>
