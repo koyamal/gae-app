@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 function UseUseRef() {
   const countRef = useRef(0);
   const keyRef = useRef(0);
+  const isMounted = useRef(true);
   const [countState, setCountState] = useState<number>(0);
 
   const incrementRef = () => {
@@ -25,14 +26,12 @@ function UseUseRef() {
   }, []);
 
   useEffect(() => {
-    let isMounted = true;
-
-    if(isMounted) {
+    if(isMounted.current) {
       console.log('isMounted is true');
     }
 
     return () => {
-      isMounted = false;
+      isMounted.current = false;
     }
   }, []);
 
