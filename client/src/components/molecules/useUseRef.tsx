@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function UseUseRef() {
   const countRef = useRef(0);
@@ -16,6 +16,10 @@ function UseUseRef() {
   const incrementState = () => {
     setCountState(countState + 1);
   }
+
+  useEffect(() => {
+    console.log('useEffect is called');
+  }, []);
 
   return (
     <div>
