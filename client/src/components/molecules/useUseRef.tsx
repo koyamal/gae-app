@@ -24,6 +24,18 @@ function UseUseRef() {
     }
   }, []);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    if(isMounted) {
+      console.log('isMounted is true');
+    }
+
+    return () => {
+      isMounted = false;
+    }
+  }, []);
+
   return (
     <div>
       <p>countRef: {countRef.current}</p>
