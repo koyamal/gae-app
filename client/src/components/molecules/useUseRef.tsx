@@ -19,6 +19,9 @@ function UseUseRef() {
 
   useEffect(() => {
     console.log('useEffect is called');
+    return () => {
+      console.log('useUseRef is unmounted');
+    }
   }, []);
 
   return (
