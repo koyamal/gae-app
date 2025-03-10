@@ -27,7 +27,7 @@ function UseUseRef() {
       setFlagReCreate(true);
       console.log('setFlag is called');
     };
-  }, []);
+  }, [countState]);
 
   const incrementKeyRef = () => {
     keyRef.current += 1;
