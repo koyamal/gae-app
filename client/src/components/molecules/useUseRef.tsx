@@ -6,6 +6,8 @@ function UseUseRef() {
   const isMounted = useRef(true);
   const funcRef = useRef(() => {});
   const prevFuncRef = useRef(() => {});
+  const funcNoRef = useRef(() => {});
+  const prevFuncNoRef = useRef(() => {});
   const [countState, setCountState] = useState<number>(0);
 
   const incrementRef = () => {
@@ -14,6 +16,7 @@ function UseUseRef() {
 
   const incrementKeyRef = () => {
     keyRef.current += 1;
+
   }
 
   const incrementState = () => {
