@@ -16,7 +16,8 @@ function UseUseRef() {
 
   const incrementKeyRef = () => {
     keyRef.current += 1;
-
+    prevFuncNoRef.current = funcNoRef.current;
+    funcNoRef.current = incrementRef;
   }
 
   const incrementState = () => {
