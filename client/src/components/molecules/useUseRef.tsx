@@ -18,6 +18,11 @@ function UseUseRef() {
     keyRef.current += 1;
     prevFuncNoRef.current = funcNoRef.current;
     funcNoRef.current = incrementRef;
+    if(funcNoRef.current === prevFuncNoRef.current) {
+      console.log('funcNoRef.current === prevFuncNoRef.current');
+    } else {
+      console.log('funcNoRef.current !== prevFuncNoRef.current');
+    }
   }
 
   const incrementState = () => {
