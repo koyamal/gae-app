@@ -11,6 +11,7 @@ function UseUseRef() {
   const funcCallback = useRef(() => {});
   const prevFuncCallback = useRef(() => {});
   const [countState, setCountState] = useState<number>(0);
+  const [flagReCreate, setFlagReCreate] = useState<boolean>(false);
 
   const incrementRef = () => {
     countRef.current += 1;
@@ -18,7 +19,15 @@ function UseUseRef() {
 
   const incrementRefUseCallback = useCallback(() => {
     console.log('hello');
-  }, [])
+  }, [flagReCreate]);
+
+  const setFlag = useCallback(() => {
+    console.log(`countState: ${countState}`);
+    if(countState === 10) {
+      setFlagReCreate(true);
+      console.log('setFlag is called');
+    };
+  }, []);
 
   const incrementKeyRef = () => {
     keyRef.current += 1;
@@ -33,6 +42,7 @@ function UseUseRef() {
 
   const incrementState = () => {
     setCountState(countState + 1);
+    setFlag();
     prevFuncRef.current = funcRef.current;
     funcRef.current = incrementRef;
     if(funcRef.current === prevFuncRef.current) {
@@ -44,6 +54,7 @@ function UseUseRef() {
 
   const incrementCallbackState = () => {
     setCountState(countState + 1);
+    setFlag();
     prevFuncCallback.current = funcCallback.current;
     funcCallback.current = incrementRefUseCallback;
     if(funcCallback.current === prevFuncCallback.current) {
