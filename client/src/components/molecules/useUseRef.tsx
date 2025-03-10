@@ -20,8 +20,11 @@ function UseUseRef() {
     setCountState(countState + 1);
     prevFuncRef.current = funcRef.current;
     funcRef.current = incrementRef;
-    console.log(funcRef.current === prevFuncRef.current)
-    console.log(funcRef.current);
+    if(funcRef.current === prevFuncRef.current) {
+      console.log('funcRef.current === prevFuncRef.current');
+    } else {
+      console.log('funcRef.current !== prevFuncRef.current');
+    }
   }
 
   useEffect(() => {
