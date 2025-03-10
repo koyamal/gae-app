@@ -4,6 +4,8 @@ function UseUseRef() {
   const countRef = useRef(0);
   const keyRef = useRef(0);
   const isMounted = useRef(true);
+  const funcRef = useRef(() => {});
+  const prevFuncRef = useRef(() => {});
   const [countState, setCountState] = useState<number>(0);
 
   const incrementRef = () => {
@@ -16,6 +18,10 @@ function UseUseRef() {
 
   const incrementState = () => {
     setCountState(countState + 1);
+    prevFuncRef.current = funcRef.current;
+    funcRef.current = incrementRef;
+    console.log(funcRef.current === prevFuncRef.current)
+    console.log(funcRef.current);
   }
 
   useEffect(() => {
