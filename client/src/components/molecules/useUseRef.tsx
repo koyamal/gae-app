@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 function UseUseRef() {
