@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 function UseUseRef() {
@@ -8,6 +9,8 @@ function UseUseRef() {
   const prevFuncRef = useRef(() => {});
   const funcNoRef = useRef(() => {});
   const prevFuncNoRef = useRef(() => {});
+  const funcCallback = useRef(() => {});
+  const prevFuncCallback = useRef(() => {});
   const [countState, setCountState] = useState<number>(0);
 
   const incrementRef = () => {
@@ -42,12 +45,12 @@ function UseUseRef() {
 
   const incrementCallbackState = () => {
     setCountState(countState + 1);
-    prevFuncRef.current = funcRef.current;
-    funcRef.current = incrementRef;
-    if(funcRef.current === prevFuncRef.current) {
-      console.log('funcRef.current === prevFuncRef.current');
+    prevFuncCallback.current = funcCallback.current;
+    funcCallback.current = incrementRefUseCallback;
+    if(funcCallback.current === prevFuncCallback.current) {
+      console.log('funcCallback.current === prevFuncCallback.current');
     } else {
-      console.log('funcRef.current !== prevFuncRef.current');
+      console.log('funcCallback.current !== prevFuncCallback.current');
     }
   }
 
@@ -76,6 +79,7 @@ function UseUseRef() {
       <button onClick={incrementKeyRef}>KeyRef</button>
       <p>レンダリング: {countState}</p>
       <button onClick={incrementState}>レンダリング</button>
+      <button onClick={incrementCallbackState}>レンダリング</button>
     </div>
   )
 }
