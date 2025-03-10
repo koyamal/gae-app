@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 function UseUseRef() {
   const countRef = useRef(0);
@@ -14,6 +14,10 @@ function UseUseRef() {
     countRef.current += 1;
   }
 
+  const incrementRefUseCallback = useCallback(() => {
+    console.log('hello');
+  }, [])
+
   const incrementKeyRef = () => {
     keyRef.current += 1;
     prevFuncNoRef.current = funcNoRef.current;
@@ -26,6 +30,17 @@ function UseUseRef() {
   }
 
   const incrementState = () => {
+    setCountState(countState + 1);
+    prevFuncRef.current = funcRef.current;
+    funcRef.current = incrementRef;
+    if(funcRef.current === prevFuncRef.current) {
+      console.log('funcRef.current === prevFuncRef.current');
+    } else {
+      console.log('funcRef.current !== prevFuncRef.current');
+    }
+  }
+
+  const incrementCallbackState = () => {
     setCountState(countState + 1);
     prevFuncRef.current = funcRef.current;
     funcRef.current = incrementRef;
