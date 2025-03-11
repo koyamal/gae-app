@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Child01 from './child01';
+import Child02 from './child02';
 
 function UseUseRef() {
   const countRef = useRef(0);
@@ -85,6 +86,7 @@ function UseUseRef() {
   return (
     <div>
       <Child01 func={incrementRef}></Child01>
+      <Child02 func={incrementRefUseCallback}></Child02>
       <p>countRef: {countRef.current}</p>
       <button onClick={incrementRef}>incrementRef</button>
       <p key={keyRef.current}>keyRef: {keyRef.current}</p>
