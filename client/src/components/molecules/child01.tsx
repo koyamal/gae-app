@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 interface Props {
-  func: () => {}
+  func: () => void
 }
 
 const Child01 = function(props: Props) {
