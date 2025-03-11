@@ -9,7 +9,7 @@ const Child01 = function(props: Props) {
     console.log('Child01が再レンダリングされました');
   });
   return (
-    <div>hello</div>
+    <div>Child01</div>
   );
 }
 
