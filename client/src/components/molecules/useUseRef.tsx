@@ -45,7 +45,14 @@ function UseUseRef() {
 
   const incrementState = () => {
     setCountState(countState + 1);
-    setFlag();
+    setCountState(prevCount => {
+      const newCount = prevCount + 1;
+      if(newCount === 10) {
+        setFlagReCreate(true);
+        console.log('setFlag is called');
+      }
+      return newCount;
+    });
     prevFuncRef.current = funcRef.current;
     funcRef.current = incrementRef;
     if(funcRef.current === prevFuncRef.current) {
