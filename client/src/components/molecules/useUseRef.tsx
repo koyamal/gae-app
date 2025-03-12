@@ -18,77 +18,68 @@ function UseUseRef() {
 
   const incrementRef = () => {
     countRef.current += 1;
-  }
+  };
 
   const incrementRefUseCallback = useCallback(() => {
     console.log('hello');
   }, [flagReCreate]);
 
-  const setFlag = useCallback(() => {
-    console.log(`countState: ${countState}`);
-    if(countState === 10) {
-      setFlagReCreate(true);
-      console.log('setFlag is called');
-    };
-  }, [countState]);
+  const setFlag = () => {
+    setCountState(prevCount => {
+      const newCount = prevCount + 1;
+      if (newCount === 10) {
+        setFlagReCreate(true);
+        console.log('setFlag is called');
+      }
+      return newCount;
+    });
+  };
 
   const incrementKeyRef = () => {
     keyRef.current += 1;
     prevFuncNoRef.current = funcNoRef.current;
     funcNoRef.current = incrementRef;
-    if(funcNoRef.current === prevFuncNoRef.current) {
-      console.log('funcNoRef.current === prevFuncNoRef.current');
-    } else {
-      console.log('funcNoRef.current !== prevFuncNoRef.current');
-    }
-  }
+    console.log(
+      funcNoRef.current === prevFuncNoRef.current
+        ? 'funcNoRef.current === prevFuncNoRef.current'
+        : 'funcNoRef.current !== prevFuncNoRef.current'
+    );
+  };
 
   const incrementState = () => {
-    setCountState(countState + 1);
     setFlag();
-    prevFuncRef.current = funcRef.current;
-    funcRef.current = incrementRef;
-    if(funcRef.current === prevFuncRef.current) {
-      console.log('funcRef.current === prevFuncRef.current');
-    } else {
-      console.log('funcRef.current !== prevFuncRef.current');
-    }
-  }
+  };
 
   const incrementCallbackState = () => {
-    setCountState(countState + 1);
     setFlag();
     prevFuncCallback.current = funcCallback.current;
     funcCallback.current = incrementRefUseCallback;
-    if(funcCallback.current === prevFuncCallback.current) {
-      console.log('funcCallback.current === prevFuncCallback.current');
-    } else {
-      console.log('funcCallback.current !== prevFuncCallback.current');
-    }
-  }
+    console.log(
+      funcCallback.current === prevFuncCallback.current
+        ? 'funcCallback.current === prevFuncCallback.current'
+        : 'funcCallback.current !== prevFuncCallback.current'
+    );
+  };
 
   useEffect(() => {
     console.log('useEffect is called');
+    isMounted.current = true;
+
     return () => {
       console.log('useUseRef is unmounted');
-    }
+      isMounted.current = false;
+    };
   }, []);
 
   useEffect(() => {
-    if(isMounted.current) {
-      console.log('isMounted is true');
-    }
-
-    return () => {
-      isMounted.current = false;
-    }
-  }, []);
+    console.log('incrementRefUseCallback が更新されました');
+  }, [incrementRefUseCallback]);
 
   return (
     <div>
-      <Child01 func={incrementRef}></Child01>
-      <Child02 func={incrementRefUseCallback}></Child02>
-      <Child03 func={incrementRefUseCallback}></Child03>
+      <Child01 func={incrementRef} />
+      <Child02 func={incrementRefUseCallback} />
+      <Child03 func={incrementRefUseCallback} />
       <p>countRef: {countRef.current}</p>
       <button onClick={incrementRef}>incrementRef</button>
       <p key={keyRef.current}>keyRef: {keyRef.current}</p>
@@ -97,7 +88,7 @@ function UseUseRef() {
       <button onClick={incrementState}>レンダリング</button>
       <button onClick={incrementCallbackState}>レンダリング</button>
     </div>
-  )
+  );
 }
 
 export default UseUseRef;
