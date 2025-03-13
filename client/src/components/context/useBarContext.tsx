@@ -6,7 +6,7 @@ const UseBarContext: React.FC = () => {
 
   return (
     <div>
-      {bar && <div>{bar}</div>}
+      {bar ? <div>{bar}</div>: <div>null</div>}
     </div>
   );
 }
