@@ -1,8 +1,12 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import { BarContext } from "./bar";
 
 const UseBarContext: React.FC = () => {
-  const bar = useContext(BarContext);
+  let bar = useContext(BarContext);
+
+  useEffect(() => {
+    bar = 'hello'
+  }, []);
 
   return (
     <div>

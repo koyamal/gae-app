@@ -6,6 +6,7 @@ import OneUserInfo from "./components/pages/OneUserInfo";
 import UserAdd from "./components/pages/UserAdd";
 import MyDrawer from "./components/molecules/MyDrawer";
 import { BarContext } from "./components/context/bar";
+import UseBarContext from "./components/context/useBarContext";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <div className="App">
           <MyDrawer />
+          <UseBarContext />
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
