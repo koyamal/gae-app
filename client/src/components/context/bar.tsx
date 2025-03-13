@@ -1,3 +1,11 @@
 import { createContext } from "react";
 
-export const BarContext = createContext<string | null>(null);
+type BarContextType = {
+  bar: string | null;
+  changeBar: (val: string) => void;
+}
+
+export const BarContext = createContext<BarContextType>({
+  bar: null,
+  changeBar: () => {}
+});
