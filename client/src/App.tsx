@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./components/pages/Home";
 import UserInfo from "./components/pages/UserInfo";
@@ -9,8 +9,12 @@ import { BarContext } from "./components/context/bar";
 import UseBarContext from "./components/context/useBarContext";
 
 const App: React.FC = () => {
+  const [bar, setBar] = useState<string| null>(null);
+  const changeBar = (val: string) => {
+    setBar(val);
+  }
   return (
-    <BarContext.Provider value={null}>
+    <BarContext.Provider value={{bar, changeBar}}>
       <BrowserRouter>
         <div className="App">
           <MyDrawer />
