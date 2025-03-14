@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from "react";
 import { BarContext } from "./bar";
 
 const UseBarContext: React.FC = () => {
-  let bar = useContext(BarContext);
+  const bar = useContext(BarContext);
 
   return (
     <>
