@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { BarContext } from "./bar";
 
-const BarProvider: React.FC = ({children}) => {
+const BarProvider: React.FC<{children: ReactNode}> = ({children}) => {
   const [bar, setBar] = useState<string| null>(null);
   const changeBar = (val: string) => {
     setBar(val);
