@@ -31,22 +31,6 @@ const App: React.FC = () => {
         </Routes>
       </BrowserRouter>
     </BarProvider>
-    // <BarContext.Provider value={{bar, changeBar}}>
-    //   <BrowserRouter>
-    //     <div className="App">
-    //       <MyDrawer />
-    //       <UseBarContext />
-    //       <AnotherUseBarContext />
-    //     </div>
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/user" element={<UserInfo />} />
-    //       <Route path="/oneuserinfo/:docId" element={<OneUserInfo />} />
-    //       <Route path="/addUser" element={<UserAdd />} />
-    //     </Routes>
-    //   </BrowserRouter>
-    // </BarContext.Provider>
-    // <UserInfo />
   );
 };
 
