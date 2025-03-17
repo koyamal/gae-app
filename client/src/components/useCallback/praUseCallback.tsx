@@ -9,6 +9,9 @@ const PraUseCallback = () => {
     console.log('fn2');
   }, []);
 
+  fn1();
+  fn2();
+
   return (
     <div>hello</div>
   );
