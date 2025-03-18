@@ -13,8 +13,8 @@ const PraUseCallback = () => {
   }, []);
 
   useEffect(() => {
-    console.log(fn1Ref.current === fn1);
-    console.log(fn2Ref.current === fn2);
+    console.log(fn1Ref.current === fn1? 'fn1Ref.current === fn1': 'fn1Ref.current !== fn1');
+    console.log(fn2Ref.current === fn2? 'fn2Ref.current === fn2': 'fn2Ref.current !== fn2');
     fn1Ref.current = fn1;
     fn2Ref.current = fn2;
   });
