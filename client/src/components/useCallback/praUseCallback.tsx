@@ -18,9 +18,6 @@ const PraUseCallback = () => {
     fn2Ref.current = fn2;
   });
 
-  fn1();
-  fn2();
-
   return (
     <div>hello</div>
   );
