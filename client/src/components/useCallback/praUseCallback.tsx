@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const PraUseCallback = () => {
   const fn1Ref = useRef(() => {});
   const fn2Ref = useRef(() => {});
+  const [state, setState] = useState(true);
   const fn1 = () => {
     console.log('fn1');
   }
@@ -19,7 +20,9 @@ const PraUseCallback = () => {
   });
 
   return (
-    <div>hello</div>
+    <>
+      <button onClick={() => setState(!state)}>state</button>
+    </>
   );
 }
 
