@@ -1,6 +1,8 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const PraUseCallback = () => {
+  const fn1Ref = useRef(() => {});
+  const fn2Ref = useRef(() => {});
   const fn1 = () => {
     console.log('fn1');
   }
