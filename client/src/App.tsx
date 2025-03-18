@@ -7,6 +7,8 @@ import UserAdd from "./components/pages/UserAdd";
 import MyDrawer from "./components/molecules/MyDrawer";
 import { BarContext } from "./components/context/bar";
 import UseBarContext from "./components/context/useBarContext";
+import AnotherUseBarContext from "./components/context/anotherUseBarContext";
+import BarProvider from "./components/context/BarProvider";
 
 const App: React.FC = () => {
   const [bar, setBar] = useState<string| null>(null);
@@ -14,11 +16,12 @@ const App: React.FC = () => {
     setBar(val);
   }
   return (
-    <BarContext.Provider value={{bar, changeBar}}>
+    <BarProvider>
       <BrowserRouter>
         <div className="App">
           <MyDrawer />
           <UseBarContext />
+          <AnotherUseBarContext />
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,8 +30,7 @@ const App: React.FC = () => {
           <Route path="/addUser" element={<UserAdd />} />
         </Routes>
       </BrowserRouter>
-    </BarContext.Provider>
-    // <UserInfo />
+    </BarProvider>
   );
 };
 
