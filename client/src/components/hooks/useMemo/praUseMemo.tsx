@@ -1,11 +1,11 @@
 import React from "react";
 
-export const Child1 = (props: {val1: string}) => {
+const Child1 = (props: {val1: string}) => {
   console.log("Child1がレンダリングされた！");
   return <p>Value: {props.val1}</p>;
 };
 
-export const Child2 = React.memo((props:{val1: string}) => {
+const Child2 = React.memo((props:{val1: string}) => {
   console.log("Child2がレンダリングされた！");
   return <p>Count: {props.val1}</p>;
 });
@@ -18,3 +18,5 @@ const Parent = () => {
     </>
   );
 }
+
+export default Parent;
