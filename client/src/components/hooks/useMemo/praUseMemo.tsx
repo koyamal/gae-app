@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Child1 = (props: {val1: string}) => {
   console.log("Child1がレンダリングされた！");
@@ -11,8 +11,10 @@ const Child2 = React.memo((props:{val1: string}) => {
 });
 
 const Parent = () => {
+  const [parentState, setParentState] = useState(false);
   return (
     <>
+      <button onClick={() => setParentState(!parentState)}>parentState</button>
       <Child1 val1={'hello'}></Child1>
       <Child2 val1={'bye'}></Child2>
     </>
