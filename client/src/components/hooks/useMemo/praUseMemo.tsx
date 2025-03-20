@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
 const Child1 = (props: {val1: boolean}) => {
+  const {val1} = props;
   console.log("Child1がレンダリングされた！");
-  return <p>Value: {props.val1}</p>;
+  return <p>Child1: {val1? 'true': 'false'}</p>;
 };
 
 const Child2 = React.memo((props:{val1: boolean}) => {
+  const {val1} = props;
   console.log("Child2がレンダリングされた！");
-  return <p>Count: {props.val1}</p>;
+  return <p>Child2: {val1? 'true': 'false'}</p>;
 });
 
 const Parent = () => {
