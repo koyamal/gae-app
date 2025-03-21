@@ -16,6 +16,7 @@ const Parent = () => {
   const [parentState, setParentState] = useState(false);
   const [c1State, setC1State] = useState(false);
   const [c2State, setC2State] = useState(false);
+  console.log('親コンポーネントがレンダリングされた！');
   return (
     <>
       <button onClick={() => setParentState(!parentState)}>parentState</button>
