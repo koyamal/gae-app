@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 
 const Child1 = (props: {val1: boolean}) => {
+  const [inChild1State, setInChild1State] = useState(false);
   const {val1} = props;
   console.log("Child1がレンダリングされた！");
-  return <p>Child1: {val1? 'true': 'false'}</p>;
+  return (
+    <>
+      <button onClick={() => setInChild1State(!inChild1State)}>In Child1</button>
+      <p>Child1: {val1? 'true': 'false'}</p>
+    </>
+  );
 };
 
 const Child2 = React.memo((props:{val1: boolean}) => {
