@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Child1 = (props: {val1: boolean}) => {
   const [inChild1State, setInChild1State] = useState(false);
@@ -23,6 +23,9 @@ const Parent = () => {
   const [c1State, setC1State] = useState(false);
   const [c2State, setC2State] = useState(false);
   console.log('親コンポーネントがレンダリングされた！');
+  useEffect(() => {
+    console.log('親コンポーネントのuseEffectが実行された');
+  });
   return (
     <>
       <button onClick={() => setParentState(!parentState)}>parentState</button>
