@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { createUseStyles } from "react-jss";
 
 import UseUseRef from '../molecules/useUseRef';
-import PraUseCallback from '../useCallback/praUseCallback';
+import PraUseCallback from '../hooks/useCallback/praUseCallback';
+import Parent from '../hooks/useMemo/praUseMemo';
 
 const Home: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
         <h1>Home</h1>
         <PraUseCallback></PraUseCallback>
         <UseUseRef></UseUseRef>
+        <Parent></Parent>
     </div>
   );
 };
