@@ -18,6 +18,10 @@ const Child2 = React.memo((props:{val1: boolean}) => {
   return <p>Child2: {val1? 'true': 'false'}</p>;
 });
 
+const Child3 = () => {
+  return <p>Child3</p>
+}
+
 const Parent = () => {
   const [parentState, setParentState] = useState(false);
   const [c1State, setC1State] = useState(false);
