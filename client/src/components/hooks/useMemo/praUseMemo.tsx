@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const Child1 = (props: {val1: boolean}) => {
   const [inChild1State, setInChild1State] = useState(false);
@@ -24,6 +24,12 @@ const Child3 = () => {
     console.log('calcCountが実行されました');
     return count;
   }
+
+  const calcCountWithMemo = useMemo(() => {
+    console.log('calcCountWithMemoが実行されました');
+    return count;
+  }, [count]);
+  
   return <p>Child3</p>
 }
 
