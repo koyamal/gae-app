@@ -1,3 +1,15 @@
+import { useEffect } from "react";
+
+const Child1 = () => {
+  useEffect(() => {
+    console.log('start');
+
+    return () => {
+      console.log('goal');
+    }
+  })
+}
+
 const PraUseEffect = () => {
   return (
     <>
