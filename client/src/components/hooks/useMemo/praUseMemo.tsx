@@ -19,6 +19,10 @@ const Child2 = React.memo((props:{val1: boolean}) => {
 });
 
 const Child3 = () => {
+  const calcCount = (count: number) => {
+    console.log('calcCountが実行されました');
+    return count;
+  }
   return <p>Child3</p>
 }
 
