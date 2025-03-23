@@ -29,8 +29,14 @@ const Child3 = () => {
     console.log('calcCountWithMemoが実行されました');
     return count;
   }, [count]);
-  
-  return <p>Child3</p>
+
+  return (
+    <>
+      <p>Child3</p>
+      <p>{calcCountWithMemo}</p>
+      <button onClick={() => {setCount(count + 1)}}>Count Up!</button>
+    </>
+  );
 }
 
 const Parent = () => {
@@ -48,6 +54,7 @@ const Parent = () => {
       <button onClick={() => setC2State(!c2State)}>child02</button>
       <Child1 val1={c1State}></Child1>
       <Child2 val1={c2State}></Child2>
+      <Child3></Child3>
     </>
   );
 }
