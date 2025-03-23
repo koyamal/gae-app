@@ -8,6 +8,11 @@ const Child1 = () => {
       console.log('goal');
     }
   })
+  return (
+    <>
+      <p>Child1</p>
+    </>
+  )
 }
 
 const PraUseEffect = () => {
@@ -15,6 +20,7 @@ const PraUseEffect = () => {
   return (
     <>
       <p>hello</p>
+      {renderC1Flag && <Child1></Child1>}
       <button onClick={() => setRenderC1Flag(!renderC1Flag)}>C1 toggle</button>
     </>
   )
