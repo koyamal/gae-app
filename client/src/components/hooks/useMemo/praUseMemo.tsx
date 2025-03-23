@@ -19,7 +19,8 @@ const Child2 = React.memo((props:{val1: boolean}) => {
 });
 
 const Child3 = () => {
-  const calcCount = (count: number) => {
+  const [count, setCount] = useState(0);
+  const calcCount = () => {
     console.log('calcCountが実行されました');
     return count;
   }
