@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Child1 = () => {
+const Child1 = (props: {state: boolean}) => {
   useEffect(() => {
     console.log('start');
 
@@ -15,7 +15,7 @@ const Child1 = () => {
     return () => {
       console.log('goal: state');
     }
-  }, []);
+  }, [props.state]);
   return (
     <>
       <p>Child1</p>
@@ -29,7 +29,7 @@ const PraUseEffect = () => {
   return (
     <>
       <p>hello</p>
-      {renderC1Flag && <Child1></Child1>}
+      {renderC1Flag && <Child1 state={renderC1Flag1}></Child1>}
       <button onClick={() => setRenderC1Flag(!renderC1Flag)}>C1 toggle</button>
       <button onClick={() => setRenderC1Flag1(!renderC1Flag1)}>C1 toggle1</button>
     </>
