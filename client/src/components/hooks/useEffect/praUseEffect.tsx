@@ -10,10 +10,13 @@ const Child1 = (props: {state: boolean}) => {
   })
 
   useEffect(() => {
-    console.log('start: state');
+    console.log('start: with state');
+    if(props.state) {
+      console.log('true');
+    }
 
     return () => {
-      console.log('goal: state');
+      console.log('goal: with state');
     }
   }, [props.state]);
   return (
