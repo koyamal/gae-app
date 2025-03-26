@@ -7,6 +7,7 @@ const Child1 = (props: {state: boolean}) => {
 
     return () => {
       console.log('goal');
+      useRefValue.current = 'goal';
     }
   })
 
