@@ -4,6 +4,7 @@ const Child1 = (props: {state: boolean}) => {
   const useRefValue = useRef('');
   useEffect(() => {
     console.log('start');
+    useRefValue.current = 'start';
 
     return () => {
       console.log('goal');
