@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Child1 = (props: {state: boolean}) => {
+  const useRefValue = useRef('');
   useEffect(() => {
     console.log('start');
 
