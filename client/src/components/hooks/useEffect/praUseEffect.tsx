@@ -14,6 +14,9 @@ const Child1 = (props: {state: boolean}) => {
 
   useEffect(() => {
     console.log('start: with state');
+    if(useRefValue) {
+      console.log('hello');
+    }
     if(props.state) {
       console.log('true');
     }
