@@ -10,7 +10,11 @@ const Child1 = (props: {state: boolean}) => {
       console.log('goal');
       useRefValue.current = 'goal';
     }
-  })
+  });
+
+  useEffect(() => {
+    console.log('useRefValueが変更されました。: ', useRefValue);
+  }, [useRefValue]);
 
   useEffect(() => {
     console.log('start: with state');
