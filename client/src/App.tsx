@@ -20,8 +20,6 @@ const App: React.FC = () => {
       <BrowserRouter>
         <div className="App">
           <MyDrawer />
-          <UseBarContext />
-          <AnotherUseBarContext />
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
