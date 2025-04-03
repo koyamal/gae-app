@@ -8,7 +8,7 @@ const Child01 = function(props: Props) {
   const [state1, setState1] = useState(true);
   useEffect(() => {
     const { func } = props;
-    func();
+    state1 && func();
     console.log('Child01が再レンダリングされました');
   });
   return (
