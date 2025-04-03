@@ -6,6 +6,8 @@ interface Props {
 
 const Child01 = function(props: Props) {
   useEffect(() => {
+    const { func } = props;
+    func();
     console.log('Child01が再レンダリングされました');
   });
   return (
