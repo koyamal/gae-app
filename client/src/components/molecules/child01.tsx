@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   func: () => void
 }
 
 const Child01 = function(props: Props) {
+  const [state1, setState1] = useState(true);
   useEffect(() => {
     const { func } = props;
     func();
