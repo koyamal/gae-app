@@ -7,8 +7,6 @@ function UseUseRef() {
   const countRef = useRef(0);
   const keyRef = useRef(0);
   const isMounted = useRef(true);
-  const funcRef = useRef(() => {});
-  const prevFuncRef = useRef(() => {});
   const funcNoRef = useRef(() => {});
   const prevFuncNoRef = useRef(() => {});
   const funcCallback = useRef(() => {});
