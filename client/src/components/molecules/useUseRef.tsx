@@ -16,8 +16,9 @@ function UseUseRef() {
   const [countState, setCountState] = useState<number>(0);
   const [flagReCreate, setFlagReCreate] = useState<boolean>(false);
 
-  const incrementRef = () => {
+  const incrementRef = (): boolean => {
     countRef.current += 1;
+    return countRef.current % 2 === 1;
   };
 
   const incrementRefUseCallback = useCallback(() => {
