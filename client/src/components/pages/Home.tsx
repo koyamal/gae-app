@@ -6,6 +6,7 @@ import Parent from '../hooks/useMemo/praUseMemo';
 import PraUseEffect from '../hooks/useEffect/praUseEffect';
 import UseBarContext from '../context/useBarContext';
 import AnotherUseBarContext from '../context/anotherUseBarContext';
+import Comp1 from '../hooks/useEffect/praMountUnmount';
 
 const Home: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Home: React.FC = () => {
         <UseUseRef></UseUseRef>
         <Parent></Parent>
         <PraUseEffect></PraUseEffect>
+        <Comp1></Comp1>
     </div>
   );
 };
