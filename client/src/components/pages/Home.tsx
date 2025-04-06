@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { createUseStyles } from "react-jss";
+import React from 'react';
 
 import UseUseRef from '../molecules/useUseRef';
 import PraUseCallback from '../hooks/useCallback/praUseCallback';
@@ -7,6 +6,7 @@ import Parent from '../hooks/useMemo/praUseMemo';
 import PraUseEffect from '../hooks/useEffect/praUseEffect';
 import UseBarContext from '../context/useBarContext';
 import AnotherUseBarContext from '../context/anotherUseBarContext';
+import Comp1 from '../hooks/useEffect/praMountUnmount';
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +18,7 @@ const Home: React.FC = () => {
         <UseUseRef></UseUseRef>
         <Parent></Parent>
         <PraUseEffect></PraUseEffect>
+        <Comp1></Comp1>
     </div>
   );
 };
