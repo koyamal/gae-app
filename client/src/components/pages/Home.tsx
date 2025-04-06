@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import UseUseRef from '../molecules/useUseRef';
 import PraUseCallback from '../hooks/useCallback/praUseCallback';
