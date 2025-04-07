@@ -8,6 +8,10 @@ const Comp1 = function() {
       console.log('Comp1がアンマウントされました。');
     }
   }, []);
+
+  useEffect(() => {
+    console.log('Comp1がレンダリングされました。');
+  });
   return (
     <>
       <div>This is Comp1</div>
