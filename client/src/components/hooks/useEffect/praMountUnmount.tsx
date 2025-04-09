@@ -13,6 +13,10 @@ const Comp1 = function() {
   useEffect(() => {
     console.log('Comp1がレンダリングされました。');
   });
+
+  useEffect(() => {
+    console.log('stateが変化');
+  }, [state1]);
   return (
     <>
       <div>This is Comp1</div>
