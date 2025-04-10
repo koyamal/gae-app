@@ -15,6 +15,9 @@ const Comp1 = function() {
   });
 
   useEffect(() => {
+    if(state1) {
+      console.log('state1がtrueに変化');
+    }
     console.log('stateが変化');
   }, [state1]);
   return (
