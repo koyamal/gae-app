@@ -20,7 +20,6 @@ const Comp1 = function() {
     } else {
       console.log('state1がtrueに変化');
     }
-    console.log('stateが変化');
   }, [state1]);
   return (
     <>
