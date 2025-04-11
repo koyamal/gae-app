@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Comp1 = function() {
-  const [state1, setState1] = useState(0);
+  const [state1, setState1] = useState(1);
   useEffect(() => {
     console.log('Comp1がマウントされました。');
 
@@ -24,6 +24,7 @@ const Comp1 = function() {
   return (
     <>
       <div>This is Comp1</div>
+      <button onClick={() => setState1((-1) * state1)}></button>
     </>
   );
 }
