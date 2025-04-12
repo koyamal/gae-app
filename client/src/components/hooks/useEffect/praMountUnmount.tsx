@@ -24,7 +24,8 @@ const Comp1 = function() {
   return (
     <>
       <div>This is Comp1</div>
-      <button onClick={() => setState1((-1) * state1)}></button>
+      <button onClick={() => setState1((-1) * state1)}>*-1</button>
+      <button onClick={() => setState1(1)}>reset</button>
     </>
   );
 }
