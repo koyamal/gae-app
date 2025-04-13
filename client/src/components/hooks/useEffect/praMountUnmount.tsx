@@ -21,10 +21,14 @@ const Comp1 = function() {
       console.log('state1がtrueに変化');
     }
   }, [state1]);
+
+  const changeState1 = () => {
+    setState1((-1) * state1);
+  }
   return (
     <>
       <div>This is Comp1</div>
-      <button onClick={() => setState1((-1) * state1)}>*-1</button>
+      <button onClick={changeState1}>*-1</button>
       <button onClick={() => setState1(1)}>reset</button>
     </>
   );
