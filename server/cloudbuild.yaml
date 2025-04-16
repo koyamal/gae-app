@@ -1,5 +1,5 @@
 steps:
-- name: 'cd'
+- name: 'ubuntu'
   args: ['cd', 'server']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
