@@ -1,4 +1,20 @@
 steps:
+- name: node
+  entrypoint: npm
+  args: ["install"]
+  dir: client
+- name: node
+  entrypoint: npm
+  args: ["run", "build:gae"]
+  dir: client
+- name: node
+  entrypoint: npm
+  args: ["install"]
+  dir: server
+- name: node
+  entrypoint: npm
+  args: ["run", "tsbuild"]
+  dir: server
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args: ['-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy']
