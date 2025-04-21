@@ -5,7 +5,7 @@ steps:
   dir: client
 - name: node
   entrypoint: npm
-  args: ["run", "build:gae"]
+  args: ["run", "build:gae:ci"]
   dir: client
 - name: node
   entrypoint: npm
