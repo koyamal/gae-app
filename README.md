@@ -30,3 +30,4 @@ npm install
 npm run deploy
 ```
 
+### Cloud Buildでデプロイできるようにした
