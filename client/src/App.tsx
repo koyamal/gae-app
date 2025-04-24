@@ -8,10 +8,6 @@ import MyDrawer from "./components/molecules/MyDrawer";
 import BarProvider from "./components/context/BarProvider";
 
 const App: React.FC = () => {
-  const [bar, setBar] = useState<string| null>(null);
-  const changeBar = (val: string) => {
-    setBar(val + bar);
-  }
   return (
     <BarProvider>
       <BrowserRouter>
